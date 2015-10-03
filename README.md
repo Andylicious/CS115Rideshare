@@ -1,4 +1,4 @@
-# CS115Rideshare
+# CS115 - Team Hipster - Ionic SC 
 Group repository for CS115 group
 
 Names:
