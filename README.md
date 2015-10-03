@@ -2,19 +2,28 @@
 Group repository for CS115 group
 
 Names:
+
 Andrew Lien
+
 John Ta
+
 Taylor Stratton
+
 Kent Diao
+
 Kangdi
+
 Bryant Tran
+
 
 Notes to team members (From Andy): 
 
---Where to start
+-- Where to start
+
 All of our stuff will be modified under IonicSC/www/ the css, img, js, lib, and templates will have our relevent stuff. Don't worry about the other files. 
 
---How to start
+-- How to start
+
 To set up the dev environment, if you are on the mac, make sure you have Xcode, Android SDK (android studio down is OK), JDK 7, VirtualBox, and Genymotion. This option is not needed for the initial development phases.
 
 What is essential is to have node.js installed on your machine. 
