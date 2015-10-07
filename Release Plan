@@ -1,0 +1,13 @@
+Team Hipster Release Plans 
+
+Sprint 1 – Working but rough UI that can be viewed in both Android SDK and iOS SDK~8 hours. 
+Successfully creating the web crawler that crawls every hour for open classes ~8 hours. 
+
+Sprint 2 – Redefine UI and implement design ~16 hours (This is the bulk of the product and includes the creation of easier search queries, responsive design and a back to search button). This sprint will also require the most planning and discussion in terms of the exact direction we want to go in.
+
+Sprint 3 – Improving the product by providing amazing features that will give students who download the app an advantage in signing up for classes. This will include a Watch Class feature that will send push notifications for when the class is nearing full capacity and for whenever a spot opens up ~8 hours. 
+Also we will try to get RatemyProfessor integrated but at the very least I would hope we will have a hyperlink that will perform a search on ratemyprofessor to find the teacher for a specific class ~8 hours.
+
+Total of 48 hours
+Conclusion: We want to provide the ultimate mobile companion app to the student portal as we cannot take over the current student portal completely as we are limited by not being able to get the myUCSC API
+ 
