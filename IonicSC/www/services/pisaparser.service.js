@@ -39,6 +39,7 @@
                     
 
                     var term = tmp.getElementById('term_dropdown');
+
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
 
@@ -49,11 +50,18 @@
       
                     console.log("Term = " + term + " With length = " + term.length);
 
+                    var term_id = [];
+                    var term_string = [];
                     for(var i = 0; i < term.length; i++){
-                        var mystr = term[i];
-                        console.log(mystr);
-
+                        var tmp_term = term[i];
+                        term_id.push(tmp_term.value);
+                        term_string.push(tmp_term.innerText);
                     }
+
+                    for(var i = 0; i < term.length; i++){
+                    	console.log(term_string[i] + "'s ID # is = " + term_id[i]);
+                    }
+
          
                     console.log("Session = " + session + "With length = " + session.length);
                     console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);
