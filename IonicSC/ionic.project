@@ -4,7 +4,7 @@
   "proxies": [
     {
       "path": "/class_search",
-      "proxyUrl": "http://pisa.ucsc.edu/class_search"
+      "proxyUrl": "https://pisa.ucsc.edu/class_search"
     }
   ]
 }

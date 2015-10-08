@@ -39,37 +39,57 @@
                     
 
                     var term = tmp.getElementById('term_dropdown');
-
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
+                    var subject = tmp.getElementById('subject');
 
-
-                   //var items = tmp.body.getElementsByClassName('PSDROPDOWNLABEL')[0].children;
-                   // var items_2 = tmp.getElementsByClassName('PSDROPDOWNLABEL')[0].children;
-
-      
-                    console.log("Term = " + term + " With length = " + term.length);
+                    //console.log("Term = " + term + " With length = " + term.length);
 
                     var term_id = [];
+                    var session_id = [];
+                    var reg_status_id = [];
+                    var subject_id = [];
+
                     var term_string = [];
+                    var session_string = [];
+                    var reg_status_string = [];
+                    var subject_string = [];
                     for(var i = 0; i < term.length; i++){
                         var tmp_term = term[i];
                         term_id.push(tmp_term.value);
                         term_string.push(tmp_term.innerText);
                     }
 
-                    for(var i = 0; i < term.length; i++){
-                    	console.log(term_string[i] + "'s ID # is = " + term_id[i]);
+                    for (var i = 0; i < session.length; i++){
+                    	var tmp_session = session[i];
+                    	session_id.push(tmp_session.value);
+                    	session_string.push(tmp_session.innerText);
                     }
 
-         
-                    console.log("Session = " + session + "With length = " + session.length);
-                    console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);
-                    //console.log("items = " +items + " With length = " + items.length);
-                    //console.log("items_2 = " + items_2 + "WIth length = "+ items_2.length);
-          
+                     for (var i = 0; i < reg_status.length; i++){
+                    	var tmp_reg_status = reg_status[i];
+                    	reg_status_id.push(tmp_reg_status.value);
+                    	reg_status_string.push(tmp_reg_status.innerText);
+                    }
 
-                    var pisa_results = [];
+                     for (var i = 0; i < subject.length; i++){
+                    	var tmp_subject = subject[i];
+                    	subject_id.push(tmp_subject.value);
+                    	subject_string.push(tmp_subject.innerText);
+                    }
+
+
+
+
+                    for(var i = 0; i < subject.length; i++){
+                    	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
+                    }
+
+                
+                    //console.log("Session = " + session + "With length = " + session.length);
+                    //console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);          
+
+                    var pisa_results = { term_string,session_string,reg_status_string,subject_string };
                     //for (var i = 0; i < items.length; i++) {
                      /*   console.log(" i = " + i);
                         var item = items[i];
