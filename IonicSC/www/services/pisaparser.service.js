@@ -7,28 +7,6 @@
 
         return {
 
-            login: function (username, password) {
-                var request = {
-                    method: 'POST',
-                    url: 'http://crossorigin.me/https://pisa.ucsc.edu/class_search/',
-
-                };
-
-                /*return $http(request).then(function(response){
-                    var deferred = $q.defer();
-
-                    // this header is only present after we have logged in successfully
-                    if (response.headers('x-xrds-location')) {
-                        deferred.resolve();
-                    }
-                    else {
-                        deferred.reject();
-                    } 
-
-                    return deferred.promise;   
-                });*/
-            },
-
             getPisaFields: function () {
 
                 var parsePisa = function (response) {
@@ -121,6 +99,31 @@
                                 return parsePisa(response);
                             });
             }
+
+            //login: function (username, password) {
+                // var request = {
+                //     method: 'POST',
+                //     url: 'http://crossorigin.me/https://pisa.ucsc.edu/class_search/',
+
+                // };
+
+                /*return $http(request).then(function(response){
+                    var deferred = $q.defer();
+
+                    // this header is only present after we have logged in successfully
+                    if (response.headers('x-xrds-location')) {
+                        deferred.resolve();
+                    }
+                    else {
+                        deferred.reject();
+                    } 
+
+                    return deferred.promise;   
+                });*/
+            //},
+
+            
+
         }
 
     }
