@@ -87,9 +87,13 @@
 
                 
                     //console.log("Session = " + session + "With length = " + session.length);
-                    //console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);          
+                    //console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);  
+                    var term_map = {term_string, term_id};
+                    var session_map = {session_string, session_id};
+                    var reg_status_map = {reg_status_string, reg_status_id};
+                    var subject_map = {subject_string, subject_id};        
 
-                    var pisa_results = { term_string,session_string,reg_status_string,subject_string };
+                    var pisa_results = { term_map,session_map,reg_status_map,subject_map };
                     //for (var i = 0; i < items.length; i++) {
                      /*   console.log(" i = " + i);
                         var item = items[i];
