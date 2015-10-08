@@ -10,7 +10,7 @@
             login: function (username, password) {
                 var request = {
                     method: 'POST',
-                    url: 'https://pisa.ucsc.edu/class_search/',
+                    url: 'http://crossorigin.me/https://pisa.ucsc.edu/class_search/',
 
                 };
 
@@ -116,7 +116,7 @@
                 }
 
 
-                return $http.get('https://pisa.ucsc.edu/class_search/')
+                return $http.get('http://crossorigin.me/https://pisa.ucsc.edu/class_search/')
                             .then(function(response){
                                 return parsePisa(response);
                             });
