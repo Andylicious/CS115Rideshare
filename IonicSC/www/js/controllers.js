@@ -1,6 +1,9 @@
+
+
+
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -8,7 +11,19 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  $scope.postRequestToPisa = function(vm){
+    console.log("POST REQUEST STUFF GOES HERE");
 
+    //NOTE: VM.PISA CAME FROM SEARCH.CONTROLLERS.JS WHICH CAME FROM PISAPARSER.SERVICE.JS
+    console.log(vm.pisa);
+    console.log(vm.pisa.length);
+    $state.go('app.playlists');
+
+
+  };
+
+
+/*
   // Form data for the login modal
   $scope.loginData = {};
 
@@ -28,7 +43,6 @@ angular.module('starter.controllers', [])
   $scope.login = function() {
     $scope.modal.show();
   };
-
   // Perform the login action when the user submits the login form
   $scope.doLogin = function() {
     console.log('Doing login', $scope.loginData);
@@ -38,8 +52,9 @@ angular.module('starter.controllers', [])
     $timeout(function() {
       $scope.closeLogin();
     }, 1000);
-  };
-})
+  };*/
+}
+)
 
 .controller('PlaylistsCtrl', function($scope) {
   $scope.playlists = [
@@ -54,3 +69,6 @@ angular.module('starter.controllers', [])
 
 .controller('PlaylistCtrl', function($scope, $stateParams) {
 });
+
+
+
