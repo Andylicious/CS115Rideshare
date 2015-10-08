@@ -6,14 +6,7 @@
     <div class="input-label">
       Term
     </div>
-    <select>
-      <option selected> </option>
-      <option>2015 Fall Quarter</option>
-      <option>2015 Summer Quarter</option>
-      <option>2015 Spring Quarter</option>
-      <option>2015 Winter Quarter</option>
-      <option>2014 Fall Quarter</option>
-    </select>
+    <select id="term_select"></select>
   </label>
   
     <label class="item item-input item-select">
@@ -36,6 +29,8 @@
   </label>
 
             <a ng-click="postRequestToPisa(vm)" class="button button-light button-block">Search</a>
+
+            {{vm.pisa.term_map.term_string[0]}}
 
 </div>
   </ion-content>
