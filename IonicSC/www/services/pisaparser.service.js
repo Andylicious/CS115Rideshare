@@ -21,6 +21,7 @@
                     var reg_status = tmp.getElementById('reg_status');
                     var subject = tmp.getElementById('subject');
 
+
                     //console.log("Term = " + term + " With length = " + term.length);
 
                     var term_id = [];
@@ -32,6 +33,8 @@
                     var session_string = [];
                     var reg_status_string = [];
                     var subject_string = [];
+
+
                     for(var i = 0; i < term.length; i++){
                         var tmp_term = term[i];
                         term_id.push(tmp_term.value);

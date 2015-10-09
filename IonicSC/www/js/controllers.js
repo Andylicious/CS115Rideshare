@@ -3,7 +3,7 @@
 
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout, $state) {
+.controller('AppCtrl', function($scope, $http,$ionicModal, $timeout, $state) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -25,6 +25,78 @@ angular.module('starter.controllers', [])
 
     alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
     
+  /*  var request = $http({
+      method: "POST",
+      url: "http://crossorigin.me/https://pisa.ucsc.edu/class_search/",
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+      },
+      data: 'binds[:term]:2158' 
+
+    })
+
+    request.success(
+      function(html){
+        console.log(html);
+      }
+      )
+*/
+var action = "results";
+var term_bind = "2158";
+var reg_bind = "O";
+var sub_bind = "";
+var cat_op_bind = "=";
+var cat_nbr_bind = "";
+var title_bind = '';
+var instr_name_bind = "=";
+var instr_bind = "";
+var ge_bind = "";
+var crse_op_bind = "=";
+var crse_from_bind = "";
+var crse_to_bind = "";
+var crse_exact_bind = "";
+var days_bind = "";
+var times_bind = "";
+var acad_bind = "";
+
+    var xsrf = {action, term_bind, reg_bind, sub_bind, cat_op_bind, cat_nbr_bind, title_bind, instr_name_bind, 
+                instr_bind, ge_bind, crse_op_bind, crse_from_bind,crse_to_bind,crse_exact_bind,days_bind,
+                times_bind,acad_bind };
+
+
+    var test = {action: 'results'};
+    var request = $http({
+      method: 'POST',
+      url: 'https://pisa.ucsc.edu/class_search/index.php',
+      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+      Host:'pisa.ucsc.edu',
+      Origin:'https://pisa.ucsc.edu',
+      Referer:'https://pisa.ucsc.edu/class_search/',
+
+      data: 'action=' + action + '&' + 
+            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(term_bind) 
+            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(reg_bind) 
+            +'&'+encodeURIComponent('binds[:subject]') + '=' + sub_bind 
+            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(cat_op_bind) 
+            +'&'+encodeURIComponent('binds[:catalog_nbr]') + '='
+            +'&'+encodeURIComponent('binds[:title]') + '='
+            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(instr_name_bind) 
+            +'&'+encodeURIComponent('binds[:instructor]') 
+            +'&'+encodeURIComponent('binds[:ge]')
+            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(crse_op_bind) 
+            +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
+            +'&'+encodeURIComponent('binds[:crse_units_to]') 
+            +'&'+encodeURIComponent('binds[:crse_units_exact]') 
+            +'&'+encodeURIComponent('binds[:days]') + '='
+            +'&'+encodeURIComponent('binds[:times]') + '='
+            +'&'+encodeURIComponent('binds[:acad_career]') + '='
+ 
+    })
+
+request.success(
+  function(html){
+    console.log(html);
+  })
 
     $state.go('app.playlists');
 
