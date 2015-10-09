@@ -15,7 +15,7 @@ angular.module('starter.controllers', [])
     console.log("POST REQUEST STUFF GOES HERE");
 
     //NOTE: VM.PISA CAME FROM SEARCH.CONTROLLERS.JS WHICH CAME FROM PISAPARSER.SERVICE.JS
-    console.log(vm.pisa);
+    //console.log(vm.pisa);
     //console.log(vm.pisa.length);
 
     //collect values given by the searchpage
@@ -59,12 +59,6 @@ var days_bind = "";
 var times_bind = "";
 var acad_bind = "";
 
-    var xsrf = {action, term_bind, reg_bind, sub_bind, cat_op_bind, cat_nbr_bind, title_bind, instr_name_bind, 
-                instr_bind, ge_bind, crse_op_bind, crse_from_bind,crse_to_bind,crse_exact_bind,days_bind,
-                times_bind,acad_bind };
-
-
-    var test = {action: 'results'};
     var request = $http({
       method: 'POST',
       url: 'https://pisa.ucsc.edu/class_search/index.php',
@@ -96,6 +90,14 @@ var acad_bind = "";
 request.success(
   function(html){
     console.log(html);
+    var tmp = document.implementation.createHTMLDocument();
+    tmp.body.innerHTML = html;
+
+    var results = tmp.getElementById('result_table');
+    //console.log("Length of table" + results.length);
+
+ 
+    //so in this function, we have the resulting HTML, JOHN, do you think it's possible to find the 
   })
 
     $state.go('app.playlists');

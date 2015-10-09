@@ -62,9 +62,9 @@
 
 
 
-                    for(var i = 0; i < subject.length; i++){
-                    	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
-                    }
+                   // for(var i = 0; i < subject.length; i++){
+                   // 	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
+                   // }
 
                 
                     //console.log("Session = " + session + "With length = " + session.length);
