@@ -68,13 +68,7 @@
                     }
 
 
-
-
-                    for(var i = 0; i < subject.length; i++){
-                   // 	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
-                    }
-
-                
+          
                     console.log("Session = " + session + "With length = " + session.length);
                     console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);  
                     var term_map = {term_string, term_id};
