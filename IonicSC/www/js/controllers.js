@@ -16,7 +16,16 @@ angular.module('starter.controllers', [])
 
     //NOTE: VM.PISA CAME FROM SEARCH.CONTROLLERS.JS WHICH CAME FROM PISAPARSER.SERVICE.JS
     console.log(vm.pisa);
-    console.log(vm.pisa.length);
+    //console.log(vm.pisa.length);
+
+    //collect values given by the searchpage
+    var term_select = document.getElementById( "term_select" );
+    var term_select_index = term_select.options[ term_select.selectedIndex ].value;
+   // alert( yourSelect.options[ yourSelect.selectedIndex ].value )
+
+    alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
+    
+
     $state.go('app.playlists');
 
 
