@@ -22,6 +22,7 @@
                     var subject = tmp.getElementById('subject');
                     var ge = tmp.getElementById('ge');
 
+
                     //console.log("Term = " + term + " With length = " + term.length);
 
                     var term_id = [];
@@ -35,6 +36,7 @@
                     var reg_status_string = [];
                     var subject_string = [];
                     var ge_string = [];
+
                     for(var i = 0; i < term.length; i++){
                         var tmp_term = term[i];
                         term_id.push(tmp_term.value);
