@@ -21,40 +21,24 @@ angular.module('starter.controllers', [])
    // alert( yourSelect.options[ yourSelect.selectedIndex ].value )
 
     alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
-    
-  /*  var request = $http({
-      method: "POST",
-      url: "http://crossorigin.me/https://pisa.ucsc.edu/class_search/",
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      },
-      data: 'binds[:term]:2158' 
 
-    })
-
-    request.success(
-      function(html){
-        console.log(html);
-      }
-      )
-*/
-var action = "results";
-var term_bind = "2158";
-var reg_bind = "O";
-var sub_bind = "";
-var cat_op_bind = "=";
-var cat_nbr_bind = "";
-var title_bind = '';
-var instr_name_bind = "=";
-var instr_bind = "";
-var ge_bind = "";
-var crse_op_bind = "=";
-var crse_from_bind = "";
-var crse_to_bind = "";
-var crse_exact_bind = "";
-var days_bind = "";
-var times_bind = "";
-var acad_bind = "";
+    var action = "results";
+    var term_bind = "2158";
+    var reg_bind = "O";
+    var sub_bind = "";
+    var cat_op_bind = "=";
+    var cat_nbr_bind = "";
+    var title_bind = '';
+    var instr_name_bind = "=";
+    var instr_bind = "";
+    var ge_bind = "";
+    var crse_op_bind = "=";
+    var crse_from_bind = "";
+    var crse_to_bind = "";
+    var crse_exact_bind = "";
+    var days_bind = "";
+    var times_bind = "";
+    var acad_bind = "";
 
     var request = $http({
       method: 'POST',
@@ -83,20 +67,53 @@ var acad_bind = "";
             +'&'+encodeURIComponent('binds[:acad_career]') + '='
  
     })
+   var class_data = []
+    request.success(
+      function(html){
+        //console.log(html);
+        var tmp = document.implementation.createHTMLDocument();
+        tmp.body.innerHTML = html;
 
-request.success(
-  function(html){
-    console.log(html);
-    var tmp = document.implementation.createHTMLDocument();
-    tmp.body.innerHTML = html;
-
-    var results = tmp.getElementById('result_table');
-    //console.log("Length of table" + results.length);
-
- 
-    //so in this function, we have the resulting HTML, JOHN, do you think it's possible to find the 
+        var results = tmp.getElementById('result_table');
+        
+        //var results_even = results.getElementsByClassName('even')[0];
+        var results_tr = results.getElementsByTagName('tr');
+        //console.log(results_tr[1].getElementsByTagName('td')[0].innerText);
+//        console.log(results_tr[1].getElementsByTagName('td')[1].innerText);
+        
+        var course_map;
+        var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
+        var course_cap, course_enrolled, course_avail, course_location;
+        for(var i = 1; i < results_tr.length; i++){
+          course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
+          course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
+          course_name_long = results_tr[i].getElementsByTagName('td')[2].innerText;
+          course_type = results_tr[i].getElementsByTagName('td')[3].innerText;
+          course_date = results_tr[i].getElementsByTagName('td')[4].innerText;
+          course_time = results_tr[i].getElementsByTagName('td')[5].innerText;
+          course_prof = results_tr[i].getElementsByTagName('td')[6].innerText;
+          course_cap = results_tr[i].getElementsByTagName('td')[8].innerText;
+          course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
+          course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
+          course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
+          course_map = {course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
+          course_enrolled, course_avail, course_location};
+          class_data.push(course_map);
+          //console.log("----END OF CLASS---")
+        }
+        console.log(class_data);
   })
 
+           /*  var elm = document.getElementById('class_list'),
+                   df = document.createDocumentFragment();
+                   for (var i = 0; i < 5; i++) {
+                     var option = document.createElement('option');
+                     option.value = i;
+                     option.appendChild(document.createTextNode("here is where i put"));
+                     df.appendChild(option);
+                   }
+                elm.appendChild(df);*/
+    
     $state.go('app.playlists');
 
 
@@ -137,6 +154,10 @@ request.success(
 )
 
 .controller('PlaylistsCtrl', function($scope) {
+
+  console.log("Here is my class data " + $scope.class_data);
+
+
   $scope.playlists = [
     { title: 'Reggae', id: 1 },
     { title: 'Chill', id: 2 },

@@ -67,34 +67,15 @@
                     	ge_string.push(tmp_ge.innerText);
                     }
 
-
-          
-                    console.log("Session = " + session + "With length = " + session.length);
-                    console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);  
+   
                     var term_map = {term_string, term_id};
                     var session_map = {session_string, session_id};
                     var reg_status_map = {reg_status_string, reg_status_id};
                     var subject_map = {subject_string, subject_id};   
                     var ge_map = {ge_string, ge_id};
 
+
                     var pisa_results = { term_map,session_map,reg_status_map,subject_map,ge_map };
-                    //for (var i = 0; i < items.length; i++) {
-                     /*   console.log(" i = " + i);
-                        var item = items[i];
-                        var mystring = item.getElementsByTagName('td').innerText;
-                        console.log("mystring = " + mystring)
-
-                       var dateText = item.getElementsByTagName('strong')[0].innerText;
-                        dateText = dateText.replace(/\r?\n|\r/g,'').replace(/\t+/, ' ');
-
-                        var dinner = {
-                            Name: item.getElementsByTagName('a')[0].innerText,
-                            Date: moment(dateText, 'YYYY-MMM-DDhh:mm A').toDate(),
-                            Location: item.innerText.split('at')[1]
-                        };
-
-                        dinners.push(dinner);*/
-                 //   }
 
                     return pisa_results;
                 }
@@ -105,28 +86,6 @@
                                 return parsePisa(response);
                             });
             }
-
-            //login: function (username, password) {
-                // var request = {
-                //     method: 'POST',
-                //     url: 'http://crossorigin.me/https://pisa.ucsc.edu/class_search/',
-
-                // };
-
-                /*return $http(request).then(function(response){
-                    var deferred = $q.defer();
-
-                    // this header is only present after we have logged in successfully
-                    if (response.headers('x-xrds-location')) {
-                        deferred.resolve();
-                    }
-                    else {
-                        deferred.reject();
-                    } 
-
-                    return deferred.promise;   
-                });*/
-            //},
 
             
 
