@@ -105,6 +105,8 @@ angular.module('starter.controllers', [])
           //console.log("----END OF CLASS---")
         }
         console.log(class_data);
+        //class_data.course_map.courseid[0]
+        //class_data.course_map.course_name_short[3] = AMS 7 - L
   })
 
            /*  var elm = document.getElementById('class_list'),
@@ -116,8 +118,36 @@ angular.module('starter.controllers', [])
                      df.appendChild(option);
                    }
                 elm.appendChild(df);*/
-    
-    $state.go('app.playlists');
+                $scope.groups = [];
+  
+                $scope.groups = [
+                  { name: 'Bubbles', id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
+                  { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
+                  { name: 'Group1', id: 1, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
+                ];
+                
+                for(var i = 0; i < class_data.length; i++){
+                    //here's where i think where we can propagate scope.groups 
+                }
+
+                
+                /*
+                 * if given group is the selected group, deselect it
+                 * else, select the given group
+                 */
+                $scope.toggleGroup = function(group) {
+                  if ($scope.isGroupShown(group)) {
+                    $scope.shownGroup = null;
+                  } else {
+                    $scope.shownGroup = group;
+                  }
+                };
+                $scope.isGroupShown = function(group) {
+                  return $scope.shownGroup === group;
+                };
+                
+                  
+                  $state.go('app.playlists');
 
 
   };
