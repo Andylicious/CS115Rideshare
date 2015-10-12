@@ -1,5 +1,37 @@
-<ion-view view-title="Search">
-  <ion-content>
-    <h1>Search</h1>
+<ion-view view-title="Dashboard" ng-controller="SearchController as vm">
+  <ion-content class="padding">
+<div class="list">
+
+  <label class="item item-input item-select">
+    <div class="input-label">
+      Term
+    </div>
+    <select id="term_select"></select>
+  </label>
+  
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Session
+    </div>
+    <select>
+      <option selected>All Sessions</option>
+    </select>
+  </label>
+  
+    <label class="item item-input item-select">
+    <div class="input-label">
+      Status
+    </div>
+    <select>
+      <option selected>Open Classes</option>
+      <option>All Classes</option>
+    </select>
+  </label>
+
+            <a ng-click="postRequestToPisa(vm)" class="button button-light button-block">Search</a>
+
+            {{vm.pisa.term_map.term_string[0]}}
+
+</div>
   </ion-content>
 </ion-view>

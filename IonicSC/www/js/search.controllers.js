@@ -7,6 +7,7 @@
         pisaParser.getPisaFields().then(
                 function (pisa) {
                     vm.pisa = pisa;
+                    console.log(vm.pisa);
 
 
                     //how to collect the data structure
