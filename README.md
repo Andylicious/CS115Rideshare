@@ -21,6 +21,8 @@ This is a hybrid web application written entirely in javascript for the CMPS 115
 
 Our application uses AngularJS’ ‘$http’ requests for the GET and POST request, and we’re using crossorigin.me as a cors proxy for the GET request, in order to get around the CORs issue. So far, POST request is not working for the average user, but once the application gets ported to their respective app stores (iOS and Android), users should be able to search for their classes successfully. 
 
+If you’re a visitor on this repository, and it’s the Fall quarter, you may see a lot of broken, and dirty code. Our aim is to have a fully functional and well designed app by the tenth week, so bear with us and our development process! 
+
 ##screenshots 
 
 ![Alt text](screenshots/app1_screenshot.png?raw=true “Screenshot 1“)
@@ -41,58 +43,58 @@ To set up the dev environment, if you are on the mac, make sure you have Xcode, 
 What is essential is to have node.js installed on your machine. 
 
 To install cordova: 
-‘ sudo npm install -g cordova ‘
+` sudo npm install -g cordova `
 
 And to install Ionic: 
-‘ sudo npm install -g ionic ‘
+` sudo npm install -g ionic `
 
 To install Bower:
-‘ sudo npm install -g bower ‘
+` sudo npm install -g bower `
 
 To test app, go to the IonicSC/ root folder and use the
 
-‘ ionic serve ‘
+` ionic serve `
 
 command to view the web application. 
 
 Use
 
-‘ ionic serve --lab ‘
+` ionic serve --lab `
 
 to view the android and ios version running side by side. 
 
 To add for ios and android platform, the process is as follows:
 
-‘ ionic platform ios ‘
+` ionic platform ios `
 
-‘ ionic platform android ‘
+` ionic platform android `
 
 To build:
 
-‘ ionic build ios ‘
+` ionic build ios `
 
-‘ ionic build android ‘
+` ionic build android `
 
 To test:
 
-‘ ionic emulate ios ‘
+` ionic emulate ios `
 
-‘ ionic run android //for Genymotion ‘
+` ionic run android //for Genymotion `
 
-‘  ionic emulate android //for the slower android emulator in the SDK  ‘
+`  ionic emulate android //for the slower android emulator in the SDK  `
 
 If you're getting
 
-‘ Error executing "adb devices": ADB server didn't ACK 
+` Error executing "adb devices": ADB server didn't ACK 
 
-   * failed to start daemon * ‘
+   * failed to start daemon * `
 
 Go to Settings in Genymotion > ADB tab > Use custom Android SDK tools and select the path of your Android SDK installation. 
 
 For the adventerous team members and want to test on your device: 
 
-‘ ionic run ios ‘
+` ionic run ios `
 
-‘ ionic run android ‘
+` ionic run android `
 
 
