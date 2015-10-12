@@ -1,19 +1,14 @@
 # CS115 - Team Hipster - Ionic SC 
 ##Group repository for CS115 group
 
-Names:
+Everybody in this group is writing code for all aspects of the project, but more formally our roles are: 
 
-Andrew Lien
+Project/Product Manager & Developer: Kangdi Ni
 
-John Ta
+Lead Implementation Developers: John Ta & Andrew Lien
 
-Taylor Stratton
+Lead UI/UX Developers: Kent Diao, Taylor Stratton, Bryant Tran
 
-Kent Diao
-
-Kangdi Ni
-
-Bryant Tran
 
 ##Summary of the App 
 
