@@ -26,9 +26,9 @@ angular.module('starter.controllers', [])
     alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
 
     var action = "results";
-    var term_bind = "2158";
-    var reg_bind = "O";
-    var sub_bind = "";
+    var term_bind = "2158"; //fall quarter
+    var reg_bind = "O"; //open
+    var sub_bind = ""; 
     var cat_op_bind = "=";
     var cat_nbr_bind = "";
     var title_bind = '';
@@ -104,30 +104,21 @@ angular.module('starter.controllers', [])
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
         }
-        console.log(class_data);
-        //class_data.course_map.courseid[0]
-        //class_data.course_map.course_name_short[3] = AMS 7 - L
-  })
+       
 
-           /*  var elm = document.getElementById('class_list'),
-                   df = document.createDocumentFragment();
-                   for (var i = 0; i < 5; i++) {
-                     var option = document.createElement('option');
-                     option.value = i;
-                     option.appendChild(document.createTextNode("here is where i put"));
-                     df.appendChild(option);
-                   }
-                elm.appendChild(df);*/
                 $scope.groups = [];
-  
-                $scope.groups = [
-                  { name: 'Bubbles', id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
+                console.log(class_data[2]);
+             /*   $scope.groups = [
+                  { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
                   { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
                   { name: 'Group1', id: 1, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
-                ];
+
+                ];*/
                 
                 for(var i = 0; i < class_data.length; i++){
                     //here's where i think where we can propagate scope.groups 
+                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+                    $scope.groups.push(check);
                 }
 
                 
@@ -148,6 +139,20 @@ angular.module('starter.controllers', [])
                 
                   
                   $state.go('app.playlists');
+        //class_data.course_map.courseid[0]
+        //class_data.course_map.course_name_short[3] = AMS 7 - L
+  })
+
+           /*  var elm = document.getElementById('class_list'),
+                   df = document.createDocumentFragment();
+                   for (var i = 0; i < 5; i++) {
+                     var option = document.createElement('option');
+                     option.value = i;
+                     option.appendChild(document.createTextNode("here is where i put"));
+                     df.appendChild(option);
+                   }
+                elm.appendChild(df);*/
+
 
 
   };
