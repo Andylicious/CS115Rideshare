@@ -84,7 +84,26 @@ angular.module('starter.controllers', [])
         var course_map;
         var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
         var course_cap, course_enrolled, course_avail, course_location;
+        var course_links;
+
+       // console.log(results_tr[3].getElementsByTagName('a')[0].getAttribute('href'));
         for(var i = 1; i < results_tr.length; i++){
+          course_links = results_tr[i].getElementsByTagName('a')[0].getAttribute('href');
+
+          var class_get = $http({
+            method: 'GET',
+            url: 'https://pisa.ucsc.edu/class_search/' + course_links
+          })
+          class_get.success(
+              function(html){
+                var etmp = document.implementation.createHTMLDocument();
+                etmp.body.innerHTML = html; 
+                //console.log(etmp.body.innerHTML);
+                var details_cn = etmp.getElementsByClassName('detail_table')[2].innerText;
+                console.log(details_cn)
+              }
+            )
+
           course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
           course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
           course_name_long = results_tr[i].getElementsByTagName('td')[2].innerText;
@@ -96,15 +115,17 @@ angular.module('starter.controllers', [])
           course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
           course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
           course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
-          course_map = {course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
+          course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
           course_enrolled, course_avail, course_location};
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
+
+
         }
        
 
                 $scope.groups = [];
-                console.log(class_data[2]);
+                console.log(class_data);
              /*   $scope.groups = [
                   { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
                   { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
