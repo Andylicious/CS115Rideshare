@@ -1,1 +1,10 @@
 /* Empty. Add your own CSS if you like */
+
+.transparent {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}

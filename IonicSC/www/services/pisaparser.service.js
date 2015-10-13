@@ -20,6 +20,7 @@
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
                     var subject = tmp.getElementById('subject');
+                    var ge = tmp.getElementById('ge');
 
                     //console.log("Term = " + term + " With length = " + term.length);
 
@@ -27,11 +28,13 @@
                     var session_id = [];
                     var reg_status_id = [];
                     var subject_id = [];
+                    var ge_id = [];
 
                     var term_string = [];
                     var session_string = [];
                     var reg_status_string = [];
                     var subject_string = [];
+                    var ge_string = [];
                     for(var i = 0; i < term.length; i++){
                         var tmp_term = term[i];
                         term_id.push(tmp_term.value);
@@ -55,23 +58,30 @@
                     	subject_id.push(tmp_subject.value);
                     	subject_string.push(tmp_subject.innerText);
                     }
+                    
+                     for (var i = 0; i < ge.length; i++){
+                    	var tmp_ge = ge[i];
+                    	ge_id.push(tmp_ge.value);
+                    	ge_string.push(tmp_ge.innerText);
+                    }
 
 
 
 
                     for(var i = 0; i < subject.length; i++){
-                    	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
+                   // 	console.log(subject_string[i] + "'s ID # is = " + subject_id[i]);
                     }
 
                 
-                    //console.log("Session = " + session + "With length = " + session.length);
-                    //console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);  
+                    console.log("Session = " + session + "With length = " + session.length);
+                    console.log("Reg_status = " + reg_status + "With length = " + reg_status.length);  
                     var term_map = {term_string, term_id};
                     var session_map = {session_string, session_id};
                     var reg_status_map = {reg_status_string, reg_status_id};
-                    var subject_map = {subject_string, subject_id};        
+                    var subject_map = {subject_string, subject_id};   
+                    var ge_map = {ge_string, ge_id};
 
-                    var pisa_results = { term_map,session_map,reg_status_map,subject_map };
+                    var pisa_results = { term_map,session_map,reg_status_map,subject_map,ge_map };
                     //for (var i = 0; i < items.length; i++) {
                      /*   console.log(" i = " + i);
                         var item = items[i];
