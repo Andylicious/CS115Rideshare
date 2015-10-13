@@ -19,9 +19,6 @@ angular.module('starter.controllers', [])
     var term_select = document.getElementById( "term_select" );
     var term_select_index = term_select.options[ term_select.selectedIndex ].value;
    // alert( yourSelect.options[ yourSelect.selectedIndex ].value )
-
-    alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
-
     var action = "results";
     var term_bind = "2158"; //fall quarter
     var reg_bind = "O"; //open
@@ -111,30 +108,7 @@ angular.module('starter.controllers', [])
 
         }
 
-        for(var m = 0; m < results_tr.length; m++){
-      console.log(class_data[m].course_links);
-         // console.log("The class " + class_data[i].course_name_short + " is = " + class_data[i].course_links);
-               var class_get = $http({
 
-              method: 'GET',
-              url: 'https://pisa.ucsc.edu/class_search/' + class_data[m].course_links
-            })
-            class_get.success(
-                function(html){
-                  //console.log("Course link is " + class_data[m].course_name_short);
-                  var etmp = document.implementation.createHTMLDocument();
-                  etmp.body.innerHTML = html; 
-                  //console.log(etmp.body.innerHTML);
-                  var details_cn = etmp.getElementsByClassName('detail_table')[1].innerText; 
-                  //var details_cn = etmp.getElementsByClassName('detail_table')[0]; 
-                  //the index varies by classes. Lecutres have about 5... labs have about 7.. and i have no idea what they mean, you'll see what i mean when you do console.log(details_cn); 
-                  course_desc = details_cn;
-                }
-              )
-
-
-
-        }
        
 
                 $scope.groups = [];
