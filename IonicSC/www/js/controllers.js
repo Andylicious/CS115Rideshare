@@ -18,17 +18,41 @@ angular.module('starter.controllers', [])
     //collect values given by the searchpage
     var term_select = document.getElementById( "term_select" );
     var term_select_index = term_select.options[ term_select.selectedIndex ].value;
-   // alert( yourSelect.options[ yourSelect.selectedIndex ].value )
+
+    var session_select = document.getElementById('session_select');
+    var session_select_index = session_select.options[session_select.selectedIndex].value;
+
+    var reg_select = document.getElementById('reg_status_select');
+    var reg_select_index = reg_select.options[reg_select.selectedIndex].value;
+
+    var subject_select = document.getElementById('subject_select');
+    var subject_select_index = subject_select.options[subject_select.selectedIndex].value;
+
+    var ge_select = document.getElementById('ge_select');
+    var ge_select_index = ge_select.options[ge_select.selectedIndex].value;
+
+    var term_post = vm.pisa.term_map.term_id[term_select_index];
+    var session_post = vm.pisa.session_map.session_id[session_select_index];
+    var reg_post = vm.pisa.reg_status_map.reg_status_id[reg_select_index];
+    var subject_post= vm.pisa.subject_map.subject_id[subject_select_index];
+    var ge_post = vm.pisa.ge_map.ge_id[ge_select_index];
+
+    // console.log("term_post = " +term_post);
+    // console.log("session = " +session_post);
+    // console.log("reg = " +reg_post);
+    // console.log("subject = " +subject_post);
+     console.log("GE  = " +ge_post);
+
     var action = "results";
-    var term_bind = "2158"; //fall quarter
-    var reg_bind = "O"; //open
-    var sub_bind = ""; 
+    var term_bind = term_post; 
+    var reg_bind = reg_post; 
+    var sub_bind = subject_post; 
     var cat_op_bind = "=";
     var cat_nbr_bind = "";
     var title_bind = '';
     var instr_name_bind = "=";
     var instr_bind = "";
-    var ge_bind = "";
+    var ge_bind = ge_post;
     var crse_op_bind = "=";
     var crse_from_bind = "";
     var crse_to_bind = "";
@@ -54,7 +78,7 @@ angular.module('starter.controllers', [])
             +'&'+encodeURIComponent('binds[:title]') + '='
             +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(instr_name_bind) 
             +'&'+encodeURIComponent('binds[:instructor]') 
-            +'&'+encodeURIComponent('binds[:ge]')
+            +'&'+encodeURIComponent('binds[:ge]') + '=' +encodeURIComponent(ge_bind)
             +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(crse_op_bind) 
             +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
             +'&'+encodeURIComponent('binds[:crse_units_to]') 
