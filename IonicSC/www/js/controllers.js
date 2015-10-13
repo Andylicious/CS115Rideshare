@@ -85,24 +85,12 @@ angular.module('starter.controllers', [])
         var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
         var course_cap, course_enrolled, course_avail, course_location;
         var course_links;
+        var course_desc;
 
        // console.log(results_tr[3].getElementsByTagName('a')[0].getAttribute('href'));
         for(var i = 1; i < results_tr.length; i++){
           course_links = results_tr[i].getElementsByTagName('a')[0].getAttribute('href');
 
-          var class_get = $http({
-            method: 'GET',
-            url: 'https://pisa.ucsc.edu/class_search/' + course_links
-          })
-          class_get.success(
-              function(html){
-                var etmp = document.implementation.createHTMLDocument();
-                etmp.body.innerHTML = html; 
-                //console.log(etmp.body.innerHTML);
-                var details_cn = etmp.getElementsByClassName('detail_table')[2].innerText;
-                console.log(details_cn)
-              }
-            )
 
           course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
           course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
@@ -122,10 +110,35 @@ angular.module('starter.controllers', [])
 
 
         }
+
+        for(var m = 0; m < results_tr.length; m++){
+      console.log(class_data[m].course_links);
+         // console.log("The class " + class_data[i].course_name_short + " is = " + class_data[i].course_links);
+               var class_get = $http({
+
+              method: 'GET',
+              url: 'https://pisa.ucsc.edu/class_search/' + class_data[m].course_links
+            })
+            class_get.success(
+                function(html){
+                  //console.log("Course link is " + class_data[m].course_name_short);
+                  var etmp = document.implementation.createHTMLDocument();
+                  etmp.body.innerHTML = html; 
+                  //console.log(etmp.body.innerHTML);
+                  var details_cn = etmp.getElementsByClassName('detail_table')[1].innerText; 
+                  //var details_cn = etmp.getElementsByClassName('detail_table')[0]; 
+                  //the index varies by classes. Lecutres have about 5... labs have about 7.. and i have no idea what they mean, you'll see what i mean when you do console.log(details_cn); 
+                  course_desc = details_cn;
+                }
+              )
+
+
+
+        }
        
 
                 $scope.groups = [];
-                console.log(class_data);
+            //    console.log(class_data);
              /*   $scope.groups = [
                   { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
                   { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
