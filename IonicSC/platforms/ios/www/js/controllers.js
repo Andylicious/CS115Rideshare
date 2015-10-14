@@ -1,6 +1,3 @@
-
-
-
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function($scope, $http,$ionicModal, $timeout, $state) {
@@ -21,20 +18,41 @@ angular.module('starter.controllers', [])
     //collect values given by the searchpage
     var term_select = document.getElementById( "term_select" );
     var term_select_index = term_select.options[ term_select.selectedIndex ].value;
-   // alert( yourSelect.options[ yourSelect.selectedIndex ].value )
 
-    alert(vm.pisa.term_map.term_string[term_select_index] + " with id = " + vm.pisa.term_map.term_id[term_select_index])
+    var session_select = document.getElementById('session_select');
+    var session_select_index = session_select.options[session_select.selectedIndex].value;
+
+    var reg_select = document.getElementById('reg_status_select');
+    var reg_select_index = reg_select.options[reg_select.selectedIndex].value;
+
+    var subject_select = document.getElementById('subject_select');
+    var subject_select_index = subject_select.options[subject_select.selectedIndex].value;
+
+    var ge_select = document.getElementById('ge_select');
+    var ge_select_index = ge_select.options[ge_select.selectedIndex].value;
+
+    var term_post = vm.pisa.term_map.term_id[term_select_index];
+    var session_post = vm.pisa.session_map.session_id[session_select_index];
+    var reg_post = vm.pisa.reg_status_map.reg_status_id[reg_select_index];
+    var subject_post= vm.pisa.subject_map.subject_id[subject_select_index];
+    var ge_post = vm.pisa.ge_map.ge_id[ge_select_index];
+
+    // console.log("term_post = " +term_post);
+    // console.log("session = " +session_post);
+    // console.log("reg = " +reg_post);
+    // console.log("subject = " +subject_post);
+     console.log("GE  = " +ge_post);
 
     var action = "results";
-    var term_bind = "2158"; //fall quarter
-    var reg_bind = "O"; //open
-    var sub_bind = ""; 
+    var term_bind = term_post; 
+    var reg_bind = reg_post; 
+    var sub_bind = subject_post; 
     var cat_op_bind = "=";
     var cat_nbr_bind = "";
     var title_bind = '';
     var instr_name_bind = "=";
     var instr_bind = "";
-    var ge_bind = "";
+    var ge_bind = ge_post;
     var crse_op_bind = "=";
     var crse_from_bind = "";
     var crse_to_bind = "";
@@ -60,7 +78,7 @@ angular.module('starter.controllers', [])
             +'&'+encodeURIComponent('binds[:title]') + '='
             +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(instr_name_bind) 
             +'&'+encodeURIComponent('binds[:instructor]') 
-            +'&'+encodeURIComponent('binds[:ge]')
+            +'&'+encodeURIComponent('binds[:ge]') + '=' +encodeURIComponent(ge_bind)
             +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(crse_op_bind) 
             +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
             +'&'+encodeURIComponent('binds[:crse_units_to]') 
@@ -87,7 +105,14 @@ angular.module('starter.controllers', [])
         var course_map;
         var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
         var course_cap, course_enrolled, course_avail, course_location;
+        var course_links;
+        var course_desc;
+
+       // console.log(results_tr[3].getElementsByTagName('a')[0].getAttribute('href'));
         for(var i = 1; i < results_tr.length; i++){
+          course_links = results_tr[i].getElementsByTagName('a')[0].getAttribute('href');
+
+
           course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
           course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
           course_name_long = results_tr[i].getElementsByTagName('td')[2].innerText;
@@ -99,15 +124,19 @@ angular.module('starter.controllers', [])
           course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
           course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
           course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
-          course_map = {course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
+          course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
           course_enrolled, course_avail, course_location};
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
+
+
         }
+
+
        
 
                 $scope.groups = [];
-                console.log(class_data[2]);
+            //    console.log(class_data);
              /*   $scope.groups = [
                   { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
                   { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
