@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $http,$ionicModal, $timeout, $state) {
+.controller('AppCtrl', function($scope, $http,$ionicModal, $timeout, $state, $q) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
     // console.log("reg = " +reg_post);
     // console.log("subject = " +subject_post);
      console.log("GE  = " +ge_post);
-
+$scope.groups = [];
     var action = "results";
     var term_bind = term_post; 
     var reg_bind = reg_post; 
@@ -132,30 +132,35 @@ angular.module('starter.controllers', [])
 
         }
 
+        var desc_arr = [];
+        var http_arr = [];
+        for(var a = 0; a < class_data.length; a++){
+          http_arr.push($http.get('http://crossorigin.me/https://pisa.ucsc.edu/class_search/' + class_data[a].course_links));
+        }
 
-       
+        $q.all(http_arr).then(function(ret){
+          for(var i = 0; i < class_data.length; i++){
+             var tmp = document.implementation.createHTMLDocument();
+            tmp.body.innerHTML = ret[i].data;
+            //console.log(tmp.body.innerHTML)
+            var desc = tmp.getElementsByClassName('detail_table');
 
-                $scope.groups = [];
-            //    console.log(class_data);
-             /*   $scope.groups = [
-                  { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
-                  { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
-                  { name: 'Group1', id: 1, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
+            if(desc[1].innerText.substring(7,19).trim() == "Description"){
+           //   console.log("The index: " + i + " is  = " +  desc[1].innerText.substring(7,19).trim()); 
+              
+              desc_arr.splice(i,0,desc[1].innerText.substring(19).trim());
+            }
 
-                ];*/
-                
-                for(var i = 0; i < class_data.length; i++){
-                    //here's where i think where we can propagate scope.groups 
-                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
-                    $scope.groups.push(check);
-                }
-
-                
-                /*
-                 * if given group is the selected group, deselect it
-                 * else, select the given group
-                 */
-                $scope.toggleGroup = function(group) {
+            if(desc[2].innerText.substring(7,19).trim() == "Description"){
+           //   console.log("The index: " + i + " is  = " +  desc[2].innerText.substring(7,19).trim()); 
+          //    console.log("INDEX IS " + i)
+              desc_arr.splice(i,0,desc[2].innerText.substring(19).trim());
+           }
+         //   console.log(desc);
+         //   console.log("The index: " + i + " is  = " +  desc[1].innerText.substring(7,19));
+                     var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:desc_arr[i]}]}
+                    $scope.groups.splice(i,0,check);
+                                  $scope.toggleGroup = function(group) {
                   if ($scope.isGroupShown(group)) {
                     $scope.shownGroup = null;
                   } else {
@@ -168,6 +173,31 @@ angular.module('starter.controllers', [])
                 
                   
                   $state.go('app.playlists');
+          }
+        })
+       console.log(desc_arr);
+
+                
+            //    console.log(class_data);
+             /*   $scope.groups = [
+                  { name: class_data[3].course_name_short, id: 3, items: [{ subName: 'SubBubbles1', subId: '1-1' }]},
+                  { name: 'Group1', id: 2, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
+                  { name: 'Group1', id: 1, items: [{ subName: 'SubGrup1', subId: '1-1' }]},
+
+                ];*/
+                
+            //    for(var i = 0; i < class_data.length; i++){
+                    //here's where i think where we can propagate scope.groups 
+           //         var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+           //         $scope.groups.push(check);
+            //    }
+
+                
+                /*
+                 * if given group is the selected group, deselect it
+                 * else, select the given group
+                 */
+  
         //class_data.course_map.courseid[0]
         //class_data.course_map.course_name_short[3] = AMS 7 - L
   })
