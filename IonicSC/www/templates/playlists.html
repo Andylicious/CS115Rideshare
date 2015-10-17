@@ -1,6 +1,9 @@
-<ion-view view-title="Course List">
-    <body ng-controller="AppCtrl">
-  
+
+<ion-view view-title="Search Results">
+  <head>
+    <link rel="stylesheet" type="text/css" href="plstyle.css">
+  </head>
+  <body ng-controller="AppCtrl">      
 
     <ion-content>
 
@@ -9,14 +12,18 @@
           <ion-item class="item-stable"
                     ng-click="toggleGroup(group)"
                     ng-class="{active: isGroupShown(group)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+            <!--<i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"
+	       style="position:absolute;display:inline-block"></i>-->
             &nbsp;
-             {{group.name}} {{group.prof}} {{group.time}}
+              <p class="classname" style="color:black;font-size:1.4em">{{group.name}}</p>
+	      <p class="classprof" style="color:black">{{group.time}}</p>
+	      <p class="classtime">{{group.prof}}</p>
           </ion-item>
           <ion-item class="item-accordion"
                     ng-repeat="item in group.items"
                     ng-show="isGroupShown(group)">
-            {{item.subId}}
+            <p>{{item.subId}}</p>
+	    <p>Hurr Durr I'm a description</p>
           </ion-item>
         </div>
       </ion-list>
