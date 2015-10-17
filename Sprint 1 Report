@@ -1,0 +1,42 @@
+Team Hipster(SlugSearch) Sprint 1 Report
+
+Actions to stop doing:
+As a team we need to stop doing these:
+Having to use Facebook Messenger as our primary means of communication 
+
+Actions to start doing:
+As a team we need to start doing these:
+Collaboratively understand how the scraper works
+Learn conventional AngularJS coding styles and revise sprint 1’s milestones
+Be more attentive on Slack
+Clarify weekly goals so everyone knows what they’re doing
+
+Actions to keep doing:
+As a team we need to keep doing these:
+Effectively communicate through Slack
+Attending all SCRUM meetings
+
+Work completed/Not completed:
+As a team we were able to complete the following user stories:
+Interpreting objects to get class descriptions 
+Learn basics of Ionic 
+Web parser/crawling
+Initial design UI
+Taking list of objects and displaying them (interpreter)
+Making each object in list clickable
+
+We still need to complete the following user stories:
+Filtering search results so that we can see the classes we want
+Displaying class info so that we can have the same functionality as myUCSC
+Searching for classes so we can see what classes are being offered
+Cleaning the user interface for a better user experience
+Adding information to see professor ratings via RateMyProfessor
+Allowing push notifications to tell us when a class opens up
+
+Work completion rate:
+The total number of user stories finished is 7. 
+We have our basic functionality working for our application besides description of classes. 
+Total number of user hours completed in sprint 1 is 53 ideal hours. 
+Although our playing poker wasn’t that accurate, we had roughly around 50 hours between all 6 of us. 
+There were 15 days in sprint 1. 7 user stories were completed in 15 days. 
+53 ideal work hours were completed in 15 days as well. 
