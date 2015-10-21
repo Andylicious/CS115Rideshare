@@ -1,0 +1,20 @@
+
+  <ion-modal-view id="status-modal">
+    <ion-header-bar class="bar-calm-900">
+      <h1 class="title">Status Selection</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="SearchController as vm">
+
+
+    
+    
+    	<div class="item" ng-repeat="classes in vm.pisa.reg_status_map.reg_status_string" >
+        <center>
+    <button id="status_select" class="button select-buttons" ng-click="status_button(vm.pisa.reg_status_map,classes)"> {{classes}} </button>
+    </center>
+		</div>
+	
+
+    
+    </ion-content>
+  </ion-modal-view>
