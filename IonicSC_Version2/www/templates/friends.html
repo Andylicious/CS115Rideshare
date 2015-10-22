@@ -1,15 +1,13 @@
-<ion-view view-title="Friends" hide-nav-bar="true">
+<ion-view view-title="Course Results" hide-nav-bar="true">
     <ion-content ng-class="{expanded:isExpanded}" ng-controller"FriendsCtrl">
         <div class="content has-header"> 
      
-            <div class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist">
-                <a href="#/app/profile" class="item">
+            <div ng-click="course_func(courses.link)" class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist">
+                <a class="item">
                     <h2 style="margin=left">{{courses.name}}</h2>
                     <p>{{courses.prof}}</p>
                      <p>{{courses.time}}</p>
                 </a>  
-
-
 
             </div>
         </div>

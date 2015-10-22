@@ -132,6 +132,20 @@ angular.module('starter.controllers', [])
     }
 })
 
+.service('sharedLinks',function(){
+  console.log("Placeholder")
+  var course_link = "http://crossorigin.me/https://pisa.ucsc.edu/class_search/";
+  return {
+    get_course_link: function() {
+            return course_link;
+        },
+    set_course_link: function(value){
+            course_link += value
+    }
+
+      }
+
+})
 .controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
     $scope.loginData = {};
@@ -228,10 +242,12 @@ angular.module('starter.controllers', [])
         }
     };
 })
-.controller('FriendsCtrl', function($scope, $http,$stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,sharedProperties) {
-      $scope.pass__state = function(){
-    console.log("HI!")
-    $state.go(app.profile);
+.controller('FriendsCtrl', function($scope, $state, $http,$stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,sharedProperties, sharedLinks) {
+     
+
+  $scope.course_func = function(vm){
+    sharedLinks.set_course_link(vm);
+    $state.go('app.profile');
   }
     // Set Header
     $scope.$parent.showHeader();
@@ -334,11 +350,15 @@ angular.module('starter.controllers', [])
                 $scope.groups = [];
                 for(var i = 0; i < class_data.length; i++){
                     //here's where i think where we can propagate scope.groups 
-                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+                    var check = {name: class_data[i].course_name_short, 
+                                  prof: class_data[i].course_prof, 
+                                  time: class_data[i].course_time, 
+                                  link: class_data[i].course_links,
+                                  id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
                 }
 
-   console.log($scope.groups);
+  // console.log($scope.groups);
                 $scope.toggleGroup = function(group) {
                   if ($scope.isGroupShown(group)) {
                     $scope.shownGroup = null;
@@ -358,7 +378,7 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+.controller('ProfileCtrl', function($scope, $stateParams,$http, $timeout, ionicMaterialMotion, ionicMaterialInk, sharedLinks) {
  // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -375,6 +395,33 @@ angular.module('starter.controllers', [])
 
     // Set Ink
     ionicMaterialInk.displayEffect();
+
+    console.log(sharedLinks.get_course_link())
+
+    $http.get(sharedLinks.get_course_link())
+                            .then(function(response){
+
+                              //john: all work goes in here
+                              //john ALL THE WORK GOES FUCKING HERE!!! 
+
+                                var tmp = document.implementation.createHTMLDocument();
+                                tmp.body.innerHTML = response.data;
+                                console.log("tmp.body = " + tmp.body.innerHTML);
+
+                                //var detail_t = tmp.getElementById('detail_table')
+                    //detail_t.getElementbyTagName('tr')
+
+                                //at the very end you want
+                                var desc = "" //a very long string
+                                var open_or_close ="" //a simple string that indicates if its open or closed
+                                var discussion_SECTIONS = "" //get all the discussion sections 
+                                //and possibly their related enrollment, capacity, status 
+
+                                
+
+
+
+                            });
 })
 
 
