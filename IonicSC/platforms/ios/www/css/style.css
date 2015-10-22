@@ -1,6 +1,3 @@
-body {
-  cursor: url('http://ionicframework.com/img/finger.png'), auto;
-}
 
 /*
  * http://docs.angularjs.org/api/ng/directive/ngShow#usage_animations
@@ -17,4 +14,5 @@ body {
 .list .item.item-accordion.ng-hide-add,
 .list .item.item-accordion.ng-hide-remove {
   display: block !important;
+io
 }

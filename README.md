@@ -22,7 +22,7 @@ If you’re a visitor on this repository, and it’s the Fall quarter, you may s
 
 ![Alt text](screenshots/app1_screenshot.png?raw=true “Screenshot 1“)
 
-![Alt text](screenshots/app2_screenshot.png?raw=true “Screenshot 2“)
+![Alt text](screenshots/pic.png?raw=true “Screenshot 2“)
 
 
 ##Notes to team members (From Andy): 
