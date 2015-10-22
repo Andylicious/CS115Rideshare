@@ -146,7 +146,12 @@ angular.module('starter.controllers', [])
                 
                 for(var i = 0; i < class_data.length; i++){
                     //here's where i think where we can propagate scope.groups 
-                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+                    var check = {name: class_data[i].course_name_short,
+				 prof: class_data[i].course_prof,
+				 time: class_data[i].course_time,
+				 location: class_data[i].course_location,
+				 longname: class_data[i].course_name_long,
+				 id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
                 }
 
