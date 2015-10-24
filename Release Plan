@@ -19,7 +19,7 @@ Sprint 3 –
 Improving the product by providing amazing features that will give students who download the app an advantage in signing up for classes. 
 User Story 1: This will include a Watch Class feature that will send push notifications for when the class is nearing full capacity and for whenever a spot opens up (~8 hours to complete). As a user I want to be able to know right away when a class becomes open so that I can add it right away (~16 hours).
 User Story 2: As a tester I need to be able to do software builds and run regression tests (~16 hours).
-User Story 3: We will have to test our UI for bugs and inconsistencies with different OS versions (~16 hours)
+User Story 3: We will have to test our UI for bugs and inconsistencies with different OS versions (~16 hours). As a user I want to see a app free of bugs so that I can rely on the app to work.
 
 Total of 144 hours
 
