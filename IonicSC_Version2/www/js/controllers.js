@@ -5,9 +5,9 @@ angular.module('starter.controllers', [])
 
 .service('sharedProperties', function() {
     var action = "results";
-    var term_bind = "2158"; 
-    var reg_bind = "0"; 
-    var sub_bind = ""; 
+    var term_bind = "2158";
+    var reg_bind = "0";
+    var sub_bind = "";
     var cat_op_bind = "=";
     var cat_nbr_bind = "";
     var title_bind = '';
@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
     var days_bind = "";
     var times_bind = "";
     var acad_bind = "";
-    
+
     return {
         get_term_bind: function() {
             return term_bind;
@@ -265,24 +265,24 @@ angular.module('starter.controllers', [])
       Origin:'https://pisa.ucsc.edu',
       Referer:'https://pisa.ucsc.edu/class_search/',
 
-      data: 'action=' + sharedProperties.get_action() + '&' + 
-            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(sharedProperties.get_term_bind()) 
-            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(sharedProperties.get_reg_bind()) 
+      data: 'action=' + sharedProperties.get_action() + '&' +
+            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(sharedProperties.get_term_bind())
+            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(sharedProperties.get_reg_bind())
             +'&'+encodeURIComponent('binds[:subject]') + '=' + sharedProperties.get_sub_bind()
-            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(sharedProperties.get_cat_op_bind()) 
+            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(sharedProperties.get_cat_op_bind())
             +'&'+encodeURIComponent('binds[:catalog_nbr]') + '='
             +'&'+encodeURIComponent('binds[:title]') + '='
-            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(sharedProperties.get_instr_name_bind()) 
-            +'&'+encodeURIComponent('binds[:instructor]') 
+            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(sharedProperties.get_instr_name_bind())
+            +'&'+encodeURIComponent('binds[:instructor]')
             +'&'+encodeURIComponent('binds[:ge]') + '=' +encodeURIComponent(sharedProperties.get_ge_bind())
-            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(sharedProperties.get_crse_op_bind()) 
+            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(sharedProperties.get_crse_op_bind())
             +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
-            +'&'+encodeURIComponent('binds[:crse_units_to]') 
-            +'&'+encodeURIComponent('binds[:crse_units_exact]') 
+            +'&'+encodeURIComponent('binds[:crse_units_to]')
+            +'&'+encodeURIComponent('binds[:crse_units_exact]')
             +'&'+encodeURIComponent('binds[:days]') + '='
             +'&'+encodeURIComponent('binds[:times]') + '='
             +'&'+encodeURIComponent('binds[:acad_career]') + '='
- 
+
     })
       var class_data = []
 
@@ -294,12 +294,12 @@ angular.module('starter.controllers', [])
         tmp.body.innerHTML = html;
 
         var results = tmp.getElementById('result_table');
-        
+
         //var results_even = results.getElementsByClassName('even')[0];
         var results_tr = results.getElementsByTagName('tr');
         //console.log(results_tr[1].getElementsByTagName('td')[0].innerText);
 //        console.log(results_tr[1].getElementsByTagName('td')[1].innerText);
-        
+
         var course_map;
         var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
         var course_cap, course_enrolled, course_avail, course_location;
@@ -329,12 +329,22 @@ angular.module('starter.controllers', [])
 
 
         }
-          
+
 
                 $scope.groups = [];
                 for(var i = 0; i < class_data.length; i++){
-                    //here's where i think where we can propagate scope.groups 
-                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+                    //here's where i think where we can propagate scope.groups
+                    var check = {name: class_data[i].course_name_short,
+                                 longname: class_data[i].course_name_long,
+                                 type: class_data[i].course_type,
+                                 date: class_data[i].course_date,
+                                 time: class_data[i].course_time,
+                                 prof: class_data[i].course_prof,
+                                 cap: class_data[i].course_cap,
+                                 enrolled: class_data[i].course_enrolled,
+                                 avail: class_data[i].course_avail,
+                                 location: class_data[i].course_location,
+                                 id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
                 }
 
@@ -349,10 +359,10 @@ angular.module('starter.controllers', [])
                 $scope.isGroupShown = function(group) {
                   return $scope.shownGroup === group;
                 };
-                
-  
+
+
   })
-  
+
 
 
 })
@@ -423,7 +433,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
 
 
   $scope.openModal = function(vm) {
-    
+
 
    if(vm == "term-modal.html"){
     $scope.modal_term.show();
@@ -435,7 +445,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
     $scope.modal_gened.show();
    }
 
-    
+
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
@@ -446,7 +456,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
   });
   // Execute action on hide modal
   $scope.$on('modal.hidden', function() {
- 
+
   });
   // Execute action on remove modal
   $scope.$on('modal.removed', function() {
@@ -467,9 +477,9 @@ $scope.term_button = function(vm,classes){
          }
        }
    document.getElementById("termid").innerHTML = vm.term_string[term_index];
-      
+
           sharedProperties.set_term_bind(vm.term_id[term_index]);
-       
+
        console.log(term_index);
        $scope.modal_term.hide();
 }
@@ -527,4 +537,3 @@ $scope.gened_button = function(vm,classes){
     // Activate ink for controller
     ionicMaterialInk.displayEffect();
 })
-
