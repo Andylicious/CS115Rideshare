@@ -6,21 +6,22 @@ High Level Goals-
 3. The ability to see class/professor ratings with RateMyProfessor.
 
 Sprint 1 – 
-User Story 1: Working but rough UI that can be viewed in both Android SDK and iOS SDK (~8 hours to complete). As a user I want to be able to see the app using any mobile device so that I can check status of classes without using a computer.
-User Story 2: Successfully creating the web crawler that crawls every hour for open classes (~8 hours to complete). As a user I want to be able to see whenever the next time a class becomes avaliable so that I don't miss adding the class
+User Story 1: Working but rough UI that can be viewed in both Android SDK and iOS SDK (~24 hours to complete). As a user I want to be able to see the app using any mobile device so that I can check status of classes without using a computer.
+User Story 2: Successfully creating the web crawler that crawls every hour for open classes (~24 hours to complete). As a user I want to be able to see whenever the next time a class becomes avaliable so that I don't miss adding the class
 
 Sprint 2 – 
 User Story 1: Redefine UI and implement design (~16 hours to complete) (This is the bulk of the product and includes the creation of easier search queries, responsive design and a back to search button). 
 This sprint will also require the most planning and discussion in terms of the exact direction we want to go in. As a user I want a user friendly app that allows for an optimal viewing of classes so that I waste less time searching for classes.
-User Story 2: As a user I want to be able to read the user manual for SlugSearch.
+User Story 2: As a user I want to be able to read the user manual for SlugSearch (~16 hours).
+User Story 3: We will try to get RatemyProfessor integrated but at the very least I would hope we will have a hyperlink that will perform a search on RateMyProfessor to find the teacher for a specific class (~8 hours to complete). As a user I want to be able to directly see ratings of the class or professor so that I can immediately decide if I want to add a class (~16 hours).
 
 Sprint 3 – 
 Improving the product by providing amazing features that will give students who download the app an advantage in signing up for classes. 
-User Story 1: This will include a Watch Class feature that will send push notifications for when the class is nearing full capacity and for whenever a spot opens up (~8 hours to complete). As a user I want to be able to know right away when a class becomes open so that I can add it right away.
-User Story 2: We will try to get RatemyProfessor integrated but at the very least I would hope we will have a hyperlink that will perform a search on RateMyProfessor to find the teacher for a specific class (~8 hours to complete). As a user I want to be able to directly see ratings of the class or professor so that I can immediately decide if I want to add a class.
-User Story 3: As a tester I need to be able to do software builds and run regression tests.
+User Story 1: This will include a Watch Class feature that will send push notifications for when the class is nearing full capacity and for whenever a spot opens up (~8 hours to complete). As a user I want to be able to know right away when a class becomes open so that I can add it right away (~16 hours).
+User Story 2: As a tester I need to be able to do software builds and run regression tests (~16 hours).
+User Story 3: We will have to test our UI for bugs and inconsistencies with different OS versions (~16 hours)
 
-Total of 48 hours
+Total of 144 hours
 
 Product Backlog:
 Unlikely unless we have a lot of time - 
