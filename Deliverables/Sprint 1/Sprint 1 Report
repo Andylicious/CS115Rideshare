@@ -1,0 +1,46 @@
+Team Hipster(SlugSearch) Sprint 1 Report
+
+Actions to stop doing:
+As a team we need to stop doing these:
+Having to use Facebook Messenger as our primary means of communication 
+
+Actions to start doing:
+As a team we need to start doing these:
+Collaboratively understand how the scraper works
+Learn conventional AngularJS coding styles and revise sprint 1’s milestones
+Be more attentive on Slack
+Clarify weekly goals so everyone knows what they’re doing
+
+Actions to keep doing:
+As a team we need to keep doing these:
+Effectively communicate through Slack
+Attending all SCRUM meetings
+
+Work completed:
+As a user, I want to filter class parameters so I can search for the classes I want.
+As a user, I want to see a lit of my search results so I can see what classes are available.
+As a user I want to see more infor abut a class so I can be better informed about each class.
+
+Work not completed:
+As a user I want to be able to see the app using any mobile device so that I can check status of classes without using a computer.
+As a user I want to be able to see whenever the next time a class becomes avaliable so that I don't miss adding the class.
+As a user I want to be able to directly see ratings of the class or professor so that I can immediately decide if I want to add a class.
+As a user I want to be able to know right away when a class becomes open so that I can add it right away.
+As a tester I need to be able to do software builds and run regression tests.
+As a user I don't want to run into any bugs or inconsistencies with compatibility with our app.
+
+We still need to complete the following user stories:
+Filtering search results so that we can see the classes we want
+Displaying class info so that we can have the same functionality as myUCSC
+Searching for classes so we can see what classes are being offered
+Cleaning the user interface for a better user experience
+Adding information to see professor ratings via RateMyProfessor
+Allowing push notifications to tell us when a class opens up
+
+Work completion rate:
+The total number of user stories finished is 6. 
+We have our basic functionality working for our application besides description of classes. 
+Total number of user hours completed in sprint 1 is 53 ideal hours. 
+Although our playing poker wasn’t that accurate, we had roughly around 50 hours between all 6 of us. 
+There were 15 days in sprint 1. 6 user stories were completed in 15 days. 
+53 ideal work hours were completed in 15 days as well. 
