@@ -16,14 +16,18 @@ As a team we need to keep doing these:
 Effectively communicate through Slack
 Attending all SCRUM meetings
 
-Work completed/Not completed:
-As a team we were able to complete the following user stories:
-Interpreting objects to get class descriptions 
-Learn basics of Ionic 
-Web parser/crawling
-Initial design UI
-Taking list of objects and displaying them (interpreter)
-Making each object in list clickable
+Work completed:
+As a user, I want to filter class parameters so I can search for the classes I want.
+As a user, I want to see a lit of my search results so I can see what classes are available.
+As a user I want to see more infor abut a class so I can be better informed about each class.
+
+Work not completed:
+As a user I want to be able to see the app using any mobile device so that I can check status of classes without using a computer.
+As a user I want to be able to see whenever the next time a class becomes avaliable so that I don't miss adding the class.
+As a user I want to be able to directly see ratings of the class or professor so that I can immediately decide if I want to add a class.
+As a user I want to be able to know right away when a class becomes open so that I can add it right away.
+As a tester I need to be able to do software builds and run regression tests.
+As a user I don't want to run into any bugs or inconsistencies with compatibility with our app.
 
 We still need to complete the following user stories:
 Filtering search results so that we can see the classes we want
@@ -34,9 +38,9 @@ Adding information to see professor ratings via RateMyProfessor
 Allowing push notifications to tell us when a class opens up
 
 Work completion rate:
-The total number of user stories finished is 7. 
+The total number of user stories finished is 6. 
 We have our basic functionality working for our application besides description of classes. 
 Total number of user hours completed in sprint 1 is 53 ideal hours. 
 Although our playing poker wasn’t that accurate, we had roughly around 50 hours between all 6 of us. 
-There were 15 days in sprint 1. 7 user stories were completed in 15 days. 
+There were 15 days in sprint 1. 6 user stories were completed in 15 days. 
 53 ideal work hours were completed in 15 days as well. 
