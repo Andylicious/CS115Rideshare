@@ -321,12 +321,11 @@ angular.module('starter.controllers', [])
         var course_cap, course_enrolled, course_avail, course_location;
         var course_links;
         var course_desc;
+        var color;
 
        // console.log(results_tr[3].getElementsByTagName('a')[0].getAttribute('href'));
         for(var i = 1; i < results_tr.length; i++){
           course_links = results_tr[i].getElementsByTagName('a')[0].getAttribute('href');
-
-
           course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
           course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
           course_name_long = results_tr[i].getElementsByTagName('td')[2].innerText;
@@ -337,13 +336,18 @@ angular.module('starter.controllers', [])
           course_cap = results_tr[i].getElementsByTagName('td')[8].innerText;
           course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
           course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
+          if(course_avail == 0){
+            color = "red";
+          }else if(course_avail > 0 && course_avail < 11){
+            color = "#f39c12"
+          }else{
+            color = "green"
+          }
           course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
           course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
-          course_enrolled, course_avail, course_location};
+          course_enrolled, course_avail, course_location, color};
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
-
-
         }
 
 
@@ -359,6 +363,7 @@ angular.module('starter.controllers', [])
                                  cap: class_data[i].course_cap,
                                  enrolled: class_data[i].course_enrolled,
                                  avail: class_data[i].course_avail,
+                                 color: class_data[i].color,
                                  location: class_data[i].course_location,
                                  id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
