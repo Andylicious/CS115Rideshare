@@ -408,6 +408,35 @@ angular.module('starter.controllers', [])
                                 tmp.body.innerHTML = response.data;
                                 console.log("tmp.body = " + tmp.body.innerHTML);
 
+                                var desc_arr = [];
+                                var http_arr = [];
+                               
+
+                                var desc = tmp.getElementsByClassName('detail_table');
+                                console.log(desc)
+                                if(desc[1].innerText.substring(7, 19).trim() == "Description") {
+                                  desc_arr.splice(i, 0, desc[1].innerText.substring(19).trim());
+                                }
+
+                                if(desc[2].innerText.substring(7, 19).trim() == "Description") {
+                                  desc_arr.splice(i, 0, desc[2].innerText.substring(19).trim());
+                                }
+
+
+
+                                for(var i = 0; i < desc_arr.length; i++){
+                                  console.log(desc_arr[i])
+                                }
+                            
+                                
+
+
+                                //desc[0] [1] [2]
+
+                                //
+                               // console.log(desc);
+                                var detail_td = tmp.getElementById()
+
                                 //var detail_t = tmp.getElementById('detail_table')
                     //detail_t.getElementbyTagName('tr')
 
