@@ -3,17 +3,20 @@
         <div class="content has-header">
             <div class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist">
                 <a href="#/app/profile" class="item">
-                    <h2 style="margin=left">{{courses.name}}
+                    <h2 style="margin=left; font-size: 1.5em">
+                      {{courses.name}}
                       <span style="color: gray">  •  </span>
                       {{courses.longname}}
                     </h2>
+                    <p style="color: black">{{courses.date}} • {{courses.time}} • {{courses.location}}</p>
                     <p>
-                      <span style="color: black">{{courses.enrolled}} / {{courses.cap}}</span>
-                      seats filled:
-                      <span id="avail">{{courses.avail}}</span> seat(s) remaining
+                      <span style="font-size: 1.5em" ng-style="{'color': courses.color}">
+                        {{courses.avail}}</span> seat(s) remaining:
+                      <span style="color: black">
+                        {{courses.enrolled}} / {{courses.cap}}</span> seats filled
                     </p>
-                    <p>{{courses.date}} • {{courses.time}} • {{courses.location}}</p>
-                    <p>Taught by {{courses.prof}}</p>
+
+                    <p>Taught by <span style="color: black">{{courses.prof}}</span></p>
                 </a>
             </div>
         </div>
