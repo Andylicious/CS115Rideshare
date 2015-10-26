@@ -89,6 +89,15 @@ p {
     background-color: #f8f8f8;
     color: #111;
 }
+.buttonwrap {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 100%;
+}
 .im-wrapper, .padding {
     padding: 0px!important;
 }
