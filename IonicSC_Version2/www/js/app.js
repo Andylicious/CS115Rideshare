@@ -57,6 +57,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'ionic-material', 'io
         }
     })
 
+        .state('app.rtm', {
+        url: '/rtm',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/rtm.html',
+                controller: 'RTMCtrl'
+            }
+        }
+    })
+
+
 
 
 

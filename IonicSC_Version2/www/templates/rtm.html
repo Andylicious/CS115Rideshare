@@ -1,0 +1,50 @@
+<ion-view view-title="Professor Reviews" hide-nav-bar="true">
+    <ion-content ng-class="{expanded:isExpanded}" >
+        
+       <div class="hero" style="height:20%;">
+            <div class="content">
+                 <h2 style="font-size:66px;"> {{prof_name}} </h2>
+             
+             
+            </div>
+        </div>
+        <div class="tabs tabs-dark tabs-icon-top static">
+            <a class="tab-item">
+                <i class="icon ion"> {{quality_score}}</i> Ratings
+            </a>
+            <a class="tab-item">
+                <i class="icon ion">{{average_grade}}</i> Average Grade
+            </a>
+            <a  class="tab-item">
+                <i class="icon ion-images"></i> Hotness
+            </a>
+        </div>
+
+
+        <h4 class="content padding double-padding-x">Student Reviews</h4>
+        <div class="list animate-fade-slide-in-right">
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/jon-snow.jpg">
+                <h2>Jon Snow</h2>
+                <p>Da illest illegitimate</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/sansa.jpg">
+                <h2>Sansa Stark</h2>
+                <p>&amp; Joffrey <strike>sitting</strike> sat in a tree</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+            <a ui-sref="app.friends" class="item item-avatar item-icon-right">
+                <img src="img/tyrion.jpg">
+                <h2>Tyrion Lannister</h2>
+                <p>B.A.M.F. imp</p>
+                <i class="icon ion-chatbubble muted"></i>
+            </a>
+        </div>
+    
+
+
+        
+    </ion-content>
+</ion-view>

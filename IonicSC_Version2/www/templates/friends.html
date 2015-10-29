@@ -2,7 +2,8 @@
     <ion-content ng-class="{expanded:isExpanded}" ng-controller"FriendsCtrl">
         <div class="content has-header"> 
      
-            <div ng-click="course_func(courses.link)" class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist">
+            <!--<div ng-click="course_func(courses.link)" class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist"> --> 
+            <div ng-click="rtm_func(courses.prof)" class="list animate-fade-slide-in-right" ng-repeat="courses in groups" ng-last-repeat="mylist">
                 <a class="item">
                     <h2 style="margin=left">{{courses.name}}</h2>
                     <p>{{courses.prof}}</p>
