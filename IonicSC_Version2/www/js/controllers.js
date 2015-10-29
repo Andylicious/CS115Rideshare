@@ -534,7 +534,7 @@ $scope.gened_button = function(vm,classes){
          }
        }
        document.getElementById("geid").innerHTML = vm.ge_string[gened_index];
-       sharedProperties.set_ge_bind(vm.ge_id[ge_index]);
+       sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
        console.log(gened_index);
        $scope.modal_gened.hide();
 }
