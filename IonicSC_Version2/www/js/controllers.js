@@ -514,9 +514,9 @@ $scope.set_link = function(link) {
               .then(function(response){
                  var tmp = document.implementation.createHTMLDocument();
                     tmp.body.innerHTML = response.data;
-                   console.log("tmp.body = " + tmp.body.innerHTML);
+                    //console.log("tmp.body = " + tmp.body.innerHTML);
                     var Quality = tmp.getElementsByClassName('grade');
-                    console.log(Quality)
+                    //console.log(Quality)
                     var Class = tmp.getElementsByClassName('class');
                     var Report = tmp.getElementsByClassName('report')
                     console.log(Class)
