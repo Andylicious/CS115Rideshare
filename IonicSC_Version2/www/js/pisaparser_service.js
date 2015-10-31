@@ -17,6 +17,9 @@
                     
 
                     var term = tmp.getElementById('term_dropdown');
+
+                    
+
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
                     var subject = tmp.getElementById('subject');

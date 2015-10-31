@@ -1,8 +1,13 @@
-
+  
   <ion-modal-view id="term-modal">
-    <ion-header-bar class="bar-calm-900">
+    <ion-header-bar class="bar-calm-900" >
+    <div class="buttons">
+    <button class="button icon-left ion-chevron-left button-clear button-dark"
+    ng-click="modal_term.hide()"></button>
+    </div>      
       <h1 class="title">Term Selection</h1>
-    </ion-header-bar>
+   </ion-header-bar>
+
     <ion-content ng-controller="SearchController as vm">
 
 
@@ -10,7 +15,10 @@
     
     	<div class="item" ng-repeat="classes in vm.pisa.term_map.term_string" >
         <center>
-    <button id="term_select" class="button select-buttons" ng-click="term_button(vm.pisa.term_map,classes)"> {{classes}} </button>
+
+
+    <button id="term_select" class="buttonwrap"  
+    ng-click="term_button(vm.pisa.term_map,classes)"><b> {{classes}}</b> </button>
     </center>
 		</div>
 	
@@ -18,3 +26,5 @@
     
     </ion-content>
   </ion-modal-view>
+  
+  

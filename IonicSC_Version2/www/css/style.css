@@ -1,12 +1,10 @@
 /* General
 ==================================*/
 h1 {
-    background-color: ##ffde17;
+    color: #fff;
     text-shadow: 0 1px 0px #000;
     font-size: 42px;
 }
-
-body { background-color: ##ffde17}
 
 .item-md-label {
     display: block;
@@ -91,6 +89,15 @@ p {
     background-color: #f8f8f8;
     color: #111;
 }
+.buttonwrap {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    width: 100%;
+}
 .im-wrapper, .padding {
     padding: 0px!important;
 }
@@ -108,6 +115,10 @@ button.button-block, button.button-full, .button-full > button.button, input.but
     height: 125px;
     margin: 0 auto;
     width: 125px;
+}
+.backbuttton {
+    background: blue;
+    padding: 10px;
 }
 
 .social-login {
