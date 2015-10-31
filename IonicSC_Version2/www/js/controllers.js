@@ -5,9 +5,9 @@ angular.module('starter.controllers', [])
 
 .service('sharedProperties', function() {
     var action = "results";
-    var term_bind = "2158";
-    var reg_bind = "0";
-    var sub_bind = "";
+    var term_bind = "2158"; 
+    var reg_bind = "0"; 
+    var sub_bind = ""; 
     var cat_op_bind = "=";
     var cat_nbr_bind = "";
     var title_bind = '';
@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
     var days_bind = "";
     var times_bind = "";
     var acad_bind = "";
-
+    
     return {
         get_term_bind: function() {
             return term_bind;
@@ -132,20 +132,6 @@ angular.module('starter.controllers', [])
     }
 })
 
-.service('sharedLinks',function(){
-  console.log("Placeholder")
-  var course_link = "http://crossorigin.me/https://pisa.ucsc.edu/class_search/";
-  return {
-    get_course_link: function() {
-            return course_link;
-        },
-    set_course_link: function(value){
-            course_link += value
-    }
-
-      }
-
-})
 .controller('AppCtrl', function($scope, $ionicModal, $ionicPopover, $timeout) {
     // Form data for the login modal
     $scope.loginData = {};
@@ -242,12 +228,10 @@ angular.module('starter.controllers', [])
         }
     };
 })
-.controller('FriendsCtrl', function($scope, $state, $http,$stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,sharedProperties, sharedLinks) {
-     
-
-  $scope.course_func = function(vm){
-    sharedLinks.set_course_link(vm);
-    $state.go('app.profile');
+.controller('FriendsCtrl', function($scope, $http,$stateParams, $timeout, ionicMaterialInk, ionicMaterialMotion,sharedProperties) {
+      $scope.pass__state = function(){
+    console.log("HI!")
+    $state.go(app.profile);
   }
     // Set Header
     $scope.$parent.showHeader();
@@ -281,24 +265,24 @@ angular.module('starter.controllers', [])
       Origin:'https://pisa.ucsc.edu',
       Referer:'https://pisa.ucsc.edu/class_search/',
 
-      data: 'action=' + sharedProperties.get_action() + '&' +
-            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(sharedProperties.get_term_bind())
-            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(sharedProperties.get_reg_bind())
+      data: 'action=' + sharedProperties.get_action() + '&' + 
+            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(sharedProperties.get_term_bind()) 
+            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(sharedProperties.get_reg_bind()) 
             +'&'+encodeURIComponent('binds[:subject]') + '=' + sharedProperties.get_sub_bind()
-            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(sharedProperties.get_cat_op_bind())
+            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(sharedProperties.get_cat_op_bind()) 
             +'&'+encodeURIComponent('binds[:catalog_nbr]') + '='
             +'&'+encodeURIComponent('binds[:title]') + '='
-            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(sharedProperties.get_instr_name_bind())
-            +'&'+encodeURIComponent('binds[:instructor]')
+            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(sharedProperties.get_instr_name_bind()) 
+            +'&'+encodeURIComponent('binds[:instructor]') 
             +'&'+encodeURIComponent('binds[:ge]') + '=' +encodeURIComponent(sharedProperties.get_ge_bind())
-            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(sharedProperties.get_crse_op_bind())
+            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(sharedProperties.get_crse_op_bind()) 
             +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
-            +'&'+encodeURIComponent('binds[:crse_units_to]')
-            +'&'+encodeURIComponent('binds[:crse_units_exact]')
+            +'&'+encodeURIComponent('binds[:crse_units_to]') 
+            +'&'+encodeURIComponent('binds[:crse_units_exact]') 
             +'&'+encodeURIComponent('binds[:days]') + '='
             +'&'+encodeURIComponent('binds[:times]') + '='
             +'&'+encodeURIComponent('binds[:acad_career]') + '='
-
+ 
     })
       var class_data = []
 
@@ -310,22 +294,23 @@ angular.module('starter.controllers', [])
         tmp.body.innerHTML = html;
 
         var results = tmp.getElementById('result_table');
-
+        
         //var results_even = results.getElementsByClassName('even')[0];
         var results_tr = results.getElementsByTagName('tr');
         //console.log(results_tr[1].getElementsByTagName('td')[0].innerText);
 //        console.log(results_tr[1].getElementsByTagName('td')[1].innerText);
-
+        
         var course_map;
         var course_id, course_name_short, course_name_long, course_type, course_date, course_time, course_prof;
         var course_cap, course_enrolled, course_avail, course_location;
         var course_links;
         var course_desc;
-        var color;
 
        // console.log(results_tr[3].getElementsByTagName('a')[0].getAttribute('href'));
         for(var i = 1; i < results_tr.length; i++){
           course_links = results_tr[i].getElementsByTagName('a')[0].getAttribute('href');
+
+
           course_id = results_tr[i].getElementsByTagName('td')[0].innerText;
           course_name_short = results_tr[i].getElementsByTagName('td')[1].innerText;
           course_name_long = results_tr[i].getElementsByTagName('td')[2].innerText;
@@ -336,40 +321,24 @@ angular.module('starter.controllers', [])
           course_cap = results_tr[i].getElementsByTagName('td')[8].innerText;
           course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
           course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
-          if(course_avail == 0){
-            color = "red";
-          }else if(course_avail > 0 && course_avail < 11){
-            color = "#f39c12"
-          }else{
-            color = "green"
-          }
           course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
           course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
-          course_enrolled, course_avail, course_location, color};
+          course_enrolled, course_avail, course_location};
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
-        }
 
+
+        }
+          
 
                 $scope.groups = [];
                 for(var i = 0; i < class_data.length; i++){
-                    //here's where i think where we can propagate scope.groups
-                    var check = {name: class_data[i].course_name_short,
-                                 longname: class_data[i].course_name_long,
-                                 type: class_data[i].course_type,
-                                 date: class_data[i].course_date,
-                                 time: class_data[i].course_time,
-                                 prof: class_data[i].course_prof,
-                                 cap: class_data[i].course_cap,
-                                 enrolled: class_data[i].course_enrolled,
-                                 avail: class_data[i].course_avail,
-                                 color: class_data[i].color,
-                                 location: class_data[i].course_location,
-                                 id: i, items:[{subName: 'subbles', subId:'1-2'}]}
+                    //here's where i think where we can propagate scope.groups 
+                    var check = {name: class_data[i].course_name_short, prof: class_data[i].course_prof, time: class_data[i].course_time, id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
                 }
 
-  // console.log($scope.groups);
+   console.log($scope.groups);
                 $scope.toggleGroup = function(group) {
                   if ($scope.isGroupShown(group)) {
                     $scope.shownGroup = null;
@@ -380,16 +349,16 @@ angular.module('starter.controllers', [])
                 $scope.isGroupShown = function(group) {
                   return $scope.shownGroup === group;
                 };
-
-
+                
+  
   })
-
+  
 
 
 })
 
 
-.controller('ProfileCtrl', function($scope, $stateParams,$http, $timeout, ionicMaterialMotion, ionicMaterialInk, sharedLinks) {
+.controller('ProfileCtrl', function($scope, $stateParams, $timeout, ionicMaterialMotion, ionicMaterialInk) {
  // Set Header
     $scope.$parent.showHeader();
     $scope.$parent.clearFabs();
@@ -406,62 +375,6 @@ angular.module('starter.controllers', [])
 
     // Set Ink
     ionicMaterialInk.displayEffect();
-
-    console.log(sharedLinks.get_course_link())
-
-    $http.get(sharedLinks.get_course_link())
-                            .then(function(response){
-
-                              //john: all work goes in here
-                              //john ALL THE WORK GOES FUCKING HERE!!! 
-
-                                var tmp = document.implementation.createHTMLDocument();
-                                tmp.body.innerHTML = response.data;
-                                console.log("tmp.body = " + tmp.body.innerHTML);
-
-                                var desc_arr = [];
-                                var http_arr = [];
-                               
-
-                                var desc = tmp.getElementsByClassName('detail_table');
-                                console.log(desc)
-                                if(desc[1].innerText.substring(7, 19).trim() == "Description") {
-                                  desc_arr.splice(i, 0, desc[1].innerText.substring(19).trim());
-                                }
-
-                                if(desc[2].innerText.substring(7, 19).trim() == "Description") {
-                                  desc_arr.splice(i, 0, desc[2].innerText.substring(19).trim());
-                                }
-
-
-
-                                for(var i = 0; i < desc_arr.length; i++){
-                                  console.log(desc_arr[i])
-                                }
-                            
-                                
-
-
-                                //desc[0] [1] [2]
-
-                                //
-                               // console.log(desc);
-                                var detail_td = tmp.getElementById()
-
-                                //var detail_t = tmp.getElementById('detail_table')
-                    //detail_t.getElementbyTagName('tr')
-
-                                //at the very end you want
-                                var desc = "" //a very long string
-                                var open_or_close ="" //a simple string that indicates if its open or closed
-                                var discussion_SECTIONS = "" //get all the discussion sections 
-                                //and possibly their related enrollment, capacity, status 
-
-                                
-
-
-
-                            });
 })
 
 
@@ -510,7 +423,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
 
 
   $scope.openModal = function(vm) {
-
+    
 
    if(vm == "term-modal.html"){
     $scope.modal_term.show();
@@ -522,7 +435,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
     $scope.modal_gened.show();
    }
 
-
+    
   };
   $scope.closeModal = function() {
     $scope.modal.hide();
@@ -533,7 +446,7 @@ $ionicModal.fromTemplateUrl('term-modal.html', {
   });
   // Execute action on hide modal
   $scope.$on('modal.hidden', function() {
-
+ 
   });
   // Execute action on remove modal
   $scope.$on('modal.removed', function() {
@@ -554,9 +467,9 @@ $scope.term_button = function(vm,classes){
          }
        }
    document.getElementById("termid").innerHTML = vm.term_string[term_index];
-
+      
           sharedProperties.set_term_bind(vm.term_id[term_index]);
-
+       
        console.log(term_index);
        $scope.modal_term.hide();
 }
@@ -606,7 +519,7 @@ $scope.gened_button = function(vm,classes){
          }
        }
        document.getElementById("geid").innerHTML = vm.ge_string[gened_index];
-       sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
+       sharedProperties.set_ge_bind(vm.ge_id[ge_index]);
        console.log(gened_index);
        $scope.modal_gened.hide();
 }
@@ -614,3 +527,4 @@ $scope.gened_button = function(vm,classes){
     // Activate ink for controller
     ionicMaterialInk.displayEffect();
 })
+
