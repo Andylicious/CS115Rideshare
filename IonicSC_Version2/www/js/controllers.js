@@ -403,7 +403,9 @@ $scope.set_link = function(link) {
             course_prof = value;
     }
 
+
       }
+
 
 })
 
