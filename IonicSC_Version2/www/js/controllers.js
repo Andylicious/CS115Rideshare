@@ -304,7 +304,7 @@ var class_data = []
                     //console.log(html);
         var tmp = document.implementation.createHTMLDocument();
         tmp.body.innerHTML = html;
-        console.log(tmp.body.innerHTML)
+        //console.log(tmp.body.innerHTML)
 
         var results = tmp.getElementById('result_table');
 
@@ -357,6 +357,7 @@ var class_data = []
                                  date: class_data[i].course_date,
                                  time: class_data[i].course_time,
                                  prof: class_data[i].course_prof,
+                                 link: class_data[i].course_links,
                                  cap: class_data[i].course_cap,
                                  enrolled: class_data[i].course_enrolled,
                                  avail: class_data[i].course_avail,
@@ -381,7 +382,10 @@ var class_data = []
 
 
   
+$scope.set_link = function(link) {
+  sharedLinks.set_course_link(link);
 
+}
 
 
 })
