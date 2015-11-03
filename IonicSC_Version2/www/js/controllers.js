@@ -272,42 +272,39 @@ angular.module('starter.controllers', [])
 
     // Set Ink
    // ionicMaterialInk.displayEffect();
-
-    var request = $http({
-      method: 'POST',
-      url: 'https://pisa.ucsc.edu/class_search/index.php',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      Host:'pisa.ucsc.edu',
-      Origin:'https://pisa.ucsc.edu',
-      Referer:'https://pisa.ucsc.edu/class_search/',
-
-      data: 'action=' + sharedProperties.get_action() + '&' +
-            encodeURIComponent('binds[:term]') +'=' + encodeURIComponent(sharedProperties.get_term_bind())
-            +'&' + encodeURIComponent('binds[:reg_status]') + '=' + encodeURIComponent(sharedProperties.get_reg_bind())
-            +'&'+encodeURIComponent('binds[:subject]') + '=' + sharedProperties.get_sub_bind()
-            +'&'+encodeURIComponent('binds[:catalog_nbr_op]') + '='+ encodeURIComponent(sharedProperties.get_cat_op_bind())
-            +'&'+encodeURIComponent('binds[:catalog_nbr]') + '='
-            +'&'+encodeURIComponent('binds[:title]') + '='
-            +'&'+encodeURIComponent('binds[:instr_name_op]') + '='+ encodeURIComponent(sharedProperties.get_instr_name_bind())
-            +'&'+encodeURIComponent('binds[:instructor]')
-            +'&'+encodeURIComponent('binds[:ge]') + '=' +encodeURIComponent(sharedProperties.get_ge_bind())
-            +'&'+encodeURIComponent('binds[:crse_units_op]') + '='+ encodeURIComponent(sharedProperties.get_crse_op_bind())
-            +'&'+encodeURIComponent('binds[:crse_units_from]') + '='
-            +'&'+encodeURIComponent('binds[:crse_units_to]')
-            +'&'+encodeURIComponent('binds[:crse_units_exact]')
-            +'&'+encodeURIComponent('binds[:days]') + '='
-            +'&'+encodeURIComponent('binds[:times]') + '='
-            +'&'+encodeURIComponent('binds[:acad_career]') + '='
-
-    })
-      var class_data = []
-
-    request.success(
-
-      function(html){
-        //console.log(html);
+var jsonString = "{\"action\":\"" +sharedProperties.get_action()+ "\"," + 
+                  "\"term_bind\":\"" +sharedProperties.get_term_bind()+ "\"," + 
+                  "\"reg_bind\":\"" +sharedProperties.get_reg_bind()+ "\"," + 
+                  "\"sub_bind\":\"" +sharedProperties.get_sub_bind()+ "\"," + 
+                  "\"cat_op_bind\":\"" +sharedProperties.get_cat_op_bind()+ "\"," + 
+                  "\"cat_nbr_bind\":\"" +sharedProperties.get_cat_nbr_bind()+ "\"," + 
+                  "\"title_bind\":\"" +sharedProperties.get_title_bind()+ "\"," + 
+                  "\"instr_name_bind\":\"" +sharedProperties.get_instr_name_bind()+ "\"," +
+                  "\"instr_bind\":\"" +sharedProperties.get_instr_bind()+ "\"," + 
+                  "\"ge_bind\":\"" +sharedProperties.get_ge_bind()+ "\"," + 
+                  "\"crse_op_bind\":\"" +sharedProperties.get_crse_op_bind()+ "\"," + 
+                  "\"crse_from_bind\":\"" +sharedProperties.get_crse_from_bind()+ "\"," + 
+                  "\"crse_to_bind\":\"" +sharedProperties.get_crse_to_bind()+ "\"," +  
+                  "\"crse_exact_bind\":\"" +sharedProperties.get_crse_exact_bind()+ "\"," + 
+                  "\"days_bind\":\"" +sharedProperties.get_days_bind()+ "\"," + 
+                  "\"times_bind\":\"" +sharedProperties.get_times_bind()+ "\"," + 
+                  "\"acad_bind\":\""+sharedProperties.get_acad_bind()+"\"}";
+var jsonObj = JSON.parse(jsonString);
+var class_data = []
+ var posting = $http({
+                    method: 'POST',
+                    /*posting to /post */
+                    url: 'http://198.199.106.134:3412/class',
+                    contentType: "text/plain",
+                    data: jsonObj
+                    
+                })
+                posting.success(function (html) {
+                    /*executed when server responds back*/
+                    //console.log(html);
         var tmp = document.implementation.createHTMLDocument();
         tmp.body.innerHTML = html;
+        console.log(tmp.body.innerHTML)
 
         var results = tmp.getElementById('result_table');
 
@@ -348,10 +345,10 @@ angular.module('starter.controllers', [])
           course_enrolled, course_avail, course_location, color};
           class_data.push(course_map);
           //console.log("----END OF CLASS---")
-        }
+                    
+                }
 
-
-                $scope.groups = [];
+                            $scope.groups = [];
                 for(var i = 0; i < class_data.length; i++){
                     //here's where i think where we can propagate scope.groups
                     var check = {name: class_data[i].course_name_short,
@@ -367,8 +364,9 @@ angular.module('starter.controllers', [])
                                  location: class_data[i].course_location,
                                  id: i, items:[{subName: 'subbles', subId:'1-2'}]}
                     $scope.groups.push(check);
+                    console.log("check is " + check)
                 }
-
+              });
   // console.log($scope.groups);
                 $scope.toggleGroup = function(group) {
                   if ($scope.isGroupShown(group)) {
@@ -382,7 +380,7 @@ angular.module('starter.controllers', [])
                 };
 
 
-  })
+  
 
 
 
