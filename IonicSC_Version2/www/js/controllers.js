@@ -518,14 +518,18 @@ $scope.set_link = function(link) {
                     tmp.body.innerHTML = response.data;
                     //console.log("tmp.body = " + tmp.body.innerHTML);
                     var Quality = tmp.getElementsByClassName('grade');
-                    //console.log(Quality)
+                    console.log(Quality)
                     var Class = tmp.getElementsByClassName('class');
                     var Report = tmp.getElementsByClassName('report')
-                    console.log(Class)
-                    console.log(Report)
                     $scope.quality_score = "";
                     $scope.average_grade = "";
+                    if(Quality[0].innerText == undefined){
+                      $scope.quality_score = "N/A"
+                    }else{
                     $scope.quality_score = Quality[0].innerText
+                  }
+                  
+
                     $scope.average_grade = Quality[1].innerText
 
          });
