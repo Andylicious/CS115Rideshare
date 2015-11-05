@@ -20,9 +20,10 @@ If you’re a visitor on this repository, and it’s the Fall quarter, you may s
 
 ##screenshots 
 
-![Alt text](screenshots/app1_screenshot.png?raw=true “Screenshot 1“)
+![Alt text](screenshots/pic1.PNG?raw=true “Screenshot 1“)
 
-![Alt text](screenshots/pic.png?raw=true “Screenshot 2“)
+![Alt text](screenshots/pic2.PNG?raw=true “Screenshot 2“)
+![Alt text](screenshots/pic3.PNG?raw=true “Screenshot 3“)
 
 
 ##Notes to team members (From Andy): 
