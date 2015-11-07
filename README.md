@@ -20,15 +20,15 @@ If you’re a visitor on this repository, and it’s the Fall quarter, you may s
 
 ##screenshots 
 
-![Alt text](screenshots/snip1.PNG?raw=true “Screenshot 1“)
+![Alt text](screenshots/snip1.png?raw=true “Screenshot 1“)
 
-![Alt text](screenshots/snip2.PNG?raw=true “Screenshot 2“)
-![Alt text](screenshots/snip3.PNG?raw=true “Screenshot 3“)
+![Alt text](screenshots/snip2.png?raw=true “Screenshot 2“)
+![Alt text](screenshots/snip3.png?raw=true “Screenshot 3“)
 
-![Alt text](screenshots/snip4.PNG?raw=true “Screenshot 4“)
+![Alt text](screenshots/snip4.png?raw=true “Screenshot 4“)
 
-![Alt text](screenshots/snip5.PNG?raw=true “Screenshot 5“)
-![Alt text](screenshots/snip6.PNG?raw=true “Screenshot 6“)
+![Alt text](screenshots/snip5.png?raw=true “Screenshot 5“)
+![Alt text](screenshots/snip6.png?raw=true “Screenshot 6“)
 
 
 
