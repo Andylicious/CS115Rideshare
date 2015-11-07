@@ -274,84 +274,83 @@ angular.module('starter.controllers', [])
 
 
 
-$scope.term_button = function(vm,classes){
+  $scope.term_button = function(vm,classes){
+   var term_select = document.getElementById( "term_select" );
+   var term_index = 0;
 
-        var term_select = document.getElementById( "term_select" );
-        var term_index = 0;
-
-       for(var i = 0; i < vm.term_string.length; i++){
-         if(vm.term_string[i] == classes){
-            term_index = i;
-             $scope.modal_term.hide();
-            break;
-         }
-       }
+   for(var i = 0; i < vm.term_string.length; i++){
+     if(vm.term_string[i] == classes){
+        term_index = i;
+         $scope.modal_term.hide();
+        break;
+     }
+   }
    document.getElementById("termid").innerHTML = vm.term_string[term_index];
 
     sharedProperties.set_term_bind(vm.term_id[term_index]);
     $scope.termid = vm.term_id[term_index];
        ////console.log(term_index);
        $scope.modal_term.hide();
-}
+ }
 
 
-$scope.status_button = function(vm,classes){
-        var status_select = document.getElementById( "status_select" );
-        var status_index = 0;
+  $scope.status_button = function(vm,classes){
+   var status_select = document.getElementById( "status_select" );
+   var status_index = 0;
 
-       for(var i = 0; i < vm.reg_status_string.length; i++){
-         if(vm.reg_status_string[i] == classes){
-            status_index = i;
-             $scope.modal_status.hide();
-            break;
-         }
-       }
-      document.getElementById("statusid").innerHTML = vm.reg_status_string[status_index];
-         sharedProperties.set_reg_bind(vm.reg_status_id[status_index]);
-       ////console.log(status_index);
-       $scope.modal_status.hide();
-}
-$scope.subject_button = function(vm,classes){
-        var subject_select = document.getElementById( "subject_select" );
-        var subject_index = 0;
+   for(var i = 0; i < vm.reg_status_string.length; i++){
+     if(vm.reg_status_string[i] == classes){
+        status_index = i;
+         $scope.modal_status.hide();
+        break;
+     }
+   }
+  document.getElementById("statusid").innerHTML = vm.reg_status_string[status_index];
+     sharedProperties.set_reg_bind(vm.reg_status_id[status_index]);
+   ////console.log(status_index);
+   $scope.modal_status.hide();
+  }
+  $scope.subject_button = function(vm,classes){
+    var subject_select = document.getElementById( "subject_select" );
+    var subject_index = 0;
 
-       for(var i = 0; i < vm.subject_string.length; i++){
-         if(vm.subject_string[i] == classes){
-            subject_index = i;
-             $scope.modal_subject.hide();
-            break;
-         }
-       }
-       document.getElementById("subjectid").innerHTML = vm.subject_string[subject_index];
+   for(var i = 0; i < vm.subject_string.length; i++){
+     if(vm.subject_string[i] == classes){
+        subject_index = i;
+         $scope.modal_subject.hide();
+        break;
+     }
+   }
+   document.getElementById("subjectid").innerHTML = vm.subject_string[subject_index];
        sharedProperties.set_sub_bind(vm.subject_id[subject_index]);
        ////console.log(subject_index);
        $scope.modal_subject.hide();
-}
-$scope.gened_button = function(vm,classes){
-        var gened_select = document.getElementById( "gened_select" );
-        var gened_index = 0;
+  }
+  $scope.gened_button = function(vm,classes){
+    var gened_select = document.getElementById( "gened_select" );
+    var gened_index = 0;
 
-       for(var i = 0; i < vm.ge_string.length; i++){
-         if(vm.ge_string[i] == classes){
-            gened_index = i;
-             $scope.modal_gened.hide();
-            break;
-         }
-       }
-       document.getElementById("geid").innerHTML = vm.ge_string[gened_index];
-       sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
-       ////console.log(gened_index);
-       $scope.modal_gened.hide();
-}
+   for(var i = 0; i < vm.ge_string.length; i++){
+     if(vm.ge_string[i] == classes){
+        gened_index = i;
+         $scope.modal_gened.hide();
+        break;
+     }
+   }
+   document.getElementById("geid").innerHTML = vm.ge_string[gened_index];
+   sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
+   ////console.log(gened_index);
+   $scope.modal_gened.hide();
+ }
 
-  })
-
-  .controller('SubMenuCtrl', function ($scope) {
+})
+ 
+.controller('SubMenuCtrl', function ($scope) {
   //  console.log('sub menu controller');
 
   })
 
-  .controller('MenuCtrl', function ($scope) {
+.controller('MenuCtrl', function ($scope) {
   //  console.log('courseview controller controller');
   });
 
