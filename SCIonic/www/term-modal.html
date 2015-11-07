@@ -1,0 +1,29 @@
+  
+  <ion-modal-view id="term-modal">
+    <ion-header-bar ng-click="modal_term.hide()">
+    <div class="buttons">
+
+
+    </div>      
+      <h1 class="title">Term Selection</h1>
+   </ion-header-bar>
+
+    <ion-content ng-controller="SearchController as vm">
+
+
+    
+    
+    	<div class="item" ng-repeat="classes in vm.pisa.term_map.term_string" >
+        <center>
+
+
+    <button id="term_select" class="button button-block button-clear button-dark ink" ng-click="term_button(vm.pisa.term_map,classes)"><b> {{classes}}</b> </button>
+    </center>
+		</div>
+	
+
+    
+    </ion-content>
+  </ion-modal-view>
+  
+  
