@@ -185,11 +185,49 @@ angular.module('starter.controllers', [])
                     var Quality = tmp.getElementsByClassName('grade');
                     //  console.log(Quality)
                     var Class = tmp.getElementsByClassName('class');
-                    var Report = tmp.getElementsByClassName('report')
+                    var Report = tmp.getElementsByClassName('commentsParagraph');
+                    var Rating = tmp.getElementsByClassName('rating');
+
+                    var Type = tmp.getElementsByClassName('rating-type')
+                    var slider_info = tmp.getElementsByClassName('rating-slider');
+                    var date_info = tmp.getElementsByClassName('date')
+                    
+                    
+                    var helpfulness = slider_info[0].innerText.trim().split(/[ ,]+/);
+                    var clarity = slider_info[1].innerText.trim().split(/[ ,]+/);
+                    var easiness = slider_info[2].innerText.trim().split(/[ ,]+/);
+                    
+                    
+                    $scope.comments_block = [];
+
+
+                    for(var i = 0; i < Report.length; i++){
+                      var report_side = Report[i].innerText.trim();
+                      var date_comment = date_info[i].innerText.trim();
+                      var report_comments = Class[i+1].innerText.trim();
+                      var report_type = Type[i].innerText.trim();
+                      var course = report_comments.split(/[ ,]+/);
+                      var course_name = course[0];
+                      var course_credit = course[1] + " " + course[2] + " " + course[3];
+                      var course_attendence = course[4] + " " + course[5]; 
+
+                      
+                      $scope.comments_block[i] = { side: report_side, 
+                                                  date: date_comment, 
+                                                  type: report_type,
+                                                  comments: {
+                                                              name: course_name,
+                                                              credit: course_credit,
+                                                              attendence: course_attendence }}
+                                                            }
+                   
+                    $scope.easiness_score = easiness[1];
+                    $scope.clarity_score = clarity[1];
+                    $scope.helpfulness_score = helpfulness[1];
                     $scope.quality_score = "";
                     $scope.average_grade = "";
 
-                    console.log(Quality);
+                    //console.log(Quality);
                     if(found == true){
                       $scope.quality_score = Quality[0].innerText;
                       $scope.average_grade = Quality[1].innerText;
