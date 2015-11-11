@@ -193,9 +193,6 @@ angular.module('starter.controllers', [])
                     var date_info = tmp.getElementsByClassName('date')
                     
                     
-                    var helpfulness = slider_info[0].innerText.trim().split(/[ ,]+/);
-                    var clarity = slider_info[1].innerText.trim().split(/[ ,]+/);
-                    var easiness = slider_info[2].innerText.trim().split(/[ ,]+/);
                     
                     
                     $scope.comments_block = [];
@@ -210,6 +207,9 @@ angular.module('starter.controllers', [])
 
                     //console.log(Quality);
                     if(found == true){
+                      var helpfulness = slider_info[0].innerText.trim().split(/[ ,]+/);
+                      var clarity = slider_info[1].innerText.trim().split(/[ ,]+/);
+                      var easiness = slider_info[2].innerText.trim().split(/[ ,]+/);
                       $scope.quality_score = Quality[0].innerText;
                       $scope.average_grade = Quality[1].innerText;
                       for(var i = 0; i < Report.length; i++){
@@ -242,7 +242,7 @@ angular.module('starter.controllers', [])
 
                       $ionicLoading.hide();
                     }else{
-                      $scope.quality_score = "Score not found on RMP. N/A"
+                      $scope.quality_score = "Score not found on RMP. N/A";
                       $scope.average_grade = "Grade not found on RMP. N/A";
                       $ionicLoading.hide();
                     }
