@@ -19,17 +19,46 @@
  
 
   <div class="item item-divider">
-    Ratings
+    Professor Ratings
   </div>
 
-  <a class="item" href="#">
-    Professor Average Ratings: {{quality_score}} <br>
-    Professor Average Grade: {{average_grade}}
+  <a class="item">
+    Average Ratings: {{quality_score}} <br>
+    Average Grade: {{average_grade}} <br>
+    Easiness Rating: {{easiness_score}} <br>
+    Helpfulness Rating: {{helpfulness_score}} <br>
+    Clarify Rating: {{clarity_score}} <br>
   </a>
 
-
-
-
 </div>
+
+  <div class="card">
+  <div class="item item-divider">
+    Student Reviews
+  </div>
+  <div class="item item-text-wrap" ng-repeat="reviews in comments_block">
+<a class="item">
+     <div class="row"> 
+      <div class="col-50">
+    
+     Date of Review: {{reviews.date}}<br>
+    Course Taken: {{reviews.comments.name}}<br>
+    {{reviews.comments.credit}}<br>
+    {{reviews.comments.attendence}}<br>
+    Overall Outlook: {{reviews.type}}
+  
+  </div>
+   
+   <div class="col-50">
+    
+    {{reviews.side}}
+  
+</div>
+</div>
+   </a>
+   <hr>
+  </div>
+ 
+
   </ion-content>
 </ion-view>
