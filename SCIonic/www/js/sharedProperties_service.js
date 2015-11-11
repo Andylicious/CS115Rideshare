@@ -4,6 +4,7 @@
  *
  */
 angular.module('starter.controllers').service('sharedProperties', [function() {
+
     var action = "results";
     var term_bind = "2158";
     var reg_bind = "0";
@@ -82,6 +83,7 @@ angular.module('starter.controllers').service('sharedProperties', [function() {
         },
         set_term_bind: function(value) {
             term_bind = value;
+            console.log(term_bind);
         },
         set_reg_bind: function(value) {
             reg_bind = value;

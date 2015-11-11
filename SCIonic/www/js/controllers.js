@@ -255,8 +255,10 @@ angular.module('starter.controllers', [])
          });
 
 })
-.controller('AppCtrl', function ($ionicModal,$scope, sharedProperties) {
-    
+.controller('AppCtrl', function ($ionicModal,$scope, sharedProperties, PisaService) {
+
+
+      
   //sets up the modal environment
   //loads them all for future usage
   $ionicModal.fromTemplateUrl('term-modal.html', {
@@ -332,6 +334,7 @@ angular.module('starter.controllers', [])
         break;
      }
    }
+
    document.getElementById("termid").innerHTML = vm.term_string[term_index];
 
     sharedProperties.set_term_bind(vm.term_id[term_index]);
