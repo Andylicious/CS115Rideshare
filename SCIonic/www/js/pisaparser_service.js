@@ -5,10 +5,10 @@
 
 (function() {
 
-    angular.module('starter.controllers').factory('PisaService', ['$http', '$q', PisaService])
+    angular.module('starter.controllers').factory('PisaService', ['sharedProperties','$http', '$q', PisaService])
 
 
-    function PisaService ($http, $q) {
+    function PisaService (sharedProperties,$http, $q) {
 
         return {
 
@@ -22,8 +22,6 @@
                     
 
                     var term = tmp.getElementById('term_dropdown');
-
-                    
 
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
@@ -77,6 +75,7 @@
 
    
                     var term_map = {term_string, term_id};
+                    sharedProperties.set_term_bind(term_map.term_id[0])
                     var session_map = {session_string, session_id};
                     var reg_status_map = {reg_status_string, reg_status_id};
                     var subject_map = {subject_string, subject_id};   
