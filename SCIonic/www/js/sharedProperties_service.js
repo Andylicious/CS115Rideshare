@@ -83,7 +83,6 @@ angular.module('starter.controllers').service('sharedProperties', [function() {
         },
         set_term_bind: function(value) {
             term_bind = value;
-            console.log(term_bind);
         },
         set_reg_bind: function(value) {
             reg_bind = value;

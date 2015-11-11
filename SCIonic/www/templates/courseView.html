@@ -1,6 +1,8 @@
 <ion-view title="Course Description">
   <ion-content ng-controller="courseViewCtrl" has-header="true" has-tabs="true" padding="true">
 
+
+</div>
   <div class="card">
   <div class="item item-divider">
     Course Details
@@ -15,20 +17,35 @@
   </div>
  
 </div>
+<div class="row">
+<div class="col-50">
+<button class="button button-full ink"> Bookmark This Class </button>
+</div>
+<div class="col-50">
+<button class="button button-full ink"> View SlugSearch Reviews</button>
+</div>
+</div>
 
  <div class="card">
 
   <div class="item item-divider">
     Professor Ratings
   </div>
-
+     <div class="row"> 
+      <div class="col-50">
   <a class="item">
     Average Ratings: {{quality_score}} <br>
     Average Grade: {{average_grade}} <br>
+  </a>
+  </div>
+   <div class="col-50">
+    <a class="item">
     Easiness Rating: {{easiness_score}} <br>
     Helpfulness Rating: {{helpfulness_score}} <br>
     Clarify Rating: {{clarity_score}} <br>
   </a>
+</div>
+</div>
 
 </div>
 
