@@ -394,7 +394,7 @@ angular.module('starter.controllers', [])
  }
 
 })
- 
+
 .controller('SubMenuCtrl', function ($scope) {
   //  console.log('sub menu controller');
 
