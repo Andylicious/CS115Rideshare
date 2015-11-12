@@ -59,7 +59,6 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
-
   .state('app.bookmark', {
       url: '/bookmark',
       views: {
