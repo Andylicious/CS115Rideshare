@@ -18,6 +18,13 @@ angular.module('starter.controllers').service('courseData', [function($ionicLoad
         get_bookmarks: function(){
             return bookmarks;
         },
+        in_bookmarks: function(){
+            if(bookmarks.indexOf(tmp_course)!=-1){
+                return true;
+            }else{
+                return false;
+            }
+        },
         push_bookmarks: function(value){
  
             if(bookmarks.indexOf(tmp_course)!=-1){
