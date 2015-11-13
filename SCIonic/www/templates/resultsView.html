@@ -1,7 +1,7 @@
 <ion-view title="List of Courses">
   <ion-content ng-controller="ResultsCtrl" has-header="true" has-tabs="true" padding="true">
    <ion-list>
-        <div ng-click="course_func(courses.link, courses.prof)" ng-repeat="courses in groups">
+        <div ng-click="course_func(courses.link, courses.prof, courses)" ng-repeat="courses in groups">
                   <a class="item">
                     <h2 style="margin=left; font-size: 1.5em">
                       {{courses.name}}

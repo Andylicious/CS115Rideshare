@@ -63,7 +63,8 @@ angular.module('starter', ['ionic', 'starter.controllers'])
       url: '/bookmark',
       views: {
         'menuContent': {
-          templateUrl: 'templates/bookmark.html'
+          templateUrl: 'templates/bookmark.html',
+          controller: 'bookmarksCtrl'
         }
       }
     });

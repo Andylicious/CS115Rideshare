@@ -6,7 +6,7 @@
 angular.module('starter.controllers').service('sharedProperties', [function() {
 
     var action = "results";
-    var term_bind = "2158";
+    var term_bind = "2160";
     var reg_bind = "0";
     var sub_bind = "";
     var cat_op_bind = "=";
