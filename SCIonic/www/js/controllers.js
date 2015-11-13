@@ -73,6 +73,7 @@ angular.module('starter.controllers', [])
       var threshold;
 
 
+
       //results_tr holds the individual class data
       //we propagate our parsing variables with its appropriate
       //inner text
@@ -146,9 +147,9 @@ angular.module('starter.controllers', [])
 })
 
 
-
  
 .controller('courseViewCtrl', function($scope,$state,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
+
   $ionicLoading.show({
     template: 'Fetching Data and Student Reviews...'
   });
@@ -159,33 +160,33 @@ angular.module('starter.controllers', [])
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
-  //available variables for courseView
-  //example of usage inside courseView.html:
-  //  {{$scope.tmp_course.avail}}
-  //  {{$scope.tmp_course.longname}}
 
-  // console.log($scope.tmp_course.name);
-  // console.log($scope.tmp_course.longname);
-  // console.log($scope.tmp_course.type);
-  // console.log($scope.tmp_course.date);
-  // console.log($scope.tmp_course.time);
-  // console.log($scope.tmp_course.avail);
-  // console.log($scope.tmp_course.cap);
-  // console.log($scope.tmp_course.color);
-  // console.log($scope.tmp_course.enrolled);
-  // console.log($scope.tmp_course.location);
+  // console.log($scope.tmp_course.name)
+  // console.log($scope.tmp_course.longname)
+  // console.log($scope.tmp_course.type)
+  // console.log($scope.tmp_course.date)
+  // console.log($scope.tmp_course.time)
+  // console.log($scope.tmp_course.avail)
+  // console.log($scope.tmp_course.cap)
+  // console.log($scope.tmp_course.color)
+  // console.log($scope.tmp_course.enrolled)
+  // console.log($scope.tmp_course.location)
 
+
+
+$scope.bookmarks_button = "Add Bookmark"
   $scope.add_bookmark = function(){
     $ionicLoading.show({
        template: 'Loading...'
      });
 
-    $scope.bookmarks_button = "Bookmark Added!"
+  
     if(courseData.in_bookmarks()){
       $scope.bookmarks_button = "Added!"
     }
     courseData.push_bookmarks();
     $scope.bookmarks_button = "Added!"
+    courseData.push_bookmarks();
     $ionicLoading.hide();
   }
 
