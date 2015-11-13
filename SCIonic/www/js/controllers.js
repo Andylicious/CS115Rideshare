@@ -4,7 +4,7 @@ angular.module('starter.controllers', [])
 .controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
     template: 'Getting Courses...'
-  });
+ });
   //console.log(sharedProperties.get_term_string())
   $scope.curr_quarter = sharedProperties.get_term_string();
     //this function is called when we click on a course, sets
@@ -71,9 +71,6 @@ angular.module('starter.controllers', [])
       var color;
       var course_book_filtered;
       var threshold;
-      var course_book_filtered;
-
-
 
 
       //results_tr holds the individual class data
@@ -109,8 +106,7 @@ angular.module('starter.controllers', [])
         course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
         course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
         course_enrolled, course_avail, course_location, color, course_books_filtered};
-
-        //this is our "big" data structure holding all our classes
+    //this is our "big" data structure holding all our classes
 
         class_data.push(course_map);
         ////console.log("----END OF CLASS---")
@@ -170,11 +166,6 @@ angular.module('starter.controllers', [])
   //  {{$scope.tmp_course.longname}}
 
 
-
-
-
-
-
   // console.log($scope.tmp_course.name)
   // console.log($scope.tmp_course.longname)
   // console.log($scope.tmp_course.type)
@@ -188,22 +179,34 @@ angular.module('starter.controllers', [])
 
 
 
+  // console.log($scope.tmp_course.longname);
+  // console.log($scope.tmp_course.type);
+  // console.log($scope.tmp_course.date);
+  // console.log($scope.tmp_course.time);
+  // console.log($scope.tmp_course.avail);
+  // console.log($scope.tmp_course.cap);
+  // console.log($scope.tmp_course.color);
+  // console.log($scope.tmp_course.enrolled);
+  // console.log($scope.tmp_course.location);
+
+
 $scope.bookmarks_button = "Add Bookmark"
+if(courseData.in_bookmarks()){
+      $scope.bookmarks_button = "Added!"
+    }
+
   $scope.add_bookmark = function(){
     $ionicLoading.show({
        template: 'Loading...'
      });
-
   
     if(courseData.in_bookmarks()){
       $scope.bookmarks_button = "Added!"
     }
     courseData.push_bookmarks();
     $scope.bookmarks_button = "Added!"
-    courseData.push_bookmarks();
     $ionicLoading.hide();
-  }
-
+}
   //  console.log(sharedLinks.get_course_link())
     $http.get(sharedLinks.get_course_link())
        .then(function(response){
