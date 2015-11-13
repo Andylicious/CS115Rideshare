@@ -1,5 +1,24 @@
-<ion-view view-title="Bookmarks">
-  <ion-content>
-    <h1>Bookmark</h1>
+<ion-view title="Bookmarks">
+  <ion-content ng-controller="bookmarksCtrl" has-header="true" has-tabs="true" padding="true">
+   <ion-list>
+        <div ng-click="course_func(courses.link, courses.prof, courses)" ng-repeat="courses in bookmarks_list">
+                  <a class="item">
+                    <h2 style="margin=left; font-size: 1.5em">
+                      {{courses.name}}
+                      <span style="color: gray">  •  </span>
+                      {{courses.longname}}
+                    </h2>
+                    <p style="color: black">{{courses.date}} • {{courses.time}} • {{courses.location}}</p>
+                    <p>
+                      <span style="font-size: 1.5em" ng-style="{'color': courses.color}">
+                        {{courses.avail}}</span> seat(s) remaining:
+                      <span style="color: black">
+                        {{courses.enrolled}} / {{courses.cap}}</span> seats filled
+                    </p>
+
+                    <p>Taught by <span style="color: black">{{courses.prof}}</span></p>
+                </a>
+        </div>
+      </ion-list>
   </ion-content>
 </ion-view>

@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 
-.controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks) {
+.controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
     template: 'Loading...'
   });
@@ -9,11 +9,14 @@ angular.module('starter.controllers', [])
   //this function is called when we click on a course, sets
   //global variable for the course link and course prof for courseView
   //to use
-  $scope.course_func = function(vm, vm_prof){
+  $scope.course_func = function(vm, vm_prof, vm_course){
     sharedLinks.set_course_link(vm);
     sharedProf.set_course_prof(vm_prof);
+    courseData.set_tmp_course(vm_course);
     $state.go('app.courseView');
   }
+
+
   //this sends a json string similar to what pisa.ucsc.edu requires
   //to andy's server
   var jsonString = 
@@ -128,10 +131,44 @@ angular.module('starter.controllers', [])
 
 
  
-.controller('courseViewCtrl', function($scope,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks) {
+.controller('courseViewCtrl', function($scope,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
   $ionicLoading.show({
     template: 'Loading...'
   });
+
+  $scope.tmp_course = courseData.get_tmp_course();
+  console.log($scope.tmp_course);
+
+  //available variables for courseView
+  //example of usage inside courseView.html: 
+  //  {{$scope.tmp_course.avail}} 
+  //  {{$scope.tmp_course.longname}}
+
+  // console.log($scope.tmp_course.name)
+  // console.log($scope.tmp_course.longname)
+  // console.log($scope.tmp_course.type)
+  // console.log($scope.tmp_course.date)
+  // console.log($scope.tmp_course.time)
+  // console.log($scope.tmp_course.avail)
+  // console.log($scope.tmp_course.cap)
+  // console.log($scope.tmp_course.color)
+  // console.log($scope.tmp_course.enrolled)
+  // console.log($scope.tmp_course.location)
+
+
+
+
+  $scope.add_bookmark = function(){
+    $ionicLoading.show({
+       template: 'Loading...'
+     });
+    
+    courseData.push_bookmarks();
+    console.log(courseData.get_bookmarks_size());
+
+    $ionicLoading.hide();
+  }
+    
   //  console.log(sharedLinks.get_course_link())
     $http.get(sharedLinks.get_course_link())
        .then(function(response){
@@ -394,6 +431,20 @@ angular.module('starter.controllers', [])
  }
 
 })
+.controller('bookmarksCtrl', function ($scope, courseData) {
+   $scope.bookmarks_list = courseData.get_bookmarks();
+   console.log($scope.bookmarks_list);
+
+$scope.course_func = function(vm, vm_prof, vm_course){
+  console.log("hello")
+    sharedLinks.set_course_link(vm);
+    sharedProf.set_course_prof(vm_prof);
+    courseData.set_tmp_course(vm_course);
+    $state.go('app.courseView');
+  }
+
+
+  })
 
 .controller('SubMenuCtrl', function ($scope) {
   //  console.log('sub menu controller');
