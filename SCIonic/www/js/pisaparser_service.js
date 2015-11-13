@@ -22,13 +22,11 @@
                     
 
                     var term = tmp.getElementById('term_dropdown');
-
-                    
-
                     var session = tmp.getElementById('Session');
                     var reg_status = tmp.getElementById('reg_status');
                     var subject = tmp.getElementById('subject');
                     var ge = tmp.getElementById('ge');
+                    var course_number = tmp.getElementById('catalog_nbr');
 
 
                     //console.log("Term = " + term + " With length = " + term.length);
@@ -38,12 +36,14 @@
                     var reg_status_id = [];
                     var subject_id = [];
                     var ge_id = [];
+                    var course_number_id = [];
 
                     var term_string = [];
                     var session_string = [];
                     var reg_status_string = [];
                     var subject_string = [];
                     var ge_string = [];
+                    var course_number_string = [];
 
                     for(var i = 0; i < term.length; i++){
                         var tmp_term = term[i];
@@ -74,6 +74,12 @@
                     	ge_id.push(tmp_ge.value);
                     	ge_string.push(tmp_ge.innerText);
                     }
+                    
+                     for (var i = 0; i < course_number.length; i++){
+                    	var tmp_course_number = course_number[i];
+                    	course_number_id.push(tmp_course_number.value);
+                    	course_number_string.push(tmp_course_number.innerText);
+                    }
 
    
                     var term_map = {term_string, term_id};
@@ -81,9 +87,10 @@
                     var reg_status_map = {reg_status_string, reg_status_id};
                     var subject_map = {subject_string, subject_id};   
                     var ge_map = {ge_string, ge_id};
+                    var course_number_map = {course_number_string, course_number_id};
 
 
-                    var pisa_results = { term_map,session_map,reg_status_map,subject_map,ge_map };
+                    var pisa_results = { term_map,session_map,reg_status_map,subject_map,ge_map,course_number_map };
 
                     return pisa_results;
                 }

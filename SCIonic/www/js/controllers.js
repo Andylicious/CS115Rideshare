@@ -239,6 +239,13 @@ angular.module('starter.controllers', [])
   }).then(function(modal) {
     $scope.modal_gened = modal;
   });
+  
+    $ionicModal.fromTemplateUrl('advanced-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.modal_advanced = modal;
+  });
 
 
   //when the button is clicked for the modal to open...
@@ -251,6 +258,8 @@ angular.module('starter.controllers', [])
      $scope.modal_status.show();
     }else if(vm == "gened-modal.html"){
      $scope.modal_gened.show();
+    }else if(vm == "advanced-modal.html") {
+     $scope.modal_advanced.show();
     }
   };
 
@@ -338,9 +347,25 @@ angular.module('starter.controllers', [])
      }
    }
    document.getElementById("geid").innerHTML = vm.ge_string[gened_index];
-   sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
-   ////console.log(gened_index);
-   $scope.modal_gened.hide();
+      sharedProperties.set_ge_bind(vm.ge_id[gened_index]);
+      ////console.log(gened_index);
+      $scope.modal_gened.hide();
+ }
+   $scope.advanced_button = function(vm,classes){
+    var advanced_select = document.getElementById( "advanced_select" );
+    var advanced_index = 0;
+
+   for(var i = 0; i < vm.course_number_string.length; i++){
+     if(vm.course_number_string[i] == classes){
+        advanced_index = i;
+         $scope.modal_advanced.hide();
+        break;
+     }
+   }
+   document.getElementById("advancedid").innerHTML = vm.course_number_string[advanced_index];
+   sharedProperties.set_cat_nbr_bind(vm.ge_id[advanced_index]);
+   console.log(advanced_index);
+   $scope.modal_advanced.hide();
  }
 
 })
