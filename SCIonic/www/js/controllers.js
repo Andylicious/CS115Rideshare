@@ -3,7 +3,11 @@ angular.module('starter.controllers', [])
 
 .controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
     template: 'Getting Courses...'
+=======
+    template: 'Fetching Class Data...'
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
   });
   //console.log(sharedProperties.get_term_string())
   $scope.curr_quarter = sharedProperties.get_term_string();
@@ -69,9 +73,16 @@ angular.module('starter.controllers', [])
       var course_links;
       var course_desc;
       var color;
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
       var threshold;
+<<<<<<< 697a5ca84c3f2fabb8ac16b28730d2a65fe2b6ce
       var course_book_filtered;
 
+=======
+=======
+      var course_book_filtered;
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
 
       //results_tr holds the individual class data
       //we propagate our parsing variables with its appropriate
@@ -105,7 +116,17 @@ angular.module('starter.controllers', [])
         }
         course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
         course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
+<<<<<<< 697a5ca84c3f2fabb8ac16b28730d2a65fe2b6ce
         course_enrolled, course_avail, course_location, color, course_books_filtered};
+=======
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
+        course_enrolled, course_avail, course_location, color};
+
+=======
+        course_enrolled, course_avail, course_location, color, course_books_filtered};
+        
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
         //this is our "big" data structure holding all our classes
 
         class_data.push(course_map);
@@ -145,7 +166,17 @@ angular.module('starter.controllers', [])
 })
 
 
+<<<<<<< 697a5ca84c3f2fabb8ac16b28730d2a65fe2b6ce
 .controller('courseViewCtrl', function($scope,$state,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
+=======
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
+
+.controller('courseViewCtrl', function($scope,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
+=======
+ 
+.controller('courseViewCtrl', function($scope,$state,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
   $ionicLoading.show({
     template: 'Fetching Data and Student Reviews...'
   });
@@ -156,11 +187,21 @@ angular.module('starter.controllers', [])
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
+<<<<<<< 697a5ca84c3f2fabb8ac16b28730d2a65fe2b6ce
+=======
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
+  console.log($scope.tmp_course);
+=======
+  //console.log($scope.tmp_course);
+
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
   //available variables for courseView
   //example of usage inside courseView.html:
   //  {{$scope.tmp_course.avail}}
   //  {{$scope.tmp_course.longname}}
 
+<<<<<<< 697a5ca84c3f2fabb8ac16b28730d2a65fe2b6ce
 
 
 
@@ -168,12 +209,51 @@ $scope.bookmarks_button = "Add Bookmark"
 if(courseData.in_bookmarks()){
       $scope.bookmarks_button = "Bookmark Added!"
     }
+=======
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
+  // console.log($scope.tmp_course.name);
+  // console.log($scope.tmp_course.longname);
+  // console.log($scope.tmp_course.type);
+  // console.log($scope.tmp_course.date);
+  // console.log($scope.tmp_course.time);
+  // console.log($scope.tmp_course.avail);
+  // console.log($scope.tmp_course.cap);
+  // console.log($scope.tmp_course.color);
+  // console.log($scope.tmp_course.enrolled);
+  // console.log($scope.tmp_course.location);
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
 
+=======
+  // console.log($scope.tmp_course.name)
+  // console.log($scope.tmp_course.longname)
+  // console.log($scope.tmp_course.type)
+  // console.log($scope.tmp_course.date)
+  // console.log($scope.tmp_course.time)
+  // console.log($scope.tmp_course.avail)
+  // console.log($scope.tmp_course.cap)
+  // console.log($scope.tmp_course.color)
+  // console.log($scope.tmp_course.enrolled)
+  // console.log($scope.tmp_course.location)
+
+
+
+$scope.bookmarks_button = "Add Bookmark"
+if(courseData.in_bookmarks()){
+      $scope.bookmarks_button = "Bookmark Added!"
+    }
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
   $scope.add_bookmark = function(){
     $ionicLoading.show({
        template: 'Loading...'
      });
+<<<<<<< b1825cae3c2fc4ce4ef210346fcd14b7bcf26dc1
 
+=======
+    $scope.bookmarks_button = "Bookmark Added!"
+    if(courseData.in_bookmarks()){
+      $scope.bookmarks_button = "Bookmark Added!"
+    }
+>>>>>>> Made bookmarks a little bit more robust, added a textbooks pane
     courseData.push_bookmarks();
     $ionicLoading.hide();
   }
