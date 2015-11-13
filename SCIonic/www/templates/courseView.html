@@ -23,10 +23,10 @@
 </div>
 <div class="row">
 <div class="col-50">
-<button ng-click="add_bookmark()" class="button button-full ink"> Add Bookmark </button>
+<button ng-click="add_bookmark()" class="button button-full ink"> {{bookmarks_button}}</button>
 </div>
 <div class="col-50">
-<button class="button button-full ink"> See Textbooks</button>
+<button class="button button-full ink" ng-click="go_to_iframe()"> See Textbooks</button>
 </div>
 </div>
 
@@ -42,6 +42,7 @@
   <a class="item">
     Average Rating: {{quality_score}} <br>
     Average Grade: {{average_grade}} <br>
+
   </a>
   </div>
    <div class="col-50">
@@ -61,7 +62,7 @@
   </div>
   <div class="item item-text-wrap" ng-repeat="reviews in comments_block">
 <a class="item">
-     <div class="row">
+  <div class="row"> 
       <div class="col-50">
 
      Date of Review: {{reviews.date}}<br>

@@ -16,3 +16,11 @@
         display: none;
     }
 }
+ion-content div.scroll{
+  height: 90%; }
+
+.webPage{
+  width: 104%;
+  height: 113%;
+  border: 2px solid #FFFFFF;
+  padding: 1rem;}
