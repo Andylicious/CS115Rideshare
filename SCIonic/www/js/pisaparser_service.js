@@ -75,7 +75,8 @@
 
    
                     var term_map = {term_string, term_id};
-                    sharedProperties.set_term_bind(term_map.term_id[0])
+                    sharedProperties.set_term_bind(term_map.term_id[0]);
+                    sharedProperties.set_term_string(term_map.term_string[0]);
                     var session_map = {session_string, session_id};
                     var reg_status_map = {reg_status_string, reg_status_id};
                     var subject_map = {subject_string, subject_id};   
