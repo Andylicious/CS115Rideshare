@@ -1,6 +1,8 @@
 # CS115 - Team Hipster - Ionic SC 
 ##Group repository for CS115 group
 
+[![Join the chat at https://gitter.im/Andylicious/TeamHipster_IonicSC](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/Andylicious/TeamHipster_IonicSC?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 Everybody in this group is writing code for all aspects of the project, but more formally our roles are: 
 
 Project/Product Manager & Developer: Kangdi Ni
