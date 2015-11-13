@@ -71,6 +71,8 @@ angular.module('starter.controllers', [])
       var color;
       var course_book_filtered;
       var threshold;
+      var course_book_filtered;
+
 
 
 
@@ -147,6 +149,7 @@ angular.module('starter.controllers', [])
 })
 
 
+
  
 .controller('courseViewCtrl', function($scope,$state,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
 
@@ -160,6 +163,17 @@ angular.module('starter.controllers', [])
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
+
+  //available variables for courseView
+  //example of usage inside courseView.html:
+  //  {{$scope.tmp_course.avail}}
+  //  {{$scope.tmp_course.longname}}
+
+
+
+
+
+
 
   // console.log($scope.tmp_course.name)
   // console.log($scope.tmp_course.longname)
