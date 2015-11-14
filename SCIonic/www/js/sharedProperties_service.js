@@ -4,6 +4,7 @@
  *
  */
 angular.module('starter.controllers').service('sharedProperties', [function() {
+
     var action = "results";
     var term_bind = "2158";
     var reg_bind = "0";

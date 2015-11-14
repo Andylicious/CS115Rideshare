@@ -16,23 +16,23 @@ angular.module('starter.controllers', [])
   }
   //this sends a json string similar to what pisa.ucsc.edu requires
   //to andy's server
-  var jsonString = 
-    "{\"action\":\"" +sharedProperties.get_action()+ "\"," + 
-    "\"term_bind\":\"" +sharedProperties.get_term_bind()+ "\"," + 
-    "\"reg_bind\":\"" +sharedProperties.get_reg_bind()+ "\"," + 
-    "\"sub_bind\":\"" +sharedProperties.get_sub_bind()+ "\"," + 
-    "\"cat_op_bind\":\"" +sharedProperties.get_cat_op_bind()+ "\"," + 
-    "\"cat_nbr_bind\":\"" +sharedProperties.get_cat_nbr_bind()+ "\"," + 
-    "\"title_bind\":\"" +sharedProperties.get_title_bind()+ "\"," + 
+  var jsonString =
+    "{\"action\":\"" +sharedProperties.get_action()+ "\"," +
+    "\"term_bind\":\"" +sharedProperties.get_term_bind()+ "\"," +
+    "\"reg_bind\":\"" +sharedProperties.get_reg_bind()+ "\"," +
+    "\"sub_bind\":\"" +sharedProperties.get_sub_bind()+ "\"," +
+    "\"cat_op_bind\":\"" +sharedProperties.get_cat_op_bind()+ "\"," +
+    "\"cat_nbr_bind\":\"" +sharedProperties.get_cat_nbr_bind()+ "\"," +
+    "\"title_bind\":\"" +sharedProperties.get_title_bind()+ "\"," +
     "\"instr_name_bind\":\"" +sharedProperties.get_instr_name_bind()+ "\"," +
-    "\"instr_bind\":\"" +sharedProperties.get_instr_bind()+ "\"," + 
-    "\"ge_bind\":\"" +sharedProperties.get_ge_bind()+ "\"," + 
-    "\"crse_op_bind\":\"" +sharedProperties.get_crse_op_bind()+ "\"," + 
-    "\"crse_from_bind\":\"" +sharedProperties.get_crse_from_bind()+ "\"," + 
-    "\"crse_to_bind\":\"" +sharedProperties.get_crse_to_bind()+ "\"," +  
-    "\"crse_exact_bind\":\"" +sharedProperties.get_crse_exact_bind()+ "\"," + 
-    "\"days_bind\":\"" +sharedProperties.get_days_bind()+ "\"," + 
-    "\"times_bind\":\"" +sharedProperties.get_times_bind()+ "\"," + 
+    "\"instr_bind\":\"" +sharedProperties.get_instr_bind()+ "\"," +
+    "\"ge_bind\":\"" +sharedProperties.get_ge_bind()+ "\"," +
+    "\"crse_op_bind\":\"" +sharedProperties.get_crse_op_bind()+ "\"," +
+    "\"crse_from_bind\":\"" +sharedProperties.get_crse_from_bind()+ "\"," +
+    "\"crse_to_bind\":\"" +sharedProperties.get_crse_to_bind()+ "\"," +
+    "\"crse_exact_bind\":\"" +sharedProperties.get_crse_exact_bind()+ "\"," +
+    "\"days_bind\":\"" +sharedProperties.get_days_bind()+ "\"," +
+    "\"times_bind\":\"" +sharedProperties.get_times_bind()+ "\"," +
     "\"acad_bind\":\""+sharedProperties.get_acad_bind()+"\"}";
   var jsonObj = JSON.parse(jsonString);
   var class_data = []
@@ -42,7 +42,7 @@ angular.module('starter.controllers', [])
     /*posting to /post */
     url: 'http://198.199.106.134:3412/class',
     contentType: "text/plain",
-    data: jsonObj                
+    data: jsonObj
     })
 
   //if the post request succeeds, we are returned the queried
@@ -59,8 +59,9 @@ angular.module('starter.controllers', [])
       var course_links;
       var course_desc;
       var color;
+      var threshold;
 
-      //results_tr holds the individual class data 
+      //results_tr holds the individual class data
       //we propagate our parsing variables with its appropriate
       //inner text
       for(var i = 1; i < results_tr.length; i++){
@@ -75,13 +76,14 @@ angular.module('starter.controllers', [])
         course_cap = results_tr[i].getElementsByTagName('td')[8].innerText;
         course_enrolled = results_tr[i].getElementsByTagName('td')[9].innerText;
         course_avail = results_tr[i].getElementsByTagName('td')[10].innerText;
-        
+
         //taylor's really fancy color changing code
-        //if the course availaility hits a certain point,
+        //if the course availaility hits a certain point (25% seats remaining),
         //it changes a certain color inside our resultsView
+        threshold = course_cap * 0.25;
         if(course_avail == 0){
           color = "red";
-        }else if(course_avail > 0 && course_avail < 11){
+        }else if(course_avail < threshold){
           color = "#f39c12"
         }else{
           color = "green"
@@ -89,18 +91,18 @@ angular.module('starter.controllers', [])
         course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
         course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
         course_enrolled, course_avail, course_location, color};
-        
+
         //this is our "big" data structure holding all our classes
 
         class_data.push(course_map);
         ////console.log("----END OF CLASS---")
-                  
+
               }
 
         $scope.groups = [];
         for(var i = 0; i < class_data.length; i++){
           //here's where i think where we can propagate scope.groups
-          var check = 
+          var check =
              {name: class_data[i].course_name_short,
              longname: class_data[i].course_name_long,
              type: class_data[i].course_type,
@@ -127,7 +129,7 @@ angular.module('starter.controllers', [])
 })
 
 
- 
+
 .controller('courseViewCtrl', function($scope,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks) {
   $ionicLoading.show({
     template: 'Loading...'
@@ -150,12 +152,12 @@ angular.module('starter.controllers', [])
             $scope.description = descri[0].innerHTML
            }
           }
-                      
+
           //at the very end you want
           var desc = "" //a very long string
           var open_or_close ="" //a simple string that indicates if its open or closed
-          var discussion_SECTIONS = "" //get all the discussion sections 
-          //and possibly their related enrollment, capacity, status 
+          var discussion_SECTIONS = "" //get all the discussion sections
+          //and possibly their related enrollment, capacity, status
     });
 
   var ratings_prof=["Katznelson, Yonatan","Bauerle, Frank","Quinn, Ralph","Eastman, Mark","Mendes, Bruno","Tantalo, Patrick","Tonay, Veronica","Migliore, Edward","Kaun, David","Aptheker, Bettina","Bhattacharya, Nandini","Zavanelli, Mary","Mackey, Wesley","Schleich, Tom","Roland, Randa","Andrews, Frank","Mitchell, Richard","Dalbey, Mike","Zihlman, Adrienne","Steinacker, Adriane","Marinovic, Baldo","Guerra, Francesca","Palleros, Daniel","Mathiowetz, Dean","Flannery, Mary","Thompson, Bruce","Bowman, Barry","Rothwell, Wendy","Fung, K.C","Berman, Abraham","Shepherd, Robert","Bogomolni, Roberto","Cardilla, Kim","Gamel, Mary-Kay","Martyna, Wendy","Switkes, Eugene","Karlton, Hester","Chude-Sokei, Louis","Crosby, Faye","Moulds, Gerald","Christy, Alan","Kawamoto, Alan","Wirls, Dan","Lasar, Matthew","Calierno, Carlos","Arondekar, Anjali","Gonzalez, Julie","Singaram, Bakthan","Feldman, J.F.","Franca, Paulo","Baker, Mark","Limbrick, Peter","Di Blas, Andrea","Larrabee, Tracy","Lodha, Suresh","Arthur, Derede","Garaud, Pascale","McDowell, Charles","Akhtar, Nameera","Kuttner, Fred","Schliech, Tom","Anderson, Roger","Bernasconi, Claude","Pratkanis, Anthony","Greene, Jody","Roberti, Trevor","Azmitia, Margarita","Haddad, Brent","Mogel, Jen","Isbister, John","Tamkun, John","Coonerty, Ryan","Elbaum, Bernard","Kim, L.S.","Lipschutz, Ronnie","Pandey, Annapurna","Robinson, Forrest","Aladro-Font, Jordi","Catlos, Brian","Habicht-Mauche, Judith","Millhauser, Glenn","Neuman, Dard","Ogren, Linda","Tchamni, Avi","Brahm, Gabe","Delgado, Guillermo","Gong, Allison","Seth, Vanita","Pandey, Triloki","Connery, Chris","Oteng, Maxwell","Simon, Ezequias","Crane, David","Griggs, Gary","Guha Thakurta, Raja","Braslau, Rebecca","Faunce, Biff K.","Leaper, Campbell","Scheie, Danny","Cameron, E","Kamehiro, Stacy","Lunine, Brij","McCloskey, Jim","Tappero, Sue","Tromba, Tony","Campbell, Walter","Field, Rebecca","Gjerde, Per","Haney, Craig","Hunter, Donna","Reinarman, Craig","Yang-Murray, Alice","Bass, Jamey","Dent, Gina","Ellis, Jon","Gomez, J.C.","Rava, Annalisa","Todd, Jude","Wilson, James","Gibbs, Ray","Graham, Paul","Hamilton, Roxanne","Scripture, Dan","Sinervo, Barry","Washburn, Jan","Baumgarten, Murray","Centineo, Giulia","Cope, David","Hinck, Lindsay","Morris, Robin","Bridgeman, Bruce","Fischer, A. E.","Hankamer, Jorge","Morris, Maria","Mostkoff, Peter","Romero, Alvaro","Szasz, Andrew","Thompson, Jill","Cooperstein, Bruce","Elsey, Angela","Hedrick, Charles","Honig, Emily","Parker, Ingrid","Poblete, Juan","Simonton, Katie","Urban, Michael","Walsh, Tom","Bertram, Eva","Carson, Ben","Chen, Nancy","Dunkin, Robin","Gustafson, Irene","Hamel, Gildas","Hastie, Amelie","Todorov, Andrey","Beecher, Jonathan","Dobkin, Carlos","Foley, Kathy","Godzich, Wlad","Gruhn, Isebill","Newberry, Ellen","Pogson, Grant","Polecritti, C. L.","Seymour, Travis","Shaw, Carolyn","Smith, David","Van Gelder, Allen","Wessman, David","Anthony, David","Benjamin, Ilan","Fang, Jerome","Jones, William","Kamakaka, Rohinton","King, Robin","Loik, Michael","Lubeck, Paul","Marotti, William","Schlesinger, Zack","Tamanoi, Hirotaka","Thomas, Megan","Wohlfeiler, Richard","Ash, Doris","Hester, Karlton","Kletzer, Lori","Marion, Justin","Noller, Harry","Perez, Ariel","Roby, Pamela","Wilson, Margaret","Wittman, Donald","Cooper, Catherine","Gallagher, Patty","Kenez, Peter","Knisely, Lindsay","Murray, Derrick","Potts, Donald","Rose, Tricia","Bettie, Julie","Callanan, Maureen","Christianson, James","Crews, Phil","Dorfan, David","Glass, Ronald","Leicester, Marshall","Miller, Ethan","Perera, Nirshan","Saxton, William","Schwartz, Hilde","Steiner, Andrea","Walsh, Carl E.","Abbink, Emily","Bailey, Delbert","Barsimantov, James","Bowin, John","Gil, Ricard","Harding, Susan","Jannarone, Kimberly","Jonas, Suzanne","Leikin, Anatole","Meister, Bob","Rogoff, Barbara","Baden, Bob","Bazeghi, Cyrus","Calsoyas, Candace","Draper, David","Fitzmaurice, Tim","Frisk, Jerome","Frymer, Paul","Hoffman, David","Lim, Yuhon","Miller, Leta","Navarro, Marta","Perla, Hector","Soussloff, Catherine","Zhang, Jin","Ehrhardt, Torsten","Guevara, Dan","Lay, Thorne","Mester, R. Armin","Milligan, Lauren","Neu, Jerome","Thorne, Avril","Winther, Rasmus","Wolf-Meyer, Matthew","Aguirre, Anthony","Barcelo, Brenda","Berger, Martin","Chung, Sandy","Crow, Ben","Feldheim, David","Langridge, Ruth","Lokey, Scott","Marr, Margaret","Schechter, John","Schoenman, Roger","Silver, Kiva","Weaver, Amy","Cooppan, Vilashini","Gaitet, Pascale","Goff, Robert","Lozano, Benjamin","Najera-Rameriez, Olga","Pudup, Mary Beth","Robertson, Dena","Spearot, Alan","Thangavelu, Kirtana","Xu, Bangteng","Abrams, Elizabeth","Bernardi, Giacomo","Brandwajn, Alexandre","Carlstroem, Catherine","Chaufan, Claudia","Cooper, Stewart","Diaz, Maria Elena","Foxtree, Jean","Gillman, Susan","Hendricks, Margo","Horne, Jennifer","Keenan, David","Lee, Jeremy","McWilliams, Mallory","Radhika, Mongia","Scott, William","Wilson, Robert","Wu, Thomas","Ares, Manuel","Brundage, David","Chuang, Patrick","Dean, Carolyn","Fritsch, Greg","Fukurai, Hiroshi","Gerster, Carol","Hutchison, Greta","Kinoshita, Sharon","Lau, Kimberly","McCarthy, Matthew D","Merchant, Tanya","Pasotti, Eleonora","Read, Benjamin","Rexach, Michael","Seara, Ana Maria","Suckiel, Ellen","Sullivan, Bill","Taiz, Lincoln","Achinstein, Betty","Aso, Noriko","Bhalla, Needhi","Burke, Edmund","Cheng, Weixin","Doak, Dan","Errington, Shelly","Flegal, Russell","Fujita, Sakae","Ginzburg, Viktor","Langdale, Allan","O'Neill, Edward","Rossman-Benjamin, Tammi","Sackett, John","Vevea, Jack","Vogt, Steven","Wang, Su Hua","Wells, Gordon","Westerkamp, Lynn","Yildiz, Fitnat","Brenneis, Donald","Brown, M.","Desa, Subhas","Feliu, Veronica","Greider, Brett","Gweon, Gey-Hong","Holsclaw, Doug","Hu, Minghui","Jordan, Leif","Juarez, Chelsey","Kellogg, Doug","Loeffler, Toby","Manduchi, Roberto","Nickell, William","Parmeter, Sarah-Hope","Perry, K.C.","Perry, Katie","Pommerenke, Kai","Tellez, Kip","Archimedes, Sandy","Balakrishnan, Gopal","Basu, Dilip","Bierman, James","Camblin, Caren","Cooper, Scott","Dupuis, Melanie","Fisher, Gary","Grieson, Ronald","Hong, Christine","Jurica, Melissa","Konopelski, Joe","Levine, Bruce","Long, Darrell","Lopez, Leslie","Lyon, Bruce","Montgomery, Ryan","Pedrotti, Ken","Prencipe, Tonia","Ramirez, Catherine","Ramirez, Renya","Yan, Huibin","Zahler, Alan","Aissen, Judith","Arnett, Jeff","Basserman, Gerry","Beal, Tandy","Burton-Carvajal, Julianne","Dunbar, Bill","Elkaim, Gabriel","Fatemi, Farnaz","Hartzog, Grant","Honnef, Theo","Knittle, Elise","Kudela, Rapheal","Ochoa, Marcia","Ortiz, Leo","Otte, Richard","Padgett, Jaye","Pullum, Geoffrey","Rangell, Paul","Schaefer, Neil","Smith, Graeme","Vrielink, Alice","Caldwell, Melissa","Chemers, Michael","Evangelatou, Maria","Ferguson, Joel","Goldfrank, Wally","Gorsky, Suzanne","Harris-Frisk, Judith","Ivey, Linda","Kimball, Julie","Lee, Herbie","Momsen, Dorian","Monroe, Cameron","Pastor, Manuel","Press, Daniel","Scherbart, Ryan","Stamp, Shelley","Sweat, Stephen","Warren, Michael","West, Candace","Alley, Ken","Andrews, Larry","Birnbaum, Raoul","Cordova, Holly","Cox, Guy","Dominy, Nathaniel","Doris, John","Felton, Lori","Galloway, Allison","Garcia-Luna-Aceves, J.J","Gruesz, Kirsten","Hagen, Joy","Hoffman, Ruth","Kottas, Athanasios","Massoud, Mark","Mathews, Andrew","Nielsen, Jason","Pittermann, Jarmila","Ramirez, Paco","Ricco, George","Sanso, Bruno","Selden, Daniel","Shaffer, Scott","Weiss, Peter","White, Judith","Yamashita, Karen","Carter, Sue","Cioc, Mark","Das, Kuntal","Germann, Ken","Grabe, Shelly","Hammack, Phillip","Hershatter, Gail","Hoy, Jocelyn","Huginnie, Yvette","Karplus, Kevin","Kramer, Shawn","Lau, David","Lemansec, Herve","Levinson, Robert","Lunden, Anya","Martinez-Galarce, Marco","Mason, Geoffrey","Massaro, Dominic","Mehta, Rita","Pang, Alex","Quill, Lawrence","Reardon, Jennifer","Renau, Jose","Rodriguez, Abel","Sandoval, Gabriella","Silver, Mary","Storm, Benjamin","Whitehead, Jim","Williams, Terrie","Aizenman, Joshua","Betzer, Sarah","Bryant-Anderson, Rachel","Clapham, Matthew","Cochlin, Rena","Crichton, Eg","Crowson, Jeffery","Davis, Angela","Gonzalez- Pagani, Maria","Gusarson, Donald","Gwyn, Melissa","Haughwout, Margaretha","Jackson, Earl","Jansen, Virginia","Kalantary, Afsaneh","Kletzer, Ken","Klevan, Robert","Larkin, Bruce","Martinez, Alma","Martinez-Echazabal, Lourdes","Nichols, Nick","Ortiz, Paul","Poole, Jennifer","Primack, Joel","Schultz, Dawson","Skenazy, Paul","White, Kim","Zhou, Hong","Atwood, William","Barad, Karen","Bartlett, Lora","Brodie, Jean","Chute, Mahlon","Clear, Annette","Dinishak, Janette","Fisher, Andrew","Frank, Dana","Gifford-Gonzales, Diane","Gonzalez, Jennifer","Guthman, Julie","Heer, Lisa","Heusch, Clemens","Hoffman, Tony","Holman, Ted","Hurtado, Aida","Hutchison, Michael","Kay, Kathleen","Metcalf, J.P.","Michalski, Robert","Musacchio, John","Narayan, Onuttom","Nygaard, L","O'Malley, Gregory","Oprea, Ryan","Petersen, Steve","Ritz, Steve","Rofel, Lisa","Schaar, John","Schlag, Martine","Somers, Robin","Traugott, Mark","Yonge, Christopher","Zachos, James","Bassi, Karen","Blackburn, Courtney","Bulman, George","Frisk, Judith","Hoover, Merrit","Lewis, Debra","McCalman, Phil","Megharbi, Nora","Montgomery, Richard","Prado, Raquel","Ram, Deepak","Robinson, Jonathan","Shibata, Yoshihito","Sinha, Mrinal","Wang, Hong","Wilmers, Chris","Anderson, Mark","Baron, Brandin","Brandt, Scott","Brodsky, Emily","Bullock, Heather","Deutsch, Josh","Edmunds, Kate","Flanagan, Cormac","Foster, Maureen","Fregoso, Rosa-Linda","Haber, Howard","Harrington, David","Kaupp, Jennifer","Males, Mike","Mantey, Patrick","Murray, Soraya","Murray, Steven","Rajan, Ravi","Rivas, Cecilia","Rotkin, Mike","Rubin, Seth","Saposnek, Don","Shakouri, Ali","Silva, Denise","Strome, Susan","Whittaker, S.J.","Zurbriggen, Eileen","Adams, Phil","Borrego, John","Chen, Bin","Christian, Laura","Costa, Daniel","De Alfaro, Luca","Del Carpio, Citlalli","Domhoff, G. William","Farkas, Donka","Friedman, Susan","Gautier, Christiane","Georgiou, George","Gerdes, Ingeborg","Giges, Bob","Hillaker, Todd","Ishibashi, Chiyoko","Jhala, Arnav","Lee, Juhee","Lin, Doug","Linger, Dan","Lord, Chip","Milutinovic, Dejan","Monsen, Katie","Ottemann, Karen","Richards, Alan","Richardson, Daniel","Ryan, Mike","Sack, Warren","Sangrey, Trevor","Stienacker, Adrianne","Stockwell, Bob","Tannenbaum, Julie","Todd, James","Vukovich, Daniel","Yamamoto, Naoko","Abadi, Martin","Abrams, Zsuzsanna","Akeson, Mark","Alley, Jason","Andonian, Krikor","Arzaga, Rich","Bernstein, Rebecca","Caballero-Robb, Maria Elena","Callon, Jack","Chan, Pak","Degarmo, Erica","Eaton, Kent","Erin, Kate","Freeman, Carol","Gleissman, Stephen","Gould, Deborah","Gray, Herman","Greenberg, Miriam","Helmbold, David","Hitchcock, Miriam","Jablonski, Noria","Jeltema, Tesla","Kehler, Edward","Kirk-Clausen, Veronica","Koch, Paul","Krusoe, Nancy","Lynn, Jenny","McKay, Steve","Moodie, Megan","O'Hara, Matthew","Regan, Lisa","Roth, Paul","Rothman, Don","Sanford, Jeremy","Schmidt, Holger","Schwartz, Susan","Sharp, Buchanan","Silleras-Fernandez, Nuria","Swezey, Sean","Takagi, Dana","Tarikh, Ishmael","Taylor, Marcia","Treadwell, Nina","Walton-Hadlock, Steve","Wardrip-Fruin, Noah","Youmans, GM","Zuniga, Martha","Achlioptas, Dimitris","Adams-Kane, J.P","Alvarez, Sonia","Beller, Jonathan","Binder, Caitlin ","Brummel, Nicholas","Burns, Sean","Carroll, Lorentina","Croll, Don","Dine, Michael","Farquhar, Dion","Fitchen, Patti","Francis, Johanna","Friedman, Dan","Gareau, Brian","Gleeson, Shannon","Guthaus, Matthew","Hallinan, Conn","Holl, Karen","Ito, Junko","Jones, Catherine","Koch, Bill","Kotowski, Jan","Langhout, Regina","Lynch, John P.","Marlovits, John","Moody, Ingrid","Moore, Andy","Morse, Margaret","Norris, Lisa","Ouni, Slim","Perry, Pamela","Qing, Jie","Shaw, David","Singh, Nirvikar","Stone, Abraham","Ten Cate, Balder","Terdiman, Dick","Thaler, M","Ursell, Michael","Vazquez, Gustavo","Williams, Susan","Ambutter, Cassie","Anand, Pranav","Archer, Dane","Atkinson, Tyler","Bosso, Bob","Brandt, Kristen","Brasoveanu, Adrian","Castillo, Pedro","Childs, John","Deamer, David","deHaan, Ed","Desjardins, Jacques","Dong, Chongying","Fiore, Giacomo","Frangos, Maria","Gong, Qi","Gray, Chris Hables","Greenberg, Mariam","Hawkes, Ellen","Hoppie, Bryce","Klett, Joseph","Knopf, Jeffrey","Liu, Qiang","Lusztig, Irene","Magnat, Virginie","McKercher, Patrick","Millman, M","Mock, John","Moore, Casey","Moschetti, Thomas","Mulvaney, Dustin","Murai, Emily","Newman, John","Nilsen, Aaron","Nunez, Frank","Profumo, Stefano","Romero-Marco, Alvaro","Silver, M. E.","Tao, Hai","Thorn, David","Todd, Drew","Trifonova, Temenuga","Tromba, Anthony","Tulaczyk, Slawek","Warmuth, Manfred","Whitehead, Nathan","Wilson, Nicole","Woo, Deborah","Yost, Jennifer","Zavaleta, Erika","Zehr, J.P","Zeigler, Nancy","Zyzik, Eve","Ardestani, Ehsan","Arredondo, Gabriela","Barahona, Byron","Boeger, Hinrich","Boltje, Robert","Brooks, George","Bruland, Ken","Bury, Jeffrey","Cailloux, Renee","Campos, Darshan Elena","Cheng, A. (meg)","Crane, Sheila","Davis, James","Detar, Liddy","Edwards, Christopher","Fernando, Mayanthi","Fox, Jonathan","Franko, Mark","Hannah, H.L.","Hicks, Michael","Issa, Nouma","Jackson, Chris","Liu, Rosa","Longo, Philip","Longo, Regina","McGuire, Grant","Mohammad, K. Silem","Morton, Michelle","Musch, Kim","Noren (kramer), Shawn","Olsen, Brad","Peffer, John","Rabkin, Sarah","Ravelo, A. Christina","Rountree, Cathleen","Sahota, Guriqbal","Samuels, Jessica","Schonbek, Maria","Schumm, Bruce","Sher, Alexander","Sloan, Lisa","Stoller, N","Tassio, Michael","Terhaar, Terry","Tomlinson, Jack","Torres-Mateluna, Ricard","V, Natasha","Watts, Lewis","Weissman, Martin","White, Aaronette","Williams, Quentin","Yeakel, Justin","Young, Gary","Aldrich, Eric","Amis, Margaret","Anderson, E.W.","Beal, Amy","Beem, Lucas","Bridges, F.","Byrne, Catherine","Camps, Manel","Carr, Emily","Carter, Steve","Clarke, Duncan","Daniel, Sharon","Derr, Jennifer","Deutsch, Nathaniel","Domhoff, Joel","Dommel, Hans Peter","Fazzino, J.M","Flanagan, Veronica","Flinspach, Susan","Fritz, Donald","Fusari, Margaret","Gilbert, Greg","Goff, Lynda","Halk, Erica","Handschuh, Catherine","Hogan, T","Hoy, David","jacobs, Rebecca","Kingsbury, Donald","Laughlin, Greg","LU, Flora","Meininger, Aaron","Mendoza, Barbara","Moses, Kalema","Obrazcka, Katia","Pack, Larry","Paterson, Susan","Patton, Gary","Poynor, Valerie","Pratorius, Chris","Ramos-Castro, .","Ravenna, Federico","Sandovalhernandez, Jesus","Schaeffer-Grabiel, Felicity","Shanbrom, Corey","Smith, James","Stephens, Elizabeth","Stevens, Elizabeth","Strayer, R.W.","Thorsett, Stephen","Trujillo, Larry","Tsing, Anna","Tzankova, Zdravka","Warburton, Edward","Wong, Tiffany","Xifara, Tatiana","Zwald, Zachary","Abraham, Ralph","Bachman, Erik","Bloch, Stefano","Brahinsky, Joshua","Chen, Jia-Yuh","Darling, Janina","Engel, Braden","Estes, James","Fairlie, Robert","Fardis, Armin","Felix, Adrian","Fletcher, Allie","Gorry, Christopher Aspen","Isaacs, James","Juan, Gomez","Kidd, Brian","Kuchta, Shawn","Kuskey, Jessica","Landau, Greg","Lauderdale, Todd","Letourneau, Deborah","Levin, Rachel","Lieber, Jeffrey","Lonetree, Amy","LY, Boreth","Melillo, Stephanie","Mori, Cindy","Nauert, Paul","Osbourne, Scott","Paiement, Nicole","Palafox, Jose","Pease-Alvarez, Cindy","Petrie, Alan","Polecritti, Cindy","Price, Darby","Puragra, Raja","Ritola, Tonya","Rockosi, Connie","Rosen, Oren","Ruben, Giulia","Saltikov, Chad","Schalk, Terry","Schoenfeld, Vera","Shastry, Sriram","Springer, Melanie","Stone, Victoria","Sumarna, Undang","Supina, P. D.","Tan, Wang-Chiew","Varma, Anujan","Watkins, Zachary","Watson, Mary Virginia","Werner, Linda","Williams, Donald","Yost, Megan","Zhitomirskii, Michail","Atkinson, Charles","Beard, Jessica","Bennett, Elizabeth","Bernick, David","Brown, George","Carroll, Ryan","Castillo-Trelles, Carolina","Daehnke, John","Davis, Bill","Dewey, Rachel","Dlugosch, Katrina","Durand, Alice","Fankushen, Jesse","Franco, Jamie","Glatzmaier, Gary","Hancock, Quentin","Hay, John","Hibbert-Jones, Dee","Johnson, Robert Preston","Kallay, Geza","Kanagawa, Katie","Keilen, Sean","Khan, Aliyah","Kilpatrick, Marm","Konomi, Emiko","Linington, Roger","Londow, David","Mackey, Nathaniel","Maginnis, Patrice","Martin, Laura","Millard-Ball, Adam","Morrissey, Nicolas","Moss, John","Nava, Steve","Osorio, Ernestina","Pagani Gonzalez, Maria Victoria","Parekh, Surya","Payne, Cynthia","Perks, Micah","Pluhar, Chris","Polyzotis, Neoklis","Quaid, Andrea","Ralston, Amy","Reti, Jay","Ritscher, Lee","Sadjadpour, Hamid","Scheese, Emily","Schrader, Sarah","Shapiro, Lauren","Shemek, Deanna","Shin, Sangho","Shotwell, Allison","Siegel, Sheilah","Sison Mangus, Marilou","Skardon, John","Sloan-Pace, Emily","spagnolo, Francesco","Stratton, Carra","Tajima, Bohn","Teichroeb, Julie","Terrell, Sue","Vandenberg, Phil","Wagers, Matt","Wang, Yiman","Weygandt, Clara","Yasur-Landau, Assaf","Young, Peter","Zavella, Patricia","Abdelaaty, Lamis","Akella, Ram","Atanasoski, Neda","Balmforth, Niel","Banuelos, LU","Belanger, Dave","Belenkiy, Max","Blackmore, Chelsea","Buchanan, Noah","Bunch, George","Candiani, Vera","Carr, Mark","Chemers, Martin","Chen, Christopher","Chen, Shaowei","Cheung, Y.","Chin, Tammy","Coffman, Chris","Cole, Ethan","Cooper, Anna","Cooper, Natalie","Coronado, Amena","Cortés, Jorge","Craighead, Tim","Cuthbert, David","Daccarett, Paula","Davidenko, Nicolas","Drum, Meredith","Ezerova, Maria","Farhadian, Thea","Fernald, Julian","Fortney, Jonathan","Freccero, Carla","Freeman, Maria","Frick, Winifred","Furniss, Amy","Galuszka, Frank","Gaunt, Joshua","Gordon, June","Gu, Grace","Hanks, Brian","Hendren, Stacey","Hollander, Eli","Hourigan, Jeremy","Isaacson, Michael","Jacobs, Jason","Jones, Ian","Jordan, John O.","Kahana, Jonathan","Kelly, Lindsay","Krosoe, Nancy","Ku, Jacqueline","Kubby, Joel","Kurniawan, Sri","Leiva, Fernando","Lim, Jamus Jerome","Locks, Norman","Lombardi, Amy","Lowe, Todd","Mascharak, Pradip","McDade, Jennie","Mercado, Angelo","Moberg-Robinson, Emily","Moschkovich, Judit","Najarro, Adela","Naschel, Larry","O'Neil, Deva","Parker, Jennifer","Pizzuti, Grace","Poulsen, Melissa","Rich, Ruby","Rifaqat, Zeb","Riordan, Michael","Rodriguez, Jason","Rosenzweig, Laura","Ryan, Beth","Segal, Louis","Snickars, E","Stone, Michael","Suazo, Matt","Thometz, Nicole","Tucey, Cynthia","Turnbull, Stephen","Veenstra, Kerry","Walker, Marilyn","Walsh, Judy","Waters, Christina","Wecksler, Aaron","Zepeda, Susy","Zhang, YI","Aguilera, Elizabeth","Anderson, Clarissa","Antrobus, Roz","Archer, Nicole","Armstead, James","Aspaugh, Erik","Benito-Menendez, Paula","Berman, Nathaniel","Bivens, Hunter","Brose, Margaret","Bunch, Roger","Burman-Hall, Linda","Conard, Kristen","Conge, Patrick","Connelly, Sean","Coulter, Steven","Crofts, Scott","D'Amore, Antonia","Dasgupta, Samit","Deal, Amy Rose","Deich, Molly","Dooley, Michael","Duane, Timothy","Dudley, Sherwood","Falcón, Sylvanna","Fiber, Jeannie","Fox, Laurel","Franzell, Kathryn","Fribley, Benjamin","Gavande, Gabriela","Gillon, Sean","Heald, Abigail","Helmer, Kimberly","Hobbs, Gary","Jackson Jr., Earl","Keagy, Rini","Kephart, Curtis","Kingdon, Russel","Kiziltan, Bulent","Knacke, Roger","Koo, David","Kramer, Alexandra","Kumar, Mythili","La Berge, Michele","Lancaster, Helen","Laskin, Lee","Lee, Jimin","Love, Alan","Martinez-Guerrero, Olga","Mason, Jeff","McDonald, William","McWhite, Karen Francis","Medeiros, Tom","Migler-Vondollen, Theresa","Miller, Tyrus","Moglen, Helene","Mohammed, Teresa Pane","Moore, Jonathan","Mortensen, Kaija","Muldawer, Dave","Mullane, Carol","Nickel, Barry","Noe, Alva","Osborn, ED","Paik, Jee","Panayotova, Dora","Perry, Kathleen","Peterson, Maya","Pursley, Darlene","Rettus, Sara","Rigelhaupt, Jess","Sanders-Self, Melissa","Scala, Mark","Schatz, Kate","Sellin, Yara","Shin, Cecil","Silver, Eli","Stewart, Glenn","Stoddard, Trish","Takahashi, Robin","Talton, Jerry","Tombari, Joseph","Tsethlikai, Monica","Turchin, Julie","Whitworth, Paul","Widamin, Jean","Wood, Andrew","Zuo, Yi","Archer, Cam","Athens, Alison","Bacon, Christopher","Bakker, Sarah","Berman-Hall, Linda","Berney, Apryl","Boykoff, Max","Bravo De Guenni, Lelys","Brown Childs, John","Clementz, Mark","Coe, Robert","Crichton-Driera, Michael","Dierkes, Ulrich","Donaldson, Bryan","Donohue, Cathryn","Epstein, Barbara","Erickson, Shelley","Esfarjani, Keivan","Fitzsimmons, Margaret","Fox-Dobbs, Kena","Friedlander, Benjamin","Fruhling, Zachary","Gail, Geraldine","Gaytan, Marie Sarita","Gee, Allison","Glesser, Adam","Guo, Owen","Haas, Lisbeth","Hays, Cynthia","Hays, Shannon","Hirsch, Daniel","Hope-Parmeter, Sarah","Jin, Michael","Jin, Yishi","Kersey, Jon","Kim, Audrey","Kim, Hi Kyung","Kim, Jungmi","Klahn, Norma","Kuhn, Carey","Kurnoff, Shirley","Lariviere, Jonathan","Leslie, Juliana","Lindemann, Kristy","Liu, Wentai","Lo, Hui-Chi","Lonergan, Julia","Lowell, Karen","Marks, Christopher","Martinez, Carolina","Mateas, Michael","McClure, Conor","McDonald, Willaim","McKinley, Kyle","Michelman, Scott","Mosqueda, Eduardo","Mossoti, Travis","Mullin, Terry","Nakahara, Tamao","Nishimura, Yoko","Noyes, Chad","obrien, Greg","Omid, Mohamadi","Orlandi, Nicoletta ","Paradise, James","Paytan, Adina","Pearson, Erik","Peterson, Tawnya","Pohl, Ira","Racelis, Alex","Radmacher, Kim","Redfern, Terry","Reichart, Isabel","Remak-Honnef, Elizabeth","Roos, Elaine","Rutherford, Danilyn","Saijo, Hikaru","Sarran, Marina","Schafer, Andrew","Schuetze, Craig","Sen Gupta, Abhijit","Shapiro, Helen","Shennan, Carol","Sher, Anna","Solomon, Danny","Sommer, Ulrickson","Stuart, Josh","Sullivan, Elaine","Tabing, Felicia","Tamas, Melissa","Toosarvandani, Maziar","Trumbull, Robert","Tsai, Yen-Ling","Valdez, Kinan","Vigilant, Veronica","Vogel, Erin","Weitsman, Jonathan","Whitley-Putz, Lene","Williams, Franklin","Williamson, Stanley","Woosley, Stanford","Wu, Ting Ting","Wu, Yuefeng","Adler, Les","Aguirre, Cara","Akca, Ozden","Albright, Adam","Amador, Sarah","Anjaria, Jon","Appleton, Jon","Axarlian, Gabriel","Axel, Brian","Baldini, Donna","Bearns, Stuyvesant Galard","Berman, Phillip","Blood, H.Christian","Bourgain, Marina","Buck, R.F.","Burton, Kia P.","Bustillos, Ernesto","Byrd, Christy","Campbell, Jeremy","Carlise, Charles","Cauchon, Benjamin","Chan, Stephanie","Chatfield, Melissa","Chennells, Anthony","Chin, Angelina","Ching, Vignette","Chisholm, Andrew","Crook, Peter","Cummings, Justin","D'Harcourt, Ashlynn","Dalle-Ore, Christina","Day, Alex","De La Rosa, Gabriela","Delgado, Grace","Delunas, Andrew","Dimock, Chase","Elsea, Peter","Ferree, Patrick","Fiddmont, Valerie","Finberg, Keegan","Fitzgerald, Joe","Foley, Mary","Forsberg, Camilla","Garcia, Martin","Gomoll, Lucian","Haussler, David","Hawley, Kate","Hoechst, Heidi","Holocher, Paul Alexander","HU, Litze","Hugginie, Yvette","Inciarte, Monique","Jesse, Alexandra","Jewell, Leila","Johnson, Tyler","Keep, Rene","Kelso, Dennis","Kent, Patrick","Kirchner, Jesse","Koopman, Colin","Krumholz, Mark","Kudela, Raphael","Kusic-Heady, Kristen","Lehrer, Tom","Lewis, Danielle","Li, Yat","Lortie, Marie","Los Huertos, Marc","Lovett, Nicholas","Loving, Joleen","Lyness, Claire","Magee, Michael","Mangel, Marc","Mason, Stacey","McGranahan, Lucas","McMahon, Kelton","McMillen, Jennifer","Meister, Robert","Meites, Noah","Menendez, Jonathan","Michals, Sarah","Monroy, Liza","Moriarty, Eugene","Morris, Eli","Narasimhan, Ravi","Narath, Albert","Nitz, Frederic","Noren-Kramer, Shawn","Nygreen, Kysa","Okamoto, Shigeko","Pagani Gonzalez, Victoria","Partch, Carrie","Paulson, Justin","Peterschmidt, Megan","Petersen, Luba","Polansky, Larry","Porter, Eric","Pourmand, Nader","Prelinger, Richard","Prochaska, J.X.","Radovan, Amy","Raimondi, Pete","Ramirez, Christopher","Rees, Clea","Roberts, Elizabeth","Rosen, Jacob","Rosenblum, Bruce","Rowe, Christie","Rudolph, Matthew","Ruiz, Susana","Samokhina, Natalya","Sampath, Raj","Sanders, Daniela","Saya, Suleman","Schein, Rebecca","Schiffrin, Andrew","Schilz, Lisa","Scott, Judy","Scott, Suzanne","Shawn, Jerome","Shawn, Kramer","Spanbock, Benjamin","Stein-Rosen, Galia","Stucky, Amy","Sudan, Toufic","Talamantes, Frank","Teodorescu, Mircea","Thomas, Jake","Thomas, Monika","Thompson, Liana","Turner, Dan","Vangelder, Alan","Venegas, Yolanda","Vesco, Shawna","Vesecky, John","Wales, Sandra","Williams, David","Wilson, Carter","Yahm, Sara","Zeamer, Charlotte","Allen, Terry","Aproberts-Warren, Maggie","Araujo, Steven","Arulanantham, E.","Baker, Judith","Banks, Thomas","Bayne, Melissa","Beitiks, Emily","Bjorland, Clayton","Blahetka, Russ","Blumenfeld, Lev","Boal, Iain","Botsford, Lydia","Breakspear, Anthony","Britton, Emma","Brooks, E.L.","Buck, Zoe","Caballero, Julian","Cabot, Heath","Caple, Zachary","Carberry, Mira","Cardenas, Roosbelinda","Carlise, Chuck","Cohen, Whitney","Collins, Lindsey","Contos, Paul","Cook, Mea","Corbett, Rebecca","Cortella, Anne","Cruz, Cindy","Cummins, Eric","Curtiss, Casey","Delaney, Peggy","Denner, Jill","Dolan, Alicia","Engineer, Urmi","Erai, Michelle","Eric, Scott","Fajardo, Kale","Farkas, Donka","Fatemi, Tara","Feld, Ari","Finkelstein, Myra","Foster, Sesshu","Franc, Cameron","Frazier, Melissa","Garrick-Bethell, Ian","Gerloff, Dietlind","Gomez-Rivas, Camilo","Goodman, David","Goodman, Rachel","Gorden, Kea","Green, Cynthia","Green, Erik","Green, Richard Ed","Groppi, Karen","Halk, Erica","Halpern, Rob","Hansen, Bob","Heald, Abigail","Helou, Ariane","Herold, Kara","Hughey, Richard","Hwang, Clifford","Jacobson, Brianna","Jech, Dawn","Jones, Charlotte","Kar, Rosie","Karr, Kendra","Kaur, Inderjit","Kendall, Jake","Kinney, Edith","Kulikov, Dmitry","Lally, Katie","Lau, Kimberly","Laws, Kenneth","Leal, Enrique","London, Rebecca","Lopez, Marcos","Madar, Heather","Malone, Laur","Martineau, Katherine","Matera, Marc","Mathews, Bill","Mayfield, Kim","McCaughey, Catherine","McGowen, Sean","McKenzie, Elizabeth","McLaugnlin, Kevin","Miltunovic, Dejan","Mitchell, Nicholas","Moeller, Michael","Moratti, William","Mueller, Karsten","Mukherjee, Sanchita","Murphy, Brandon","Nasser, J.J.","Nieves, Diana","Noren Kramer, Shawn","Obraczka, Katia","Orourke, Sean","Orser, Kristen","Ota, Pauline","Palmer, Christian","Parmelly, Bryce","Parsons, Reid","Peck, Licia","Perkins, Tracy","Petersen, Stephen","Petrie, M","Phillips, James","Pires, George","Potika, Katerina","Prabhakar, Prema","Prochaka, Jason","Purucker, Jeb","Ramirez, F","Ramirez-Ruiz, Enrico","Ravelo, Ana","Ring, Joseph","Rodriguez, Russell","Romano, Sarah","Roome, Ben","Ross, Kevin","Rozhon, Edward","Salazar, Lauryn","Sanfilippo, Brenda","Sauthoff, Wilson","Scherer, Kayoko","Schleich, Thomas","Seene, Marissa","Segale, Matthew","Sharma, Shruti","Shearer, Heather","Sher, Sasha","Silberstein, Gary","Silva-Chavez, Katie","Sirrine, Rob","Sivak, Andrew","Smith, Brad","Smith, Donald R.","Smythe, Ayana","Snickars, Eric","Sood, Sanjay","Sparks, Antoinette","Staiano, Renzo","Stammerjohn, Sharon","Staufenbiel, Brian","Stein, Deborah","Sury, Sharath","Swanson, Reid","Syedullah, Jasmine","Tarjan, Maxine","Taylor, Jennifer","Teeple, David","Terry, Rebecca","Thompson, Elisabeth","Thompson, J.F.","Tollefson, Alan","Tribble, Melissa","Vasudevamurthy, Jagadeesh","Venegas, Yolanda","Vollmer, Karl","Wang, Andy","Watrous, Susan","Weaver, Harlan","Weise, Michael","Westbrook, Dillion","White, Tina","Wise, Nina","Wolter, Lynsey","Wood, Dalia","Woomer, Becky","Yukawa, Keiko","Affourtit, Lorraine","Akeson, Mark","Allman, Troy","Ayzner, Alex","Barber, Adelia","Barron, Manuel","Benjamin, Fribley","Benshoff, Harry","Bivens, A.H","Bockus, Andrew","Brooks, Amra","Bryan, David","Chambers, Lindsay","Chen, Nai-Chia","Choi, Jae Hoon","Cima, Allan","Conn, Brian","Cooperman, Alexandra","Coulter, Bill","Cruz, Laura","Davis, Karen","Davis, Marilyn","Dayton, Richard","Dreisbach, Sandra","Dunne, Max","Eberhart, M","Einstein, Benjamin","Ellison, Erin","Enoch, Melissa","Epps, Harland","Erin , Kate ","Fain, Lucas","Fehren-Schmitz, Lars","Finnegan, Noah ","Foland, Brent","Forrest, Christopher","Friedman, Josh","Frobshier, Tim","Gamburd, Alexander","Gan, Elaine","George, Alexander","Getoor, Lise","Glass, Kathy","Guha Thakurta, Puragra","Hamilton, Charles","Hayes, Grey","Heady, Walter","Hefty, Adam","Hollenbeck, Todd","Hoover, Mrinal","Hutchinson, Greta","Hutton, Mirabai","Jacobs, Laura","Kalami, Proshot","Kanavarioti, Anastasia","Kipps, Margo","Kumaran, Laxmi","Lee, Dongwook","Loeffler, Tony","Lokey, Robert","Lopiccalo, K.C.","Lovell, Emily","Mai, Trieu","Manke, Art","Marriott, David","Mayer, Sarah","McIlwaine, Penelope","Mehinovic, Vedran","Melville, Mike","Mester, Armin","Monroe, James","Morri, Joe","Mortensen, K.M","N. K, Shawn","Navarro, Gabriel","Noard, Kent","Noren, S.","Norren, Shawn","Norren Kramer, Shawn","Palkovacs, Eric","Peacock , Melissa ","Phebus, Bruce","Pollock, Jacob","Pratt, Bryan","Press, Daniel","Ramnath, Maia","Ridum, Mark","Romero, Alexander","Romero, Alicia","Scagliotti, Teresa","Schubert, Richard","Sharma, Bineet","Smeltzer, Erica","Smith, Glenn","Snyder, Mark","Steiner, Adrienne","Stoddart, P.L","Thorne, Lay","Thorpe, Todd","Treanor, Mike","Venturi, Daniele","Villarreal, Anthony","Watkins, James","Weaver, Mary","Wellman, David","Wiefling, Kimberly","Williams, Franklin","Wise, Carol","Zaleha, Bernard","Zuckerman, Nathaniel"]
@@ -170,7 +172,7 @@ angular.module('starter.controllers', [])
   var found = false;
   for(var i = 0; i < ratings_prof.length; i++){
     if(ratings_prof[i].indexOf(prof_last_name) !== -1){
-      
+
       prof_index = i;
       i = ratings_prof.length;
       found = true;
@@ -185,22 +187,69 @@ angular.module('starter.controllers', [])
                     var Quality = tmp.getElementsByClassName('grade');
                     //  console.log(Quality)
                     var Class = tmp.getElementsByClassName('class');
-                    var Report = tmp.getElementsByClassName('report')
+                    var Report = tmp.getElementsByClassName('commentsParagraph');
+                    var Rating = tmp.getElementsByClassName('rating');
+
+                    var Type = tmp.getElementsByClassName('rating-type')
+                    var slider_info = tmp.getElementsByClassName('rating-slider');
+                    var date_info = tmp.getElementsByClassName('date')
+
+
+
+
+                    $scope.comments_block = [];
+
+
+
                     $scope.quality_score = "";
                     $scope.average_grade = "";
+                    $scope.easiness_score = "";
+                    $scope.clarity_score = "";
+                    $scope.helpfulness_score = "";
 
-                    console.log(Quality);
+                    //console.log(Quality);
                     if(found == true){
+                      var helpfulness = slider_info[0].innerText.trim().split(/[ ,]+/);
+                      var clarity = slider_info[1].innerText.trim().split(/[ ,]+/);
+                      var easiness = slider_info[2].innerText.trim().split(/[ ,]+/);
                       $scope.quality_score = Quality[0].innerText;
                       $scope.average_grade = Quality[1].innerText;
+                      for(var i = 0; i < Report.length; i++){
+                        var report_side = Report[i].innerText.trim();
+                        var date_comment = date_info[i].innerText.trim();
+                        var report_comments = Class[i+1].innerText.trim();
+                        var report_type = Type[i].innerText.trim();
+                        var course = report_comments.split(/[ ,]+/);
+                        var course_name = course[0];
+                        var course_credit = course[1] + " " + course[2] + " " + course[3];
+                        var course_attendence = course[4] + " " + course[5];
+
+
+                      $scope.comments_block[i] = { side: report_side,
+                                                  date: date_comment,
+                                                  type: report_type,
+                                                  comments: {
+                                                              name: course_name,
+                                                              credit: course_credit,
+                                                              attendence: course_attendence
+                                                            }
+                                                 }
+                      }
+
+                    $scope.easiness_score = easiness[1];
+                    $scope.clarity_score = clarity[1];
+                    $scope.helpfulness_score = helpfulness[1];
+
+
+
                       $ionicLoading.hide();
                     }else{
-                      $scope.quality_score = "Score not found on RMP. N/A"
+                      $scope.quality_score = "Score not found on RMP. N/A";
                       $scope.average_grade = "Grade not found on RMP. N/A";
                       $ionicLoading.hide();
                     }
 
-                   
+
                   $ionicLoading.hide();
 
                     //$scope.average_grade = Quality[1].innerText
@@ -208,8 +257,10 @@ angular.module('starter.controllers', [])
          });
 
 })
-.controller('AppCtrl', function ($ionicModal,$scope, sharedProperties) {
-    
+.controller('AppCtrl', function ($ionicModal,$scope, sharedProperties, PisaService) {
+
+
+
   //sets up the modal environment
   //loads them all for future usage
   $ionicModal.fromTemplateUrl('term-modal.html', {
@@ -285,6 +336,7 @@ angular.module('starter.controllers', [])
         break;
      }
    }
+
    document.getElementById("termid").innerHTML = vm.term_string[term_index];
 
     sharedProperties.set_term_bind(vm.term_id[term_index]);
@@ -344,7 +396,7 @@ angular.module('starter.controllers', [])
  }
 
 })
- 
+
 .controller('SubMenuCtrl', function ($scope) {
   //  console.log('sub menu controller');
 
@@ -353,4 +405,3 @@ angular.module('starter.controllers', [])
 .controller('MenuCtrl', function ($scope) {
   //  console.log('courseview controller controller');
   });
-
