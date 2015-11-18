@@ -1,6 +1,7 @@
 <ion-view title={{curr_quarter}}>
+  ion content shrink
   <ion-content ng-controller="ResultsCtrl" has-header="true" has-tabs="true" padding="true">
-  {{no_results}}
+  
    <ion-list>
         <div ng-click="course_func(courses.link, courses.prof, courses)" ng-repeat="courses in groups">
                   <a class="item">
@@ -22,4 +23,6 @@
         </div>
       </ion-list>
   </ion-content>
+
 </ion-view>
+
