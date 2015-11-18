@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 
 .controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
-    template: 'Loading...'
+    template: 'Getting Courses...'
   });
 
   //this function is called when we click on a course, sets
@@ -140,25 +140,21 @@ angular.module('starter.controllers', [])
 
   $scope.tmp_course = courseData.get_tmp_course();
   console.log($scope.tmp_course);
-
   //available variables for courseView
   //example of usage inside courseView.html:
   //  {{$scope.tmp_course.avail}}
   //  {{$scope.tmp_course.longname}}
 
-  console.log($scope.tmp_course.name);
-  console.log($scope.tmp_course.longname);
-  console.log($scope.tmp_course.type);
-  console.log($scope.tmp_course.date);
-  console.log($scope.tmp_course.time);
-  console.log($scope.tmp_course.avail);
-  console.log($scope.tmp_course.cap);
-  console.log($scope.tmp_course.color);
-  console.log($scope.tmp_course.enrolled);
-  console.log($scope.tmp_course.location);
-
-
-
+  // console.log($scope.tmp_course.name);
+  // console.log($scope.tmp_course.longname);
+  // console.log($scope.tmp_course.type);
+  // console.log($scope.tmp_course.date);
+  // console.log($scope.tmp_course.time);
+  // console.log($scope.tmp_course.avail);
+  // console.log($scope.tmp_course.cap);
+  // console.log($scope.tmp_course.color);
+  // console.log($scope.tmp_course.enrolled);
+  // console.log($scope.tmp_course.location);
 
   $scope.add_bookmark = function(){
     $ionicLoading.show({
