@@ -5,7 +5,7 @@
 </div>
   <div class="card">
   <div class="item item-divider">
-    Course Details
+    <span style="font-size: 1.5em">{{$scope.tmp_course.name}}</span>
   </div>
   <div class="item item-text-wrap">
     <a class="item">
@@ -15,7 +15,7 @@
     <strong>Course Description: </strong> <br> {{description}}
   </a>
   </div>
- 
+
 </div>
 <div class="row">
 <div class="col-50">
@@ -31,7 +31,7 @@
   <div class="item item-divider">
     Professor Ratings
   </div>
-     <div class="row"> 
+     <div class="row">
       <div class="col-50">
   <a class="item">
     Average Ratings: {{quality_score}} <br>
@@ -57,8 +57,9 @@
   <div class="item item-text-wrap" ng-repeat="reviews in comments_block">
 <a class="item">
   <div class="row"> 
+
       <div class="col-50">
-    
+
      Date of Review: {{reviews.date}}<br>
     Course Taken: {{reviews.comments.name}}<br>
     {{reviews.comments.credit}}<br>
@@ -66,17 +67,17 @@
     Overall Outlook: {{reviews.type}}
 
   </div>
-   
+
    <div class="col-50">
-    
+
     {{reviews.side}}
-  
+
 </div>
 </div>
    </a>
    <hr>
   </div>
- 
+
 
   </ion-content>
 </ion-view>

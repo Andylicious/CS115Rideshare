@@ -166,16 +166,16 @@ angular.module('starter.controllers', [])
   //  {{$scope.tmp_course.avail}}
   //  {{$scope.tmp_course.longname}}
 
-  // console.log($scope.tmp_course.name)
-  // console.log($scope.tmp_course.longname)
-  // console.log($scope.tmp_course.type)
-  // console.log($scope.tmp_course.date)
-  // console.log($scope.tmp_course.time)
-  // console.log($scope.tmp_course.avail)
-  // console.log($scope.tmp_course.cap)
-  // console.log($scope.tmp_course.color)
-  // console.log($scope.tmp_course.enrolled)
-  // console.log($scope.tmp_course.location)
+  console.log($scope.tmp_course.name);
+  console.log($scope.tmp_course.longname);
+  console.log($scope.tmp_course.type);
+  console.log($scope.tmp_course.date);
+  console.log($scope.tmp_course.time);
+  console.log($scope.tmp_course.avail);
+  console.log($scope.tmp_course.cap);
+  console.log($scope.tmp_course.color);
+  console.log($scope.tmp_course.enrolled);
+  console.log($scope.tmp_course.location);
 
 
 
