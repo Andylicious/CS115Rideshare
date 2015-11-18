@@ -1,15 +1,19 @@
-<ion-view title="Course Description">
+<ion-view title="{{tmp_course.name}}">
   <ion-content ng-controller="courseViewCtrl" has-header="true" has-tabs="true" padding="true">
-
 
 </div>
   <div class="card">
   <div class="item item-divider">
-    <span style="font-size: 1.5em">{{$scope.tmp_course.name}}</span>
+    <span style="font-size: 1.5em">{{tmp_course.name}} • {{tmp_course.longname}}</span>
   </div>
   <div class="item item-text-wrap">
     <a class="item">
-    <strong>Professor Name: </strong> <br> {{prof_name}}
+      <span style="font-size: 2em" ng-style="{'color': tmp_course.color}">{{tmp_course.avail}}</span>
+      <strong style="color: gray">seats available;
+        {{tmp_course.enrolled}} / {{tmp_course.cap}} seats filled</strong><br>
+      Time & Date: <strong>{{tmp_course.time}}</strong> on <strong>{{tmp_course.date}}</strong><br>
+      Location: <strong>{{tmp_course.location}}</strong><br>
+      Professor Name:  <strong>{{prof_name}}</strong><br>
   </a>
    <a class="item">
     <strong>Course Description: </strong> <br> {{description}}
@@ -29,12 +33,14 @@
  <div class="card">
 
   <div class="item item-divider">
-    Professor Ratings
+    <span style="font-size: 1.5em">Professor Ratings</span>
+    <span style="font-size: 1.5em">|</span>
+    Powered by <span style="font-size: 1.5em">RateMyProfessor</span>
   </div>
      <div class="row">
       <div class="col-50">
   <a class="item">
-    Average Ratings: {{quality_score}} <br>
+    Average Rating: {{quality_score}} <br>
     Average Grade: {{average_grade}} <br>
 
   </a>
@@ -72,8 +78,8 @@
 
     {{reviews.side}}
 
-</div>
-</div>
+   </div>
+ </div>
    </a>
    <hr>
   </div>
