@@ -97,6 +97,79 @@ angular.module('starter.controllers', [])
                   
               }
 
+		var time_nums;
+		var time_map;
+		var time_data = [];
+		time_nums = "8 AM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "9 AM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "10 AM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "11 AM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "12 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "1 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "2 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "3 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "4 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "5 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "6 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "7 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "8 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "9 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		time_nums = "10 PM";
+		time_map = {time_nums};
+		time_data.push(time_map);
+		
+		$scope.timers = [];
+		for(var i = 0; i < time_data.length; i++) {
+			var clock =
+				{tick : time_data[i].time_nums,
+				  id: i, items:[{subName: 'subbles', subId:'1-2'}]
+				}
+				$scope.timers.push(clock);
+
+		}
+
         $scope.groups = [];
         for(var i = 0; i < class_data.length; i++){
           //here's where i think where we can propagate scope.groups
