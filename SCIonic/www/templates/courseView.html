@@ -1,41 +1,62 @@
-<ion-view title="Course Description">
+<ion-view title="{{tmp_course.name}}">
   <ion-content ng-controller="courseViewCtrl" has-header="true" has-tabs="true" padding="true">
-
 
 </div>
   <div class="card">
   <div class="item item-divider">
-    Course Details
+    <span style="font-size: 1.5em">{{tmp_course.name}} • {{tmp_course.longname}}</span>
   </div>
   <div class="item item-text-wrap">
     <a class="item">
-    <strong>Professor Name: </strong> <br> {{prof_name}}
+      <span style="font-size: 2em" ng-style="{'color': tmp_course.color}">{{tmp_course.avail}}</span>
+      <strong style="color: gray">seats available;
+        {{tmp_course.enrolled}} / {{tmp_course.cap}} seats filled</strong><br>
+      Time & Date: <strong>{{tmp_course.time}}</strong> on <strong>{{tmp_course.date}}</strong><br>
+      Location: <strong>{{tmp_course.location}}</strong><br>
+      Professor Name:  <strong>{{prof_name}}</strong><br>
   </a>
    <a class="item">
     <strong>Course Description: </strong> <br> {{description}}
   </a>
   </div>
- 
+
 </div>
 <div class="row">
 <div class="col-50">
-<button class="button button-full ink"> Bookmark This Class </button>
+<button ng-click="add_bookmark()" class="button button-full ink"> {{bookmarks_button}}</button>
 </div>
 <div class="col-50">
-<button class="button button-full ink"> View SlugSearch Reviews</button>
+<button class="button button-full ink" ng-click="go_to_iframe()"> See Textbooks</button>
 </div>
+
 </div>
+
+<div class="card" ng-controller="courseViewCtrl">
+  <div class="item item-divider">
+    <span style="font-size: 1.5em">Associated Labs and Discussion</span>
+  </div>
+  <div class="item item-text-wrap" ng-repeat="discuss in curr_arr" >
+   <a class="item" >
+    {{discuss.name}} • {{discuss.type}} • {{discuss.date}} • {{discuss.time}}• {{discuss.instructor}} • {{discuss.location}} • {{discuss.enrolled}} enrolled with a cap of {{discuss.cap}} • {{discuss.wait}} on the waitlist
+    
+  </a>
+  </div>
+</div>
+
 
  <div class="card">
 
   <div class="item item-divider">
-    Professor Ratings
+    <span style="font-size: 1.5em">Professor Ratings</span>
+    <span style="font-size: 1.5em">|</span>
+    Powered by <span style="font-size: 1.5em">RateMyProfessor</span>
   </div>
-     <div class="row"> 
+     <div class="row">
       <div class="col-50">
   <a class="item">
-    Average Ratings: {{quality_score}} <br>
+    Average Rating: {{quality_score}} <br>
     Average Grade: {{average_grade}} <br>
+
   </a>
   </div>
    <div class="col-50">
@@ -55,27 +76,28 @@
   </div>
   <div class="item item-text-wrap" ng-repeat="reviews in comments_block">
 <a class="item">
-     <div class="row"> 
+  <div class="row"> 
+
       <div class="col-50">
-    
+
      Date of Review: {{reviews.date}}<br>
     Course Taken: {{reviews.comments.name}}<br>
     {{reviews.comments.credit}}<br>
     {{reviews.comments.attendence}}<br>
     Overall Outlook: {{reviews.type}}
-  
+
   </div>
-   
+
    <div class="col-50">
-    
+
     {{reviews.side}}
-  
-</div>
-</div>
+
+   </div>
+ </div>
    </a>
    <hr>
   </div>
- 
+
 
   </ion-content>
 </ion-view>

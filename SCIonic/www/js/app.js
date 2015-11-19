@@ -59,12 +59,22 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+        .state('app.bookView', {
+    url: '/search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/bookView.html',
+        controller: 'bookViewCtrl'
+      }
+    }
+  })
 
   .state('app.bookmark', {
       url: '/bookmark',
       views: {
         'menuContent': {
-          templateUrl: 'templates/bookmark.html'
+          templateUrl: 'templates/bookmark.html',
+          controller: 'bookmarksCtrl'
         }
       }
     });
