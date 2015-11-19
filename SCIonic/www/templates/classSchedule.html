@@ -1,0 +1,18 @@
+      <ion-header-bar class="bar-subheader bar-stable" style="height: 100px;">
+         <ion-item href="#/app/search">
+          Search
+        </ion-item>
+      </ion-header-bar>
+	  
+<ion-view title="My Class Schedule" style="left: -20px;">
+
+	<ion-content ng-controller="ResultsCtrl" has-header="true" has-tabs="false" padding="true" has-bouncing="true" scroll-watch>
+		<ion-list>
+			<div ng-repeat=" times in timers" class="list" style=";width:130%;height:70px;padding:0; margin:0; white-space:nowrap;">
+                <a class="item">
+                  <h2 style="margin=left; font-size: 1.0em">
+                      {{times.tick}} &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+                </a>
+		</ion-list>
+	</ion-content>
+</ion-view>
