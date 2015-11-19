@@ -3,7 +3,7 @@ angular.module('starter.controllers', [])
 
 .controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
-    template: 'Fetching Class Data...'
+    template: 'Getting Classes...'
   });
   //console.log(sharedProperties.get_term_string())
   $scope.curr_quarter = sharedProperties.get_term_string();
@@ -154,7 +154,6 @@ angular.module('starter.controllers', [])
   var book_link = sharedLinks.get_books_link();
 
   $scope.go_to_iframe = function(){
-    console.log("hi")
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
@@ -164,7 +163,7 @@ angular.module('starter.controllers', [])
 
 $scope.bookmarks_button = "Add Bookmark"
 if(courseData.in_bookmarks()){
-      $scope.bookmarks_button = "Bookmark Added!"
+      $scope.bookmarks_button = "Added!"
     }
 
 
@@ -172,7 +171,7 @@ if(courseData.in_bookmarks()){
     $ionicLoading.show({
        template: 'Loading...'
      });
-
+  $scope.bookmarks_button = "Added!"
     courseData.push_bookmarks();
     $ionicLoading.hide();
   }
