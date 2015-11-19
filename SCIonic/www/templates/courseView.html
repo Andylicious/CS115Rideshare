@@ -30,6 +30,18 @@
 </div>
 </div>
 
+<div class="card" ng-controller="courseViewCtrl">
+  <div class="item item-divider">
+    <span style="font-size: 1.5em">Associated Labs and Discussion</span>
+  </div>
+  <div class="item item-text-wrap" ng-repeat="discuss in curr_arr" >
+   <a class="item" >
+    {{discuss.name}} • {{discuss.type}} • {{discuss.date}} • {{discuss.time}}• {{discuss.instructor}} • {{discuss.location}} • {{discuss.enrolled}} enrolled with a cap of {{discuss.cap}} • {{discuss.wait}} on the waitlist
+    
+  </a>
+  </div>
+</div>
+
  <div class="card">
 
   <div class="item item-divider">
