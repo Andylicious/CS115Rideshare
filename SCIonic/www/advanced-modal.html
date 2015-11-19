@@ -1,0 +1,144 @@
+ 
+ <ion-modal-view id="advanced_modal">
+    <ion-header-bar>
+    <div class="buttons">
+    <button class="button icon-left ion-chevron-left button-clear button-dark"
+    ng-click="modal_advanced.hide()"></button>
+    </div>  
+      <h1 class="title">Advanced Settings</h1>
+    </ion-header-bar>
+    <ion-content ng-controller="SearchController as vm">
+  
+  <div class="card">
+  <div class="item item-divider">
+    Course Number
+  </div>
+  <div class="item item-text-wrap">
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+      <select>
+      <option selected>is exactly</option>
+      <option>contains</option>
+      <option>less than or equal to</option>
+      <option>greater than or equal to</option>
+    </select>
+      </div>
+      <input type="textbox" placeholder="John">
+  </a>
+  </div>
+</div>
+
+<div class="card">
+  <div class="item item-divider">
+    Course Title Keyword
+  </div>
+  <a class="item">
+      <input type="textbox" placeholder="John">
+      </a>
+</div>
+
+  <div class="card">
+  <div class="item item-divider">
+    Instructor Last Name
+  </div>
+  <div class="item item-text-wrap">
+    <a class="item">
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+      <select>
+      <option selected>is exactly</option>
+      <option>contains</option>
+      <option>begins with</option>
+    </select>
+      </div>
+      <input type="textbox" placeholder="John">
+  </a>
+  </div>
+</div>
+
+  <div class="card">
+  <div class="item item-divider">
+   Meeting Days
+  </div>
+  <div class="item item-text-wrap">
+    <a class="item">
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+      <select>
+      <option>All Days</option>
+      <option>MTWR</option>
+      <option>MTWRF</option>
+      <option>MWF</option>
+      <option>MW</option>
+      <option>TWR</option>
+      <option>TR</option>
+      <option>M</option>
+      <option>T</option>
+      <option>W</option>
+      <option>R</option>
+      <option>F</option>
+    </select>
+      </div>
+  </a>
+  </div>
+</div>
+
+  <div class="card">
+  <div class="item item-divider">
+   Meeting Times
+  </div>
+  <div class="item item-text-wrap">
+    <a class="item">
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+      <select>
+      <option selected> </option>
+      <option>All Times</option>
+      <option>Morning</option>
+      <option>Afternoon</option>
+      <option>Evening</option>
+      <option>08:00AM - 09:10AM</option>
+      <option>08:00AM - 09:45AM</option>
+      <option>09:30AM - 10:40AM</option>
+      <option>10:00AM - 11:45AM</option>
+      <option>11:00AM - 12:10PM</option>
+      <option>12:00PM - 01:45PM</option>
+      <option>12:30PM - 01:40PM</option>
+      <option>02:00PM - 03:10PM</option>
+      <option>02:00PM - 03:45PM</option>
+      <option>03:30PM - 04:40PM</option>
+      <option>04:00PM - 05:45PM</option>
+      <option>05:00PM - 06:45PM</option>
+      <option>06:00PM - 07:45PM</option>
+      <option>07:00PM - 08:45PM</option>
+      <option>08:00PM - 09:45PM</option>
+    </select>
+      </div>
+  </a>
+  </div>
+</div>
+
+  <div class="card">
+  <div class="item item-divider">
+   Course Career
+  </div>
+  <div class="item item-text-wrap">
+    <a class="item">
+    <div class="list">
+  <label class="item item-input item-stacked-label">
+      <select>
+      <option selected> </option>
+      <option>Any</option>
+      <option>Undergraduate</option>
+      <option>Graduate</option>
+    </select>
+      </div>
+  </a>
+  </div>
+</div> 
+	
+		<button ui-sref="app.resultsView"class="button button-full ink"> Submit </button>
+
+    
+    </ion-content>
+  </ion-modal-view>
