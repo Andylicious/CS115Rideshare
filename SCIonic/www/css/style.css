@@ -15,4 +15,12 @@
     .bar-header button.ion-navicon {
         display: none;
     }
+    .bar-subheader {
+	      color: #B2B2B2;
+        z-index: 1;
+        transition: top 0.25s ease;
+	      z-index: 2 !important;
+        box-shadow: -1px 0 2px rgba(0, 0, 0, .2), 1px 0 2px rgba(0, 0, 0, .2);
+
+    }
 }
