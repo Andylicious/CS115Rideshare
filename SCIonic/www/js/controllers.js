@@ -155,7 +155,6 @@ angular.module('starter.controllers', [])
   var book_link = sharedLinks.get_books_link();
 
   $scope.go_to_iframe = function(){
-    console.log("hi")
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
