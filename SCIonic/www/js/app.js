@@ -70,4 +70,12 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/search');
-});
+})
+	  .state('app.classSchedule', {
+      url: '/classSchedule',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/classSchedule.html'
+        }
+      }
+    });
