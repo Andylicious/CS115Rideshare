@@ -3,8 +3,9 @@ angular.module('starter.controllers', [])
 
 .controller('ResultsCtrl', function($scope,$ionicLoading, $state, $http,$stateParams, $timeout, sharedProf,sharedProperties, sharedLinks, courseData) {
   $ionicLoading.show({
-    template: 'Getting Courses...'
- });
+    template: 'Getting Classes...'
+  });
+
   //console.log(sharedProperties.get_term_string())
   $scope.curr_quarter = sharedProperties.get_term_string();
     //this function is called when we click on a course, sets
@@ -106,13 +107,17 @@ angular.module('starter.controllers', [])
         course_location = results_tr[i].getElementsByTagName('td')[11].innerText;
         course_map = {course_links, course_name_short, course_name_long, course_id, course_type, course_date, course_time, course_prof, course_cap,
         course_enrolled, course_avail, course_location, color, course_books_filtered};
-    //this is our "big" data structure holding all our classes
+
+
+        //this is our "big" data structure holding all our classes
+
 
         class_data.push(course_map);
         ////console.log("----END OF CLASS---")
 
               }
               }
+
 
         $scope.groups = [];
         for(var i = 0; i < class_data.length; i++){
@@ -145,8 +150,6 @@ angular.module('starter.controllers', [])
 })
 
 
-
- 
 .controller('courseViewCtrl', function($scope,$state,$ionicLoading, $stateParams,$http, $timeout, sharedProf, sharedLinks, courseData) {
 
   $ionicLoading.show({
@@ -158,11 +161,6 @@ angular.module('starter.controllers', [])
     $state.go('app.bookView');
   }
   $scope.tmp_course = courseData.get_tmp_course();
-
-  //available variables for courseView
-  //example of usage inside courseView.html:
-  //  {{$scope.tmp_course.avail}}
-  //  {{$scope.tmp_course.longname}}
 
 
   // console.log($scope.tmp_course.name)
@@ -198,6 +196,7 @@ if(courseData.in_bookmarks()){
     $ionicLoading.show({
        template: 'Loading...'
      });
+
   
     if(courseData.in_bookmarks()){
       $scope.bookmarks_button = "Added!"
@@ -209,6 +208,8 @@ if(courseData.in_bookmarks()){
   }
 var labs_arr = [];
 $scope.curr_arr = [];
+
+
 
   //  console.log(sharedLinks.get_course_link())
     $http.get(sharedLinks.get_course_link())
