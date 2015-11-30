@@ -59,23 +59,65 @@ angular.module('starter', ['ionic', 'starter.controllers'])
     }
   })
 
+        .state('app.bookView', {
+    url: '/search',
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/bookView.html',
+        controller: 'bookViewCtrl'
+      }
+    }
+  })
 
   .state('app.bookmark', {
       url: '/bookmark',
       views: {
         'menuContent': {
-          templateUrl: 'templates/bookmark.html'
+          templateUrl: 'templates/bookmark.html',
+          controller: 'bookmarksCtrl'
         }
       }
-    });
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/search');
-})
-	  .state('app.classSchedule', {
+    })
+			  .state('app.classSchedule', {
       url: '/classSchedule',
       views: {
         'menuContent': {
           templateUrl: 'templates/classSchedule.html'
         }
       }
+    })
+			  .state('app.tue-modal', {
+      url: '/tue-modal',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/tue-modal.html'
+        }
+      }
+    })
+			  .state('app.wed-modal', {
+      url: '/wed-modal',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/wed-modal.html'
+        }
+      }
+    })
+			  .state('app.thu-modal', {
+      url: '/thu-modal',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/thu-modal.html'
+        }
+      }
+    })
+			  .state('app.fri-modal', {
+      url: '/fri-modal',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/fri-modal.html'
+        }
+      }
     });
+  // if none of the above states are matched, use this as the fallback
+  $urlRouterProvider.otherwise('/app/search');
+});
