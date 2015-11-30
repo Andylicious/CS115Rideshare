@@ -1,10 +1,24 @@
-      <ion-header-bar class="bar-subheader bar-stable" style="height: 100px;">
-         <ion-item href="#/app/search">
-          Search
-        </ion-item>
+      <ion-header-bar class="bar-subheader bar-stable" style="height: 50px;">
+<div class="row">
+  <div class="col">
+    <button ui-sref="app.classSchedule" class="button button-clear button-bar">Mon</button>
+  </div>
+  <div class="col">
+    <button ui-sref="app.tue-modal" class="button button-clear button-bar">Tue</button>
+  </div> 
+    <div class="col">
+    <button ui-sref="app.wed-modal" class="button button-clear button-bar">Wed</button>
+  </div>
+      <div class="col">
+    <button ui-sref="app.thu-modal" class="button button-clear button-bar">Thu</button>
+  </div>
+      <div class="col">
+    <button ui-sref="app.fri-modal" class="button button-clear button-bar">Fri</button>
+  </div>
+</div>
       </ion-header-bar>
 	  
-<ion-view title="My Class Schedule" style="left: -20px;">
+<ion-view title="Monday's Schedule" style="left: -20px;">
 
 	<ion-content ng-controller="ResultsCtrl" has-header="true" has-tabs="false" padding="true" has-bouncing="true" scroll-watch>
 		<ion-list>
