@@ -1,0 +1,32 @@
+      <ion-header-bar class="bar-subheader bar-stable" style="height: 50px;">
+<div class="row">
+  <div class="col">
+    <button ui-sref="app.classSchedule" class="button button-clear button-bar">Mon</button>
+  </div>
+  <div class="col">
+    <button ui-sref="app.tue-modal" class="button button-clear button-bar">Tue</button>
+  </div> 
+    <div class="col">
+    <button ui-sref="app.wed-modal" class="button button-clear button-bar">Wed</button>
+  </div>
+      <div class="col">
+    <button ui-sref="app.thu-modal" class="button button-clear button-bar">Thu</button>
+  </div>
+      <div class="col">
+    <button ui-sref="app.fri-modal" class="button button-clear button-bar">Fri</button>
+  </div>
+</div>
+      </ion-header-bar>
+	  
+<ion-view title="Friday's Schedule" style="left: -20px;">
+
+	<ion-content ng-controller="ResultsCtrl" has-header="true" has-tabs="false" padding="true" has-bouncing="true" scroll-watch>
+		<ion-list>
+			<div ng-repeat=" times in timers" class="list" style=";width:130%;height:70px;padding:0; margin:0; white-space:nowrap;">
+                <a class="item">
+                  <h2 style="margin=left; font-size: 1.0em">
+                      {{times.tick}} &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;
+                </a>
+		</ion-list>
+	</ion-content>
+</ion-view>
