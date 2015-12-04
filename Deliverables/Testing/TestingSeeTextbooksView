@@ -1,0 +1,19 @@
+Ken Ni
+
+Testing: Textbook View Module
+Testing for this module consists of selecting a class, clicking "See Textbooks" and viewing the
+results.
+
+Equivalence Classes:
+
+EC1.1 – Pressing "see textbook" in Course view launches the Baytree bookstore link.
+EC2.1 - Course textbook is correctly displayed in the Baytree bookstore Course Materials section.
+EC3.1 – Pressing back button returns back to the Course view page.
+
+Test Cases:
+- Input = From Courseview page pressing see textbook = link launches the Baytree bookstore in window; 
+covers EC1.1
+- Input = Choosing a course from Courseviewpage click “see textbooks” = corresponding textbooks are searched for in Baytree bookstore; 
+covers EC2.1
+- Input = Clicking back button = returns to the correct course last being viewed;
+covers EC3.1
