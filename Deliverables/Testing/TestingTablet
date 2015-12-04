@@ -1,0 +1,38 @@
+				                                Testing : Tablet Mode
+						              Kent Diao
+Testing for this module consists of checking to ensure all views open correctly and nothing crashes on the tablet module of this application.
+
+Equivalence Classes:
+
+EC1.1 – Application opens upon launching slugsearch.com from tablet
+EC2.1 – Term, Status, Subject, and General Education all open a drop down menu upon pressing
+
+EC3.1 – Pressing submit with empty fields prompts the resultview
+EC3.2 – Pressing submit with selected fields prompts the resultview
+
+EC 4.1 – Pressing a class prompts the courseview
+
+EC 5.1 – Pressing add bookmark adds a bookmark
+EC 5.2 – Pressing multiple times works as planned, only one instance added
+
+EC 6.1 – Pressing see textbook launches the baytree bookstore link
+EC 7.1 – Back button works correctly in prompting correct view
+
+EC 8.1 – Search button in side menu launches search view
+EC 8.2 – Bookmarks in side menu launches bookmark view
+
+Test Cases:
+1.	Input = open application from tablet = Search view should appear , covers EC 1.1
+2.	Input = all search fields pressed = new modal should open for each field, covers EC 2.1
+3.	Input = all search fields empty, press submit = resultview should open, covers EC 3.1
+4.	Input = all search fields chosen, press submit = resultview should open, covers EC 3.1, EC 3.2
+5.	Input = press class in resultview = courseview should open, covers EC 4.1
+6.	Input = press add bookmark multiple times = bookmark should be added to bookmark page, covers EC 5.1, EC 5.2, EC 8.2
+7.	Input = press see textbook = launches link to baytree bookstore, covers EC 6.1
+8.	Input = Press back button = launches previously viewed view, covers EC 7.1
+9.	Input = Press search in sidebar = launches searchview, covers EC 1.1, EC 8.1
+10.	Input = Press Bookmarks in sidebar = launches bookmarkview, covers EC 8.2
+ 
+
+
+
